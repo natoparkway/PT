@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F179D6D1B01B03F00EE4744 /* DetailedExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F179D6C1B01B03F00EE4744 /* DetailedExerciseViewController.swift */; };
+		0F179D701B01BDF600EE4744 /* PatientWorkingOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F179D6F1B01BDF600EE4744 /* PatientWorkingOutViewController.swift */; };
+		0F179D721B01BFB500EE4744 /* CircleWithTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F179D711B01BFB500EE4744 /* CircleWithTextView.swift */; };
+		0F179D751B01C59400EE4744 /* CircularView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F179D741B01C59400EE4744 /* CircularView.xib */; };
 		0F2AE4091B00719C00CB96A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2AE4081B00719C00CB96A3 /* AppDelegate.swift */; };
 		0F2AE40E1B00719C00CB96A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F2AE40C1B00719C00CB96A3 /* Main.storyboard */; };
 		0F2AE4101B00719C00CB96A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F2AE40F1B00719C00CB96A3 /* Images.xcassets */; };
@@ -29,6 +33,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F179D6C1B01B03F00EE4744 /* DetailedExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedExerciseViewController.swift; sourceTree = "<group>"; };
+		0F179D6F1B01BDF600EE4744 /* PatientWorkingOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientWorkingOutViewController.swift; sourceTree = "<group>"; };
+		0F179D711B01BFB500EE4744 /* CircleWithTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleWithTextView.swift; sourceTree = "<group>"; };
+		0F179D741B01C59400EE4744 /* CircularView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircularView.xib; sourceTree = "<group>"; };
 		0F2AE4031B00719C00CB96A3 /* PT_Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PT_Helper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F2AE4071B00719C00CB96A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F2AE4081B00719C00CB96A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +70,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F179D6E1B01B04B00EE4744 /* Shared View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0F179D6C1B01B03F00EE4744 /* DetailedExerciseViewController.swift */,
+			);
+			name = "Shared View Controllers";
+			sourceTree = "<group>";
+		};
+		0F179D731B01BFBF00EE4744 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				0F179D711B01BFB500EE4744 /* CircleWithTextView.swift */,
+				0F179D741B01C59400EE4744 /* CircularView.xib */,
+			);
+			name = "Custom Views";
+			sourceTree = "<group>";
+		};
 		0F2AE3FA1B00719C00CB96A3 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +108,8 @@
 		0F2AE4051B00719C00CB96A3 /* PT_Helper */ = {
 			isa = PBXGroup;
 			children = (
+				0F179D731B01BFBF00EE4744 /* Custom Views */,
+				0F179D6E1B01B04B00EE4744 /* Shared View Controllers */,
 				0F2AE4331B008ADB00CB96A3 /* Models */,
 				0F2AE4321B008A3400CB96A3 /* PatientViewControllers */,
 				0F2AE4311B008A2000CB96A3 /* Cells */,
@@ -131,6 +158,7 @@
 		0F2AE4321B008A3400CB96A3 /* PatientViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0F179D6F1B01BDF600EE4744 /* PatientWorkingOutViewController.swift */,
 				0F2AE4281B007B0F00CB96A3 /* PatientLoginViewController.swift */,
 				0F2AE42A1B0084A300CB96A3 /* PatientExercisesViewController.swift */,
 			);
@@ -226,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F2AE40E1B00719C00CB96A3 /* Main.storyboard in Resources */,
+				0F179D751B01C59400EE4744 /* CircularView.xib in Resources */,
 				0F2AE4131B00719C00CB96A3 /* LaunchScreen.xib in Resources */,
 				0F2AE4101B00719C00CB96A3 /* Images.xcassets in Resources */,
 			);
@@ -246,10 +275,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F2AE4351B008AF400CB96A3 /* Exercise.swift in Sources */,
+				0F179D721B01BFB500EE4744 /* CircleWithTextView.swift in Sources */,
 				0F2AE42B1B0084A300CB96A3 /* PatientExercisesViewController.swift in Sources */,
+				0F179D6D1B01B03F00EE4744 /* DetailedExerciseViewController.swift in Sources */,
 				0F2AE42F1B00894E00CB96A3 /* ExerciseCell.swift in Sources */,
 				0F2AE4291B007B0F00CB96A3 /* PatientLoginViewController.swift in Sources */,
 				0F2AE4091B00719C00CB96A3 /* AppDelegate.swift in Sources */,
+				0F179D701B01BDF600EE4744 /* PatientWorkingOutViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +479,7 @@
 				0F2AE4241B00719C00CB96A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0F2AE4251B00719C00CB96A3 /* Build configuration list for PBXNativeTarget "PT_HelperTests" */ = {
 			isa = XCConfigurationList;
@@ -455,6 +488,7 @@
 				0F2AE4271B00719C00CB96A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -15,6 +15,8 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
         "duration": 30,
         "numRepetitions": 12,
         "daysPerWeek": 3]
+    
+    var exercises: [Exercise] = [Exercise]()
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -22,6 +24,10 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        //Normally we would get data from parse
+        exercises.append(Exercise(dictionary: sampleData))
+        
 
         // Do any additional setup after loading the view.
     }
@@ -39,7 +45,7 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("ExerciseCell") as! ExerciseCell
         cell.selectionStyle = .None    //Prevents highlighting
-        cell.updateContents(Exercise(dictionary: sampleData))
+        cell.updateContents(exercises[indexPath.row])
         
         return cell
     }
@@ -50,14 +56,24 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
 //TABLE VIEW DELEGATE METHODS
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let id = segue.identifier {
+            if id == "ToDetailedExercise" {
+                toDetailedExerciseSegue(segue, cell: sender as! ExerciseCell)
+            }
+        }
     }
-    */
+    
+    func toDetailedExerciseSegue(segue: UIStoryboardSegue, cell: ExerciseCell) {
+        var nav = segue.destinationViewController as! UINavigationController
+        var detailedExerciseVC = nav.topViewController as! DetailedExerciseViewController
+        detailedExerciseVC.updateContents(cell.exercise)
+    }
+    
 
 }

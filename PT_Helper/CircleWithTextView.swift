@@ -1,0 +1,67 @@
+//
+//  CircleWithTextView.swift
+//  PT_Helper
+//
+//  Created by Nathaniel Okun on 5/11/15.
+//  Copyright (c) 2015 Nathaniel Okun. All rights reserved.
+//
+
+import UIKit
+import QuartzCore
+let lineWidth = CGFloat(5.0)
+
+class CircleWithTextView: UIView {
+    
+    var color: UIColor!
+    
+    @IBOutlet weak var counterLabel: UILabel!
+    @IBOutlet var circularView: UIView!
+    
+    override init(frame: CGRect){
+        super.init(frame: frame)
+        setup()
+        
+    }
+    
+    required init(coder aDecoder: NSCoder){
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    func setup() {
+        if let bgColor = backgroundColor {
+            color = backgroundColor
+        } else {
+            color = UIColor.redColor()
+        }
+        
+        addNib()
+        self.backgroundColor = UIColor.whiteColor()
+    }
+    
+    func addNib() {
+        var nib = UINib(nibName: "CircularView", bundle: nil)
+        var objects = nib.instantiateWithOwner(self, options: nil)
+        circularView.frame = self.bounds
+        circularView.layer.borderWidth = lineWidth
+        circularView.layer.borderColor = color.CGColor
+        circularView.layer.cornerRadius = circularView.frame.width / 2
+        addSubview(circularView)
+    }
+
+    // Only override drawRect: if you perform custom drawing.
+    // An empty implementation adversely affects performance during animation.
+//    override func drawRect(rect: CGRect) {
+//        var context = UIGraphicsGetCurrentContext()
+//        CGContextSetLineWidth(context, lineWidth)
+//        
+//        //Sets the color of the circle-outline to be the color of the view in storyboard.
+//        color.set()
+//        
+//        CGContextAddArc(context, frame.size.width / 2, frame.size.height / 2, (frame.size.width - 2 * lineWidth) / 2, 0.0, CGFloat(M_PI * 2.0), 1)
+//        
+//        //Draw
+//        CGContextStrokePath(context)
+//    }
+
+}

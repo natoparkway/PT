@@ -16,7 +16,6 @@ class Exercise: NSObject {
     var daysPerWeek: Int?
     
     init(dictionary: NSDictionary) {
-        println("called")
         exerciseDescription = dictionary["exerciseDescription"] as? String
         name = dictionary["name"] as? String
         numRepetitions = dictionary["numRepetitions"] as? Int
