@@ -20,12 +20,14 @@ class CircleWithTextView: UIView {
     override init(frame: CGRect){
         super.init(frame: frame)
         setup()
+        counterLabel.text = "Something" //Doesn't work
         
     }
     
     required init(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
         setup()
+        counterLabel.text = "Something" //Doesn't work
     }
     
     func setup() {
@@ -47,6 +49,7 @@ class CircleWithTextView: UIView {
         circularView.layer.borderColor = color.CGColor
         circularView.layer.cornerRadius = circularView.frame.width / 2
         addSubview(circularView)
+        
     }
 
     // Only override drawRect: if you perform custom drawing.
