@@ -10,6 +10,10 @@ import UIKit
 
 class ProviderCreateNewPatientViewController: UIViewController {
 
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var injuryTextField: UITextField!
+    @IBOutlet weak var patientNameTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
