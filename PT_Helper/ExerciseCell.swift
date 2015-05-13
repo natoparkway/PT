@@ -10,12 +10,13 @@ import UIKit
 
 class ExerciseCell: UITableViewCell {
 
-    @IBOutlet weak var exerciseImage: UIImageView!
     @IBOutlet weak var exerciseNameLabel: UILabel!
     @IBOutlet weak var repetitionsLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var daysPerWeekLabel: UILabel!
-    
+    @IBOutlet weak var daysPerWeekView: CircleWithTextView!
+    @IBOutlet weak var repetitionsView: CircleWithTextView!
+    @IBOutlet weak var setsOrTimeView: CircleWithTextView!
     var exercise: Exercise!
     
     override func awakeFromNib() {
@@ -27,10 +28,9 @@ class ExerciseCell: UITableViewCell {
      */
     func updateContents(exerciseData: Exercise) {
         exercise = exerciseData
-        exerciseNameLabel.text = exercise.name
-        repetitionsLabel.text = String(exercise.numRepetitions!) + "x"
-        durationLabel.text = String(exercise.duration!) + "s"
-        daysPerWeekLabel.text = String(exercise.daysPerWeek!) + " days per week"
+        daysPerWeekView.updateCounter(String(exercise.daysPerWeek!))
+        repetitionsView.updateCounter(String(exercise.numRepetitions!))
+        setsOrTimeView.updateCounter(String(exercise.duration!))
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

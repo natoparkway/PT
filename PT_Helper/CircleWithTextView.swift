@@ -27,7 +27,7 @@ class CircleWithTextView: UIView {
     required init(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
         setup()
-        counterLabel.text = "Something" //Doesn't work
+        counterLabel.text = "1" //Doesn't work
     }
     
     func setup() {
@@ -50,6 +50,11 @@ class CircleWithTextView: UIView {
         circularView.layer.cornerRadius = circularView.frame.width / 2
         addSubview(circularView)
         
+    }
+    
+    //Public method to change counterLabel
+    func updateCounter(count: String) {
+        counterLabel.text = count
     }
 
     // Only override drawRect: if you perform custom drawing.

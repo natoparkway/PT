@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
@@ -71,67 +71,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hEh-nd-9f5">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="113" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hEh-nd-9f5">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseCell" rowHeight="86" id="SXf-or-QIq" customClass="ExerciseCell" customModule="PT_Helper" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseCell" rowHeight="113" id="SXf-or-QIq" customClass="ExerciseCell" customModule="PT_Helper" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SXf-or-QIq" id="edN-Wt-2K4">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Running_Man2" translatesAutoresizingMaskIntoConstraints="NO" id="Ndb-up-3DK">
-                                                    <rect key="frame" x="8" y="8" width="69" height="69"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="69" id="FFr-hQ-shz"/>
-                                                        <constraint firstAttribute="width" constant="69" id="tW7-u6-jdN"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hip Abduction" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3P5-bc-qux">
-                                                    <rect key="frame" x="85" y="8" width="113" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hip Abduction" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3P5-bc-qux">
+                                                    <rect key="frame" x="104" y="8" width="113" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12x" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXn-nU-yuL">
-                                                    <rect key="frame" x="85" y="59" width="25" height="18"/>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WBY-bI-tOE" customClass="CircleWithTextView" customModule="PT_Helper" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="34" width="43" height="43"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.77006392050000005" blue="0.23276925379999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Se1-p9-bfD" customClass="CircleWithTextView" customModule="PT_Helper" customModuleProvider="target">
+                                                    <rect key="frame" x="139" y="34" width="43" height="43"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.77006392050000005" blue="0.23276925379999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Repetitions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vls-9R-TNE">
+                                                    <rect key="frame" x="139" y="85" width="87" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 days per week" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmG-oi-y1I">
-                                                    <rect key="frame" x="177" y="59" width="113" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sets" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCx-II-1XP">
+                                                    <rect key="frame" x="269" y="85" width="35" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30s" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gig-YK-Sc1">
-                                                    <rect key="frame" x="134" y="59" width="25" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B0o-ev-Lk7" customClass="CircleWithTextView" customModule="PT_Helper" customModuleProvider="target">
+                                                    <rect key="frame" x="269" y="34" width="43" height="43"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.77006392050000005" blue="0.23276925379999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Days Per Week" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YYV-du-lY2">
+                                                    <rect key="frame" x="8" y="85" width="117" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Gig-YK-Sc1" firstAttribute="leading" secondItem="JXn-nU-yuL" secondAttribute="trailing" constant="24" id="4Hh-FK-3Zl"/>
-                                                <constraint firstItem="Ndb-up-3DK" firstAttribute="top" secondItem="edN-Wt-2K4" secondAttribute="top" constant="8" id="96C-yX-hFp"/>
-                                                <constraint firstItem="Ndb-up-3DK" firstAttribute="leading" secondItem="edN-Wt-2K4" secondAttribute="leading" constant="8" id="980-ic-ndB"/>
-                                                <constraint firstItem="3P5-bc-qux" firstAttribute="leading" secondItem="Ndb-up-3DK" secondAttribute="trailing" constant="8" id="GIN-Yy-qSy"/>
-                                                <constraint firstItem="JXn-nU-yuL" firstAttribute="leading" secondItem="Ndb-up-3DK" secondAttribute="trailing" constant="8" id="HMC-ds-9hg"/>
-                                                <constraint firstItem="UmG-oi-y1I" firstAttribute="bottom" secondItem="Gig-YK-Sc1" secondAttribute="bottom" id="bVC-cO-Yo2"/>
-                                                <constraint firstItem="UmG-oi-y1I" firstAttribute="bottom" secondItem="JXn-nU-yuL" secondAttribute="bottom" id="fZe-Cl-fru"/>
-                                                <constraint firstItem="UmG-oi-y1I" firstAttribute="bottom" secondItem="Ndb-up-3DK" secondAttribute="bottom" id="iJi-WM-SUL"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Ndb-up-3DK" secondAttribute="bottom" constant="8" id="lkj-xE-Zbj"/>
-                                                <constraint firstItem="Ndb-up-3DK" firstAttribute="top" secondItem="3P5-bc-qux" secondAttribute="top" id="veg-5s-8VG"/>
-                                                <constraint firstItem="UmG-oi-y1I" firstAttribute="leading" secondItem="Gig-YK-Sc1" secondAttribute="trailing" constant="18" id="y4f-Xk-Hnp"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="daysPerWeekLabel" destination="UmG-oi-y1I" id="RyY-Kw-7ON"/>
-                                            <outlet property="durationLabel" destination="Gig-YK-Sc1" id="FId-xo-mvS"/>
-                                            <outlet property="exerciseImage" destination="Ndb-up-3DK" id="8bH-N6-W9d"/>
+                                            <outlet property="daysPerWeekLabel" destination="YYV-du-lY2" id="Dfq-MH-fpn"/>
+                                            <outlet property="daysPerWeekView" destination="WBY-bI-tOE" id="8l4-Uo-NA8"/>
+                                            <outlet property="durationLabel" destination="iCx-II-1XP" id="RAc-YG-qGg"/>
                                             <outlet property="exerciseNameLabel" destination="3P5-bc-qux" id="vwe-ld-ih3"/>
-                                            <outlet property="repetitionsLabel" destination="JXn-nU-yuL" id="x6e-ln-Buj"/>
+                                            <outlet property="repetitionsLabel" destination="vls-9R-TNE" id="8bE-qG-AFW"/>
+                                            <outlet property="repetitionsView" destination="Se1-p9-bfD" id="G6w-cH-3Mb"/>
+                                            <outlet property="setsOrTimeView" destination="B0o-ev-Lk7" id="uZG-Ob-A6u"/>
                                             <segue destination="bjJ-FN-5tm" kind="modal" identifier="ToDetailedExercise" id="0lc-wX-RnS"/>
                                         </connections>
                                     </tableViewCell>
@@ -180,38 +174,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Jumping_Jack" translatesAutoresizingMaskIntoConstraints="NO" id="uYI-Ha-Yhc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Jumping_Jack" translatesAutoresizingMaskIntoConstraints="NO" id="uYI-Ha-Yhc">
                                 <rect key="frame" x="33" y="64" width="255" height="256"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="256" id="qqV-BY-ioO"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Jumping Jacks" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g98-1C-Wec">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jumping Jacks" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g98-1C-Wec">
                                 <rect key="frame" x="16" y="328" width="288" height="27"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="12x" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOS-Ob-dD9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12x" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOS-Ob-dD9">
                                 <rect key="frame" x="16" y="362" width="28" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="30s" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDc-bl-0gu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30s" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDc-bl-0gu">
                                 <rect key="frame" x="146" y="362" width="28" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="3d" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tbu-NG-odc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3d" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tbu-NG-odc">
                                 <rect key="frame" x="284" y="363" width="20" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This is a description of the exercise" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVA-ax-GOT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a description of the exercise" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVA-ax-GOT">
                                 <rect key="frame" x="16" y="391" width="288" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -369,7 +363,6 @@
     <resources>
         <image name="Jumping_Jack" width="600" height="700"/>
         <image name="Running_Man" width="32" height="32"/>
-        <image name="Running_Man2" width="128" height="128"/>
         <image name="White_Arrow_left" width="24" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -378,6 +371,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="hfg-dT-jR8"/>
+        <segue reference="BjH-IV-WbL"/>
     </inferredMetricsTieBreakers>
 </document>
