@@ -10,6 +10,12 @@ import UIKit
 
 class PatientLoginViewController: UIViewController {
 
+  @IBOutlet var passwordField: UITextField!
+  @IBOutlet var emailField: UITextField!
+  
+  @IBAction func onTap(sender: UITapGestureRecognizer) {
+    view.endEditing(true)
+  }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -21,17 +27,51 @@ class PatientLoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonClicked(sender: AnyObject) {
-        performSegueWithIdentifier("ToPatientExercises", sender: self)
+      PFUser.logInWithUsernameInBackground(emailField.text, password: passwordField.text) { (user: PFUser?, error: NSError?) -> Void in
+        if (error == nil) {
+          // login successful
+          self.performSegueWithIdentifier("ToPatientExercises", sender: self)
+        } else {
+          self.displayError(error!)
+        }
+      }
+      
     }
+  
+  func displayError(error: NSError) {
+    let errorString = error.userInfo?["error"] as? NSString
+    var alert = UIAlertController(title: "Alert", message: errorString as! String, preferredStyle: UIAlertControllerStyle.Alert)
+    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+    self.presentViewController(alert, animated: true, completion: nil)
+  }
 
     /*
     // MARK: - Navigation
-
+  */
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+      if (segue.identifier == "physicianSignupSegue") {
+        var finishSignupVC = segue.destinationViewController as! ProviderSignupVIewController
+        finishSignupVC.email = emailField.text
+        finishSignupVC.password = passwordField.text
+      }
     }
-    */
+  
 
+  @IBAction func onPhysicianSignUp(sender: UIButton) {
+    var user = PFUser()
+    user.username = emailField.text
+    user.password = passwordField.text
+    user.email = emailField.text
+    // other fields can be set just like with PFObject
+
+    user.signUpInBackgroundWithBlock {
+      (succeeded: Bool, error: NSError?) -> Void in
+      if let error = error {
+        self.displayError(error)
+      } else {
+        self.performSegueWithIdentifier("physicianSignupSegue", sender: self)
+      }
+    }
+  }
 }

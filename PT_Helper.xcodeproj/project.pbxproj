@@ -21,6 +21,9 @@
 		0F2AE42F1B00894E00CB96A3 /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2AE42E1B00894E00CB96A3 /* ExerciseCell.swift */; };
 		0F2AE4351B008AF400CB96A3 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2AE4341B008AF400CB96A3 /* Exercise.swift */; };
 		4B26A101836479DD55A3E365 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA0BAAAEED9D9DF647A2887 /* libPods.a */; };
+		B5B4C7351B051398004D5FFD /* PatientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4C7341B051398004D5FFD /* PatientCell.swift */; };
+		B5B4C7371B05140D004D5FFD /* ProviderPatientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4C7361B05140D004D5FFD /* ProviderPatientsViewController.swift */; };
+		B5B4C7391B051DBC004D5FFD /* ProviderSignupVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4C7381B051DBC004D5FFD /* ProviderSignupVIewController.swift */; };
 		CA0EB8F21B03E5A90060FA8E /* ProviderHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0EB8F11B03E5A90060FA8E /* ProviderHomeViewController.swift */; };
 		CA0EB8F41B03EA610060FA8E /* ProviderManageExercisesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0EB8F31B03EA610060FA8E /* ProviderManageExercisesViewController.swift */; };
 		CA0EB8F61B03EF6E0060FA8E /* ProviderCreateNewPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0EB8F51B03EF6E0060FA8E /* ProviderCreateNewPatientViewController.swift */; };
@@ -57,6 +60,9 @@
 		23452D17B05C9DC7FB6A59EF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		390A5534730AFA89A241688D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B5B4C72D1B02EC90004D5FFD /* PT_Helper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PT_Helper-Bridging-Header.h"; sourceTree = "<group>"; };
+		B5B4C7341B051398004D5FFD /* PatientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientCell.swift; sourceTree = "<group>"; };
+		B5B4C7361B05140D004D5FFD /* ProviderPatientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderPatientsViewController.swift; sourceTree = "<group>"; };
+		B5B4C7381B051DBC004D5FFD /* ProviderSignupVIewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderSignupVIewController.swift; sourceTree = "<group>"; };
 		CA0EB8F11B03E5A90060FA8E /* ProviderHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderHomeViewController.swift; sourceTree = "<group>"; };
 		CA0EB8F31B03EA610060FA8E /* ProviderManageExercisesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderManageExercisesViewController.swift; sourceTree = "<group>"; };
 		CA0EB8F51B03EF6E0060FA8E /* ProviderCreateNewPatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderCreateNewPatientViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				0F2AE42E1B00894E00CB96A3 /* ExerciseCell.swift */,
+				B5B4C7341B051398004D5FFD /* PatientCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -203,6 +210,8 @@
 				CA0EB8F11B03E5A90060FA8E /* ProviderHomeViewController.swift */,
 				CA0EB8F31B03EA610060FA8E /* ProviderManageExercisesViewController.swift */,
 				CA0EB8F51B03EF6E0060FA8E /* ProviderCreateNewPatientViewController.swift */,
+				B5B4C7361B05140D004D5FFD /* ProviderPatientsViewController.swift */,
+				B5B4C7381B051DBC004D5FFD /* ProviderSignupVIewController.swift */,
 			);
 			name = ProviderViewControllers;
 			sourceTree = "<group>";
@@ -357,12 +366,15 @@
 				CA0EB8F61B03EF6E0060FA8E /* ProviderCreateNewPatientViewController.swift in Sources */,
 				0F2AE42B1B0084A300CB96A3 /* PatientExercisesViewController.swift in Sources */,
 				0F179D6D1B01B03F00EE4744 /* DetailedExerciseViewController.swift in Sources */,
+				B5B4C7351B051398004D5FFD /* PatientCell.swift in Sources */,
 				0F2AE42F1B00894E00CB96A3 /* ExerciseCell.swift in Sources */,
 				0F2AE4291B007B0F00CB96A3 /* PatientLoginViewController.swift in Sources */,
 				CA0EB8F21B03E5A90060FA8E /* ProviderHomeViewController.swift in Sources */,
+				B5B4C7371B05140D004D5FFD /* ProviderPatientsViewController.swift in Sources */,
 				0F2AE4091B00719C00CB96A3 /* AppDelegate.swift in Sources */,
 				CA0EB8F41B03EA610060FA8E /* ProviderManageExercisesViewController.swift in Sources */,
 				0F179D701B01BDF600EE4744 /* PatientWorkingOutViewController.swift in Sources */,
+				B5B4C7391B051DBC004D5FFD /* ProviderSignupVIewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
