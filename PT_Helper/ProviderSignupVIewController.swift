@@ -40,21 +40,30 @@ class ProviderSignupVIewController: UIViewController {
     }
     */
 
+  func displayError(error: NSError) {
+    let errorString = error.userInfo?["error"] as? NSString
+    var alert = UIAlertController(title: "Alert", message: errorString as! String, preferredStyle: UIAlertControllerStyle.Alert)
+    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+    self.presentViewController(alert, animated: true, completion: nil)
+  }
+
   @IBAction func onSignUp(sender: UIButton) {
     PFUser.logInWithUsernameInBackground(email  , password:password) {
       (user: PFUser?, error: NSError?) -> Void in
       if user != nil {
         // update the user with the additional info
-        user!["phone"] = self.phoneField.text
-        user!["first_name"] = self.firstNameField.text
-        user!["last_name"] = self.lastNameField.text
+        user!["isPhysician"] = true
+        var physician = PFObject(className: "Physician")
+        physician["email"] = self.email
+        physician["phone"] = self.phoneField.text
+        physician["first_name"] = self.firstNameField.text
+        physician["last_name"] = self.lastNameField.text
+        physician.save()
+        user!["physician"] = physician
         user!.save()
-        println("logged in to " + user!.email!)
         self.performSegueWithIdentifier("toPhysicianHome", sender: self)
       } else {
-        let errorString = error!.userInfo?["error"] as? NSString
-        var alert = UIAlertController(title: "Alert", message: errorString as! String, preferredStyle: UIAlertControllerStyle.Alert)
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.displayError(error!)
       }
     }
   }

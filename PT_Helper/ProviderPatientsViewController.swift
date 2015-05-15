@@ -13,6 +13,11 @@ class ProviderPatientsViewController: UIViewController {
   @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+//      var sdf = PFUser.currentUser()!["physician"]
+//      println(sdf)
+//      let curPhysician = PFUser.currentUser()!["physician"]!.fetch() as! PFObject
+//      var name = curPhysician["first_name"] as! String
+//      println("logged in as " + name)
 
         // Do any additional setup after loading the view.
     }

@@ -30,7 +30,14 @@ class PatientLoginViewController: UIViewController {
       PFUser.logInWithUsernameInBackground(emailField.text, password: passwordField.text) { (user: PFUser?, error: NSError?) -> Void in
         if (error == nil) {
           // login successful
-          self.performSegueWithIdentifier("ToPatientExercises", sender: self)
+          println(PFUser.currentUser()!["isPhysician"])
+          // determine if physician login view is appropriate
+          let isPhysician = PFUser.currentUser()!["isPhysician"] as! Bool
+          if (isPhysician == true) {
+            self.performSegueWithIdentifier("physicianLoginSegue", sender: self)
+          } else {
+            self.performSegueWithIdentifier("ToPatientExercises", sender: self)
+          }
         } else {
           self.displayError(error!)
         }
@@ -44,6 +51,7 @@ class PatientLoginViewController: UIViewController {
     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
     self.presentViewController(alert, animated: true, completion: nil)
   }
+
 
     /*
     // MARK: - Navigation

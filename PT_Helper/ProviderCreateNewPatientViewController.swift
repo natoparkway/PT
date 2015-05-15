@@ -11,15 +11,19 @@ import UIKit
 class ProviderCreateNewPatientViewController: UIViewController {
 
     @IBOutlet weak var descriptionTextView: UITextView!
+  @IBOutlet var firstNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+  @IBOutlet var lastNameTextField: UITextField!
     @IBOutlet weak var injuryTextField: UITextField!
-    @IBOutlet weak var patientNameTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
+  @IBAction func savePatient(sender: UIBarButtonItem) {
+    var user = PFObject()
+  }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
