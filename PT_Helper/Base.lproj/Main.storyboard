@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="yXP-Eu-74I">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
@@ -106,28 +106,13 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S4S-1V-Wpk">
-                                <rect key="frame" x="40" y="259" width="240" height="245"/>
-                                <color key="backgroundColor" red="0.85274621212121215" green="0.85274621212121215" blue="0.85274621212121215" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="0.22325339" green="0.70766256309999997" blue="0.22348561959999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" red="0.22325339" green="0.70766256309999997" blue="0.22348561959999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MnW-AR-rGf">
-                                <rect key="frame" x="16" y="206" width="93" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FqN-MN-f3v">
                                 <rect key="frame" x="40" y="79" width="113" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lGR-aS-jpN">
-                                <rect key="frame" x="40" y="168" width="240" height="30"/>
+                                <rect key="frame" x="40" y="184" width="240" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -137,19 +122,30 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Injury (e.g. blah blah)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dlh-TP-5AS">
-                                <rect key="frame" x="40" y="130" width="240" height="30"/>
+                                <rect key="frame" x="40" y="133" width="240" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k4D-5K-V6b">
+                                <rect key="frame" x="40" y="246" width="71" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="y.o." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDL-OE-9OG">
+                                <rect key="frame" x="119" y="255" width="27" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hdH-dw-Oay">
+                                <rect key="frame" x="163" y="248" width="117" height="29"/>
+                                <segments>
+                                    <segment title="Male"/>
+                                    <segment title="Female"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="DgI-UM-5PQ" firstAttribute="top" secondItem="S4S-1V-Wpk" secondAttribute="bottom" constant="64" id="5sF-7X-Scj"/>
-                            <constraint firstItem="MnW-AR-rGf" firstAttribute="leading" secondItem="7fu-Y9-gKC" secondAttribute="leading" constant="16" id="Obe-KR-YOQ"/>
-                            <constraint firstItem="S4S-1V-Wpk" firstAttribute="top" secondItem="MnW-AR-rGf" secondAttribute="bottom" constant="32" id="nZA-up-mL6"/>
-                            <constraint firstAttribute="trailing" secondItem="S4S-1V-Wpk" secondAttribute="trailing" constant="40" id="x1x-ig-d3l"/>
-                            <constraint firstItem="S4S-1V-Wpk" firstAttribute="leading" secondItem="7fu-Y9-gKC" secondAttribute="leading" constant="40" id="zfh-SQ-cCI"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create New Patient" id="94M-E4-lFQ">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="wy9-Ib-hQN">
@@ -159,7 +155,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="descriptionTextView" destination="S4S-1V-Wpk" id="jSU-gM-8CQ"/>
                         <outlet property="emailTextField" destination="lGR-aS-jpN" id="dXo-0u-Vyk"/>
                         <outlet property="firstNameTextField" destination="FqN-MN-f3v" id="qfv-6A-kFr"/>
                         <outlet property="injuryTextField" destination="dlh-TP-5AS" id="4dI-0q-JV0"/>
