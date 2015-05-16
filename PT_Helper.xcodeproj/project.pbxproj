@@ -20,7 +20,9 @@
 		0F2AE42B1B0084A300CB96A3 /* PatientExercisesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2AE42A1B0084A300CB96A3 /* PatientExercisesViewController.swift */; };
 		0F2AE42F1B00894E00CB96A3 /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2AE42E1B00894E00CB96A3 /* ExerciseCell.swift */; };
 		0F2AE4351B008AF400CB96A3 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2AE4341B008AF400CB96A3 /* Exercise.swift */; };
-		4B26A101836479DD55A3E365 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA0BAAAEED9D9DF647A2887 /* libPods.a */; };
+		0FA617681B07121700A83054 /* PatientCongratulationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA617671B07121700A83054 /* PatientCongratulationsViewController.swift */; };
+		0FEFC4BD1B06F48A0099954C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEFC4BC1B06F48A0099954C /* QuartzCore.framework */; };
+		74F3134F7EF0F35269DC55F1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C3CFD0231F5465C90B94198 /* libPods.a */; };
 		B5B4C7351B051398004D5FFD /* PatientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4C7341B051398004D5FFD /* PatientCell.swift */; };
 		B5B4C7371B05140D004D5FFD /* ProviderPatientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4C7361B05140D004D5FFD /* ProviderPatientsViewController.swift */; };
 		B5B4C7391B051DBC004D5FFD /* ProviderSignupVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4C7381B051DBC004D5FFD /* ProviderSignupVIewController.swift */; };
@@ -58,8 +60,12 @@
 		0F2AE42A1B0084A300CB96A3 /* PatientExercisesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientExercisesViewController.swift; sourceTree = "<group>"; };
 		0F2AE42E1B00894E00CB96A3 /* ExerciseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
 		0F2AE4341B008AF400CB96A3 /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		0FA617671B07121700A83054 /* PatientCongratulationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientCongratulationsViewController.swift; sourceTree = "<group>"; };
+		0FEFC4BC1B06F48A0099954C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0FEFC4BE1B06FCF30099954C /* KYCircularProgress.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KYCircularProgress.framework; path = "Pods/../build/Debug-iphoneos/Pods/KYCircularProgress.framework"; sourceTree = "<group>"; };
 		23452D17B05C9DC7FB6A59EF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		390A5534730AFA89A241688D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		6C3CFD0231F5465C90B94198 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B4C72D1B02EC90004D5FFD /* PT_Helper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PT_Helper-Bridging-Header.h"; sourceTree = "<group>"; };
 		B5B4C7341B051398004D5FFD /* PatientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientCell.swift; sourceTree = "<group>"; };
 		B5B4C7361B05140D004D5FFD /* ProviderPatientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderPatientsViewController.swift; sourceTree = "<group>"; };
@@ -68,7 +74,6 @@
 		CA0EB8F11B03E5A90060FA8E /* ProviderHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderHomeViewController.swift; sourceTree = "<group>"; };
 		CA0EB8F31B03EA610060FA8E /* ProviderManageExercisesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderManageExercisesViewController.swift; sourceTree = "<group>"; };
 		CA0EB8F51B03EF6E0060FA8E /* ProviderCreateNewPatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderCreateNewPatientViewController.swift; sourceTree = "<group>"; };
-		DAA0BAAAEED9D9DF647A2887 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B26A101836479DD55A3E365 /* libPods.a in Frameworks */,
+				0FEFC4BD1B06F48A0099954C /* QuartzCore.framework in Frameworks */,
+				74F3134F7EF0F35269DC55F1 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +192,7 @@
 			children = (
 				0F179D6F1B01BDF600EE4744 /* PatientWorkingOutViewController.swift */,
 				0F2AE4281B007B0F00CB96A3 /* PatientLoginViewController.swift */,
+				0FA617671B07121700A83054 /* PatientCongratulationsViewController.swift */,
 				0F2AE42A1B0084A300CB96A3 /* PatientExercisesViewController.swift */,
 			);
 			name = PatientViewControllers;
@@ -202,7 +209,9 @@
 		AE90D055F7F9DB6EF3617BA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DAA0BAAAEED9D9DF647A2887 /* libPods.a */,
+				0FEFC4BE1B06FCF30099954C /* KYCircularProgress.framework */,
+				0FEFC4BC1B06F48A0099954C /* QuartzCore.framework */,
+				6C3CFD0231F5465C90B94198 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -370,6 +379,7 @@
 				0F2AE42B1B0084A300CB96A3 /* PatientExercisesViewController.swift in Sources */,
 				0F179D6D1B01B03F00EE4744 /* DetailedExerciseViewController.swift in Sources */,
 				B5B4C7351B051398004D5FFD /* PatientCell.swift in Sources */,
+				0FA617681B07121700A83054 /* PatientCongratulationsViewController.swift in Sources */,
 				0F2AE42F1B00894E00CB96A3 /* ExerciseCell.swift in Sources */,
 				B5B4C73D1B06AF57004D5FFD /* Util.swift in Sources */,
 				0F2AE4291B007B0F00CB96A3 /* PatientLoginViewController.swift in Sources */,
@@ -512,6 +522,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Pods",
 				);
 				INFOPLIST_FILE = PT_Helper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -530,6 +541,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Pods",
 				);
 				INFOPLIST_FILE = PT_Helper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
