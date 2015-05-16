@@ -28,6 +28,7 @@ class ProviderManageExercisesViewController: UIViewController, UITableViewDelega
           exerciseQuery.whereKey("physician", equalTo: curPhysician)
           exerciseQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
             if (error == nil) {
+              println(result)
               self.exercises = result as! [PFObject]
               self.tableView.reloadData()
             } else {
@@ -54,7 +55,7 @@ class ProviderManageExercisesViewController: UIViewController, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return exercises.count
     }
     //TABLE VIEW DELEGATE METHODS
 

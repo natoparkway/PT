@@ -16,7 +16,7 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
         "numRepetitions": 12,
         "daysPerWeek": 3]
     
-    var exercises: [PFObject] = [PFObject]()
+    var exercises: [PFObject] = []
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -83,9 +83,8 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
     func toDetailedExerciseSegue(segue: UIStoryboardSegue, cell: ExerciseCell) {
         var nav = segue.destinationViewController as! UINavigationController
         var detailedExerciseVC = nav.topViewController as! DetailedExerciseViewController
-      
-        // TODO: this needs to now take a PFObject
-//        detailedExerciseVC.updateContents(cell.exercise)
+        var indexPath = tableView.indexPathForCell(cell)!
+        detailedExerciseVC.exercise = exercises[indexPath.row]
     }
     
 

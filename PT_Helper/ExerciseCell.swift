@@ -26,12 +26,14 @@ class ExerciseCell: UITableViewCell {
      * Updates contents of ExerciseCell. Sets exercise global variable and sets cell contents and gui accordingly.
      */
     func setup(e: PFObject) {
-        let daysPerWeek = e["timesPerWeek"] as! String
+      let name = e["name"] as! String
+      let daysPerWeek = e["timesPerWeek"] as! String
         let numReps = e["numRepetitions"] as! String
         let duration = e["duration"] as! String
         daysPerWeekView.updateCounter(daysPerWeek)
         repetitionsView.updateCounter(numReps)
-        setsOrTimeView.updateCounter(duration )
+        setsOrTimeView.updateCounter(duration)
+        exerciseNameLabel.text = name
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

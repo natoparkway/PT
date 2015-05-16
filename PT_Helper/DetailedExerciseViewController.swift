@@ -15,7 +15,7 @@ class DetailedExerciseViewController: UIViewController {
     @IBOutlet weak var exerciseDescriptionLabel: UILabel!
     let iphoneWidth = CGFloat(320)
     
-    var exercise:Exercise!
+    var exercise:PFObject!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +28,11 @@ class DetailedExerciseViewController: UIViewController {
      * Updates view with information contained in exercise instance variable.
      */
     func updateView() {
-        exerciseNameLabel.text = exercise.name
-        exerciseDescriptionLabel.text = exercise.exerciseDescription
+        let name = exercise["name"] as! String
+        let description = exercise["description"] as! String
+        exerciseNameLabel.text = name
+        exerciseDescriptionLabel.text = description
+      
     }
     
     //Accounts for wrap around bug
@@ -41,11 +44,6 @@ class DetailedExerciseViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func updateContents(exerciseData: Exercise) {
-        exercise = exerciseData
-
     }
 
 
