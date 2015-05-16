@@ -8,15 +8,26 @@
 
 import UIKit
 
-class ProviderPatientsViewController: UIViewController {
+class ProviderPatientsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+  var patients: [PFObject] = []
   @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-//      let curPhysician = PFUser.currentUser()!["physician"]!.fetch() as! PFObject
-//      var name = curPhysician["first_name"] as! String
-//      println("logged in as " + name)
-
+        tableView.delegate = self
+      tableView.dataSource = self
+      let patientQuery = PFQuery(className: "Patient")
+      if let curPhysician = Util.currentPhysician() {
+        patientQuery.whereKey("physician", equalTo: curPhysician)
+        patientQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
+          if (error == nil) {
+            self.patients = result as! [PFObject]
+            self.tableView.reloadData()
+          } else {
+            println(error?.description)
+          }
+        })
+      }
         // Do any additional setup after loading the view.
     }
 
@@ -24,7 +35,18 @@ class ProviderPatientsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    return 1
+  }
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return patients.count
+  }
+  
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    var cell = tableView.dequeueReusableCellWithIdentifier("PatientCell") as! PatientCell
+    cell.setup(patients[indexPath.row])
+    return cell
+  }
 
     /*
     // MARK: - Navigation

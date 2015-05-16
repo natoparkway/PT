@@ -24,5 +24,16 @@ class PatientCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+  
+  func setup(patient: PFObject) {
+    let firstName = patient["first_name"] as! String
+    let lastName = patient["last_name"] as! String
+    let injury = patient["injury"] as! String
+    let age = patient["age"] as! Int
+    let gender = patient["gender"] as! String
+    nameLabel.text = firstName + " " + lastName
+    injuryLabel.text = injury
+    ageGenderLabel.text = "\(age)yo " + gender
+  }
 
 }

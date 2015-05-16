@@ -155,10 +155,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="emailTextField" destination="lGR-aS-jpN" id="dXo-0u-Vyk"/>
+                        <outlet property="ageField" destination="k4D-5K-V6b" id="LNX-oT-sRC"/>
+                        <outlet property="emailTextField" destination="lGR-aS-jpN" id="od9-ll-NMh"/>
                         <outlet property="firstNameTextField" destination="FqN-MN-f3v" id="qfv-6A-kFr"/>
                         <outlet property="injuryTextField" destination="dlh-TP-5AS" id="4dI-0q-JV0"/>
                         <outlet property="lastNameTextField" destination="FFT-8p-Tuy" id="nA0-NK-wzl"/>
+                        <outlet property="maleFemaleButton" destination="hdH-dw-Oay" id="0be-xz-RQT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2kq-a1-8Ah" userLabel="First Responder" sceneMemberID="firstResponder"/>

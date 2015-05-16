@@ -8,9 +8,12 @@
 
 import Foundation
 
-public class Util {
-  func currentPhysician() -> PFObject {
-    let curPhysician = PFUser.currentUser()!["physician"]
-    return curPhysician as! PFObject
+class Util {
+  class func currentPhysician() -> PFObject? {
+    if let curPhysician = PFUser.currentUser()?["physician"] as? PFObject {
+      curPhysician.fetch()
+      return curPhysician
+    }
+    return nil
   }
 }

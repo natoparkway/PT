@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PatientLoginViewController: UIViewController {
+class PatientLoginViewController: UIViewController, UITextFieldDelegate {
 
   @IBOutlet var passwordField: UITextField!
   @IBOutlet var emailField: UITextField!
@@ -18,6 +18,7 @@ class PatientLoginViewController: UIViewController {
   }
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordField.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -45,6 +46,10 @@ class PatientLoginViewController: UIViewController {
       
     }
   
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    loginButtonClicked(textField)
+    return true
+  }
   func displayError(error: NSError) {
     let errorString = error.userInfo?["error"] as? NSString
     var alert = UIAlertController(title: "Alert", message: errorString as! String, preferredStyle: UIAlertControllerStyle.Alert)
