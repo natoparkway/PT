@@ -17,8 +17,7 @@ class ExerciseCell: UITableViewCell {
     @IBOutlet weak var daysPerWeekView: CircleWithTextView!
     @IBOutlet weak var repetitionsView: CircleWithTextView!
     @IBOutlet weak var setsOrTimeView: CircleWithTextView!
-    var exercise: Exercise!
-    
+  
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -26,11 +25,13 @@ class ExerciseCell: UITableViewCell {
     /*
      * Updates contents of ExerciseCell. Sets exercise global variable and sets cell contents and gui accordingly.
      */
-    func updateContents(exerciseData: Exercise) {
-        exercise = exerciseData
-        daysPerWeekView.updateCounter(String(exercise.daysPerWeek!))
-        repetitionsView.updateCounter(String(exercise.numRepetitions!))
-        setsOrTimeView.updateCounter(String(exercise.duration!))
+    func setup(e: PFObject) {
+        let daysPerWeek = e["timesPerWeek"] as! String
+        let numReps = e["numRepetitions"] as! String
+        let duration = e["duration"] as! String
+        daysPerWeekView.updateCounter(daysPerWeek)
+        repetitionsView.updateCounter(numReps)
+        setsOrTimeView.updateCounter(duration )
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

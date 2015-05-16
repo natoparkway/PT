@@ -16,18 +16,28 @@ class ProviderManageExercisesViewController: UIViewController, UITableViewDelega
         "numRepetitions": 12,
         "daysPerWeek": 3]
     
-    var exercises: [Exercise] = [Exercise]()
-    
+  var exercises:[PFObject] = []
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-
+        var exerciseQuery = PFQuery(className: "Exercise")
+        if let curPhysician = Util.currentPhysician() {
+          exerciseQuery.whereKey("physician", equalTo: curPhysician)
+          exerciseQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
+            if (error == nil) {
+              self.exercises = result as! [PFObject]
+              self.tableView.reloadData()
+            } else {
+              println(error?.description)
+            }
+          })
+        }
         // Do any additional setup after loading the view.
     
-        exercises.append(Exercise(dictionary: sampleData))
+        
     }
     
     //TABLE VIEW DELEGATE METHODS
@@ -38,7 +48,7 @@ class ProviderManageExercisesViewController: UIViewController, UITableViewDelega
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("ExerciseCell") as! ExerciseCell
         cell.selectionStyle = .None    //Prevents highlighting
-        cell.updateContents(exercises[indexPath.row])
+        cell.setup(exercises[indexPath.row])
         
         return cell
     }

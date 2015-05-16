@@ -10,6 +10,11 @@ import UIKit
 
 class CreateNewExerciseViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+  @IBOutlet var numRepitionsField: UITextField!
+  @IBOutlet var timesPerWeekField: UITextField!
+  @IBOutlet var numSetsField: UITextField!
+  @IBOutlet var exerciseNameField: UITextField!
+  @IBOutlet var durationField: UITextField!
     @IBOutlet weak var profileImageView: UIImageView!
     
     var picker: UIImagePickerController!
@@ -21,6 +26,20 @@ class CreateNewExerciseViewController: UIViewController, UIImagePickerController
         // Do any additional setup after loading the view.
     }
     
+  @IBAction func saveExercise(sender: AnyObject) {
+    var exercise = PFObject(className: "Exercise")
+    exercise["name"] = exerciseNameField.text
+    exercise["numRepetitions"] = numRepitionsField.text
+    exercise["numSets"] = numSetsField.text
+    exercise["timesPerWeek"] = timesPerWeekField.text
+    exercise["duration"] = durationField.text
+    // TODO: Figure out how to not hardcode this
+    exercise["isDuration"] = true
+    exercise["physician"] = Util.currentPhysician()
+    exercise.save()
+    navigationController?.popToRootViewControllerAnimated(true)
+    
+  }
     @IBAction func takeVideo(sender: UIButton) {
         picker = UIImagePickerController()
         picker.delegate = self
@@ -40,15 +59,12 @@ class CreateNewExerciseViewController: UIViewController, UIImagePickerController
         picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         
         presentViewController(picker, animated: true, completion: nil)
-
     }
-    
 
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         profileImageView.image = image
-        dismissViewControllerAnimated(true, completion: nil)t
-
+        dismissViewControllerAnimated(true, completion: nil)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

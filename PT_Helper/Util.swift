@@ -16,4 +16,12 @@ class Util {
     }
     return nil
   }
+  
+  class func currentPatient() -> PFObject? {
+    if let curPatient = PFUser.currentUser()?["patient"] as? PFObject {
+      curPatient.fetch()
+      return curPatient
+    }
+    return nil
+  }
 }

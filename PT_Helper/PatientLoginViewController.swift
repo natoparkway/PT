@@ -31,11 +31,11 @@ class PatientLoginViewController: UIViewController, UITextFieldDelegate {
       PFUser.logInWithUsernameInBackground(emailField.text, password: passwordField.text) { (user: PFUser?, error: NSError?) -> Void in
         if (error == nil) {
           // login successful
-          println(PFUser.currentUser()!["isPhysician"])
           // determine if physician login view is appropriate
-          let isPhysician = PFUser.currentUser()!["isPhysician"] as! Bool
-          if (isPhysician == true) {
-            self.performSegueWithIdentifier("physicianLoginSegue", sender: self)
+          
+          
+          if (Util.currentPhysician() != nil) {
+        self.performSegueWithIdentifier("physicianLoginSegue", sender: self)
           } else {
             self.performSegueWithIdentifier("ToPatientExercises", sender: self)
           }

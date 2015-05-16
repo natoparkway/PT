@@ -11,23 +11,15 @@ import UIKit
 class ProviderPatientsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
   var patients: [PFObject] = []
+  var refreshControl = UIRefreshControl()
   @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
       tableView.dataSource = self
-      let patientQuery = PFQuery(className: "Patient")
-      if let curPhysician = Util.currentPhysician() {
-        patientQuery.whereKey("physician", equalTo: curPhysician)
-        patientQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
-          if (error == nil) {
-            self.patients = result as! [PFObject]
-            self.tableView.reloadData()
-          } else {
-            println(error?.description)
-          }
-        })
-      }
+      refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+      tableView.insertSubview(refreshControl, atIndex: 0)
+      onRefresh()
         // Do any additional setup after loading the view.
     }
 
@@ -35,6 +27,22 @@ class ProviderPatientsViewController: UIViewController, UITableViewDelegate, UIT
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+  
+  func onRefresh() {
+    let patientQuery = PFQuery(className: "Patient")
+    if let curPhysician = Util.currentPhysician() {
+      patientQuery.whereKey("physician", equalTo: curPhysician)
+      patientQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
+        if (error == nil) {
+          self.patients = result as! [PFObject]
+          self.tableView.reloadData()
+        } else {
+          println(error?.description)
+        }
+        self.refreshControl.endRefreshing()
+      })
+    }
+  }
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }

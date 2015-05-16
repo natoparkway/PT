@@ -16,7 +16,7 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
         "numRepetitions": 12,
         "daysPerWeek": 3]
     
-    var exercises: [Exercise] = [Exercise]()
+    var exercises: [PFObject] = [PFObject]()
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -25,9 +25,20 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
         tableView.delegate = self
         tableView.dataSource = self
         
-        //Normally we would get data from parse
-        exercises.append(Exercise(dictionary: sampleData))
-        
+        //TODO: Actually do this with a relation not a straight query
+        var exerciseQuery = PFQuery(className: "Exercise")
+        if let curPatient = Util.currentPhysician() {
+          exerciseQuery.whereKey("patient", equalTo: curPatient)
+          exerciseQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
+            if (error == nil) {
+              self.exercises = result as! [PFObject]
+              self.tableView.reloadData()
+            } else {
+              println(error?.description)
+            }
+          })
+        }
+      
 
         // Do any additional setup after loading the view.
     }
@@ -45,7 +56,7 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("ExerciseCell") as! ExerciseCell
         cell.selectionStyle = .None    //Prevents highlighting
-        cell.updateContents(exercises[indexPath.row])
+        cell.setup(exercises[indexPath.row])
         
         return cell
     }
@@ -72,7 +83,9 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
     func toDetailedExerciseSegue(segue: UIStoryboardSegue, cell: ExerciseCell) {
         var nav = segue.destinationViewController as! UINavigationController
         var detailedExerciseVC = nav.topViewController as! DetailedExerciseViewController
-        detailedExerciseVC.updateContents(cell.exercise)
+      
+        // TODO: this needs to now take a PFObject
+//        detailedExerciseVC.updateContents(cell.exercise)
     }
     
 

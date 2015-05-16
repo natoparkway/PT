@@ -23,22 +23,37 @@ class ProviderCreateNewPatientViewController: UIViewController {
     }
 
   @IBAction func savePatient(sender: UIBarButtonItem) {
-    var user = PFObject(className: "Patient")
-    user["first_name"] = firstNameTextField.text
-    user["last_name"] = lastNameTextField.text
-    user["injury"] = injuryTextField.text
-    user["email"] = emailTextField.text
-    user["age"] = ageField.text.toInt()
-    user["gender"] = "M"
-    user["physician"] = Util.currentPhysician()
-    user.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-      if (success) {
-        self.displayMessage("New patient created!")
-      } else {
-        let errorString = error!.userInfo?["error"] as! String
-        self.displayMessage(errorString)
+    var patient = PFObject(className: "Patient")
+    patient["first_name"] = firstNameTextField.text
+    patient["last_name"] = lastNameTextField.text
+    
+    // TODO: change this to be dynamic
+    var password = "abc"
+    patient["password"] = password
+    patient["injury"] = injuryTextField.text
+    patient["email"] = emailTextField.text
+    patient["age"] = ageField.text.toInt()
+    patient["gender"] = "M"
+    patient["physician"] = Util.currentPhysician()
+    
+    // Make PFUser so that the patient can login
+    var user = PFUser()
+    user.setValue(self.emailTextField.text, forKey: "username")
+    user.setValue(password, forKey: "password")
+    if (user.signUp()) {
+      patient.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+        if (success) {
+          self.displayMessage("New patient created!")
+        } else {
+          let errorString = error!.userInfo?["error"] as! String
+          self.displayMessage(errorString)
+        }
       }
+    } else {
+      displayMessage("A user with that email exists!")
     }
+
+    
   }
   
   func displayMessage(message: String) {
