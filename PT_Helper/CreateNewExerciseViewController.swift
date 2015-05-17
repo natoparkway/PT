@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class CreateNewExerciseViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -87,9 +88,21 @@ class CreateNewExerciseViewController: UIViewController, UIImagePickerController
         picker.delegate = self
         
         picker.sourceType = UIImagePickerControllerSourceType.Camera
+        picker.mediaTypes = [kUTTypeMovie as NSString]
         
         presentViewController(picker, animated: true, completion: nil)
     }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        let mediaType = info[UIImagePickerControllerMediaType] as! NSString
+        
+        if mediaType.isEqualToString(kUTTypeMovie as String){
+            println("hopefully got the movie")
+            
+            var url = info.
+        }
+    }
+    
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)

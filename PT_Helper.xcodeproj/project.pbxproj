@@ -32,7 +32,7 @@
 		CA0EB8F61B03EF6E0060FA8E /* ProviderCreateNewPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0EB8F51B03EF6E0060FA8E /* ProviderCreateNewPatientViewController.swift */; };
 		CA5EF1901B072B710048BAB2 /* CreateNewExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EF18F1B072B710048BAB2 /* CreateNewExerciseViewController.swift */; };
 		CA5EF1921B072EC40048BAB2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5EF1911B072EC40048BAB2 /* UIKit.framework */; };
-		CA5EF1961B0732C10048BAB2 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EF1951B0732C10048BAB2 /* CameraViewController.swift */; };
+		CA5EF1981B093A310048BAB2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5EF1971B093A310048BAB2 /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +79,7 @@
 		CA0EB8F51B03EF6E0060FA8E /* ProviderCreateNewPatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderCreateNewPatientViewController.swift; sourceTree = "<group>"; };
 		CA5EF18F1B072B710048BAB2 /* CreateNewExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewExerciseViewController.swift; sourceTree = "<group>"; };
 		CA5EF1911B072EC40048BAB2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		CA5EF1951B0732C10048BAB2 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		CA5EF1971B093A310048BAB2 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA5EF1981B093A310048BAB2 /* MobileCoreServices.framework in Frameworks */,
 				CA5EF1921B072EC40048BAB2 /* UIKit.framework in Frameworks */,
 				0FEFC4BD1B06F48A0099954C /* QuartzCore.framework in Frameworks */,
 				74F3134F7EF0F35269DC55F1 /* libPods.a in Frameworks */,
@@ -216,6 +217,7 @@
 		AE90D055F7F9DB6EF3617BA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA5EF1971B093A310048BAB2 /* MobileCoreServices.framework */,
 				CA5EF1911B072EC40048BAB2 /* UIKit.framework */,
 				0FEFC4BE1B06FCF30099954C /* KYCircularProgress.framework */,
 				0FEFC4BC1B06F48A0099954C /* QuartzCore.framework */,
@@ -233,7 +235,6 @@
 				B5B4C7361B05140D004D5FFD /* ProviderPatientsViewController.swift */,
 				B5B4C7381B051DBC004D5FFD /* ProviderSignupVIewController.swift */,
 				CA5EF18F1B072B710048BAB2 /* CreateNewExerciseViewController.swift */,
-				CA5EF1951B0732C10048BAB2 /* CameraViewController.swift */,
 			);
 			name = ProviderViewControllers;
 			sourceTree = "<group>";
@@ -298,6 +299,7 @@
 				TargetAttributes = {
 					0F2AE4021B00719C00CB96A3 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 9ZRFBX2E69;
 					};
 					0F2AE4171B00719C00CB96A3 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -400,7 +402,6 @@
 				CA0EB8F41B03EA610060FA8E /* ProviderManageExercisesViewController.swift in Sources */,
 				0F179D701B01BDF600EE4744 /* PatientWorkingOutViewController.swift in Sources */,
 				B5B4C7391B051DBC004D5FFD /* ProviderSignupVIewController.swift in Sources */,
-				CA5EF1961B0732C10048BAB2 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +532,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -540,6 +543,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "PT_Helper-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -551,6 +555,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -560,6 +566,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "PT_Helper-Bridging-Header.h";
 			};
 			name = Release;
