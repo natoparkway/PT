@@ -8,6 +8,8 @@
 
 import UIKit
 import MobileCoreServices
+import MediaPlayer
+import Foundation
 
 class CreateNewExerciseViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -20,6 +22,9 @@ class CreateNewExerciseViewController: UIViewController, UIImagePickerController
     @IBOutlet weak var profileImageView: UIImageView!
     
     var picker: UIImagePickerController!
+    var moviePlayer: MPMoviePlayerController!
+    var PFVideoFile: PFFile!
+    
     var patientHash = [String:String]()
   var patients:[PFObject] = []
     override func viewDidLoad() {
@@ -58,6 +63,7 @@ class CreateNewExerciseViewController: UIViewController, UIImagePickerController
     // TODO: Figure out how to not hardcode this
     exercise["isDuration"] = true
     exercise["physician"] = Util.currentPhysician()
+    exercise["video"] = PFVideoFile
     var patient = PFObject(className: "Patient")
     let patientQuery = PFQuery(className: "Patient")
     var fullName = patientNameField.text
@@ -95,11 +101,37 @@ class CreateNewExerciseViewController: UIViewController, UIImagePickerController
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         let mediaType = info[UIImagePickerControllerMediaType] as! NSString
-        
         if mediaType.isEqualToString(kUTTypeMovie as String){
             println("hopefully got the movie")
             
-            var url = info.
+            var url = info[UIImagePickerControllerMediaURL] as! NSURL
+            var path = url.path!
+            
+            
+           var videoData = NSData(contentsOfURL: url)
+           let videoFile = PFFile(name: "ExerciseVideo.mov", data: videoData!)
+            PFVideoFile = videoFile
+            videoFile.save()
+            
+            dismissViewControllerAnimated(true, completion: nil)
+
+            
+            if( UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path)){
+                UISaveVideoAtPathToSavedPhotosAlbum(path, nil, nil, nil)
+            }
+            //var url = info[0]?.objectForKey(UIImagePickerControllerMediaURL) as! NSURL
+                //objectForKey(UIImagePickerControllerMediaURL) as NSURL
+            
+            moviePlayer = MPMoviePlayerController(contentURL: url)
+            
+            moviePlayer.view.frame = profileImageView.frame
+            self.view.addSubview(moviePlayer.view)
+            moviePlayer.prepareToPlay()
+            moviePlayer.play()
+            
+            var PFMovieFile = PFFile()
+        
+            
         }
     }
     

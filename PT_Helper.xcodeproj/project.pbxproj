@@ -33,6 +33,7 @@
 		CA5EF1901B072B710048BAB2 /* CreateNewExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EF18F1B072B710048BAB2 /* CreateNewExerciseViewController.swift */; };
 		CA5EF1921B072EC40048BAB2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5EF1911B072EC40048BAB2 /* UIKit.framework */; };
 		CA5EF1981B093A310048BAB2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5EF1971B093A310048BAB2 /* MobileCoreServices.framework */; };
+		CA5EF19A1B09431E0048BAB2 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5EF1991B09431E0048BAB2 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		CA5EF18F1B072B710048BAB2 /* CreateNewExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewExerciseViewController.swift; sourceTree = "<group>"; };
 		CA5EF1911B072EC40048BAB2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CA5EF1971B093A310048BAB2 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		CA5EF1991B09431E0048BAB2 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA5EF19A1B09431E0048BAB2 /* MediaPlayer.framework in Frameworks */,
 				CA5EF1981B093A310048BAB2 /* MobileCoreServices.framework in Frameworks */,
 				CA5EF1921B072EC40048BAB2 /* UIKit.framework in Frameworks */,
 				0FEFC4BD1B06F48A0099954C /* QuartzCore.framework in Frameworks */,
@@ -217,6 +220,7 @@
 		AE90D055F7F9DB6EF3617BA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA5EF1991B09431E0048BAB2 /* MediaPlayer.framework */,
 				CA5EF1971B093A310048BAB2 /* MobileCoreServices.framework */,
 				CA5EF1911B072EC40048BAB2 /* UIKit.framework */,
 				0FEFC4BE1B06FCF30099954C /* KYCircularProgress.framework */,
