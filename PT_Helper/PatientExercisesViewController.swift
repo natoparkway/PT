@@ -24,13 +24,15 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
-        //TODO: Actually do this with a relation not a straight query
+      
         var exerciseQuery = PFQuery(className: "Exercise")
-        if let curPatient = Util.currentPhysician() {
-          exerciseQuery.whereKey("patient", equalTo: curPatient)
+        if let curPatient = Util.currentPatient() {
+          exerciseQuery.whereKey("patients", equalTo: curPatient)
+          println(curPatient)
+          exerciseQuery.includeKey("patients")
           exerciseQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
             if (error == nil) {
+              println(result)
               self.exercises = result as! [PFObject]
               self.tableView.reloadData()
             } else {
@@ -43,6 +45,13 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
         // Do any additional setup after loading the view.
     }
 
+  @IBAction func onLogout(sender: UIBarButtonItem) {
+    PFUser.logOutInBackgroundWithBlock { (error: NSError?) -> Void in
+      if (error == nil) {
+        self.navigationController?.popToRootViewControllerAnimated(true)
+      }
+    }
+  }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -62,7 +71,7 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return exercises.count
     }
 //TABLE VIEW DELEGATE METHODS
     

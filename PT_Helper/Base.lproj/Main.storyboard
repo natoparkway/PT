@@ -502,8 +502,8 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Injurius Preventius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROb-7t-8cJ">
-                                                    <rect key="frame" x="8" y="41" width="140" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Injurius Preventius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROb-7t-8cJ">
+                                                    <rect key="frame" x="8" y="40" width="140" height="21"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -530,6 +530,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Patients" id="28O-dW-7p6">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="bUi-nE-0hP">
+                            <connections>
+                                <action selector="onLogout:" destination="bTj-5r-RvB" id="IE5-n3-MPS"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="aCT-fw-w79">
                             <connections>
                                 <segue destination="PRX-tT-jeg" kind="push" id="agZ-Dk-XuE"/>
@@ -626,6 +631,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Exercises" id="KEX-Qv-Pdf">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="379-Tk-RCa">
+                            <connections>
+                                <action selector="onLogout:" destination="Shd-8Q-Ne5" id="GVM-2D-K9F"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="2wn-no-ihm">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cNF-n2-hza">
                                 <rect key="frame" x="233" y="7" width="32" height="32"/>

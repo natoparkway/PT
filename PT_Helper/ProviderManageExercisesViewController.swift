@@ -15,7 +15,8 @@ class ProviderManageExercisesViewController: UIViewController, UITableViewDelega
         "duration": 30,
         "numRepetitions": 12,
         "daysPerWeek": 3]
-    
+  
+  var refreshControl = UIRefreshControl()
   var exercises:[PFObject] = []
     @IBOutlet weak var tableView: UITableView!
 
@@ -23,24 +24,29 @@ class ProviderManageExercisesViewController: UIViewController, UITableViewDelega
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        var exerciseQuery = PFQuery(className: "Exercise")
-        if let curPhysician = Util.currentPhysician() {
-          exerciseQuery.whereKey("physician", equalTo: curPhysician)
-          exerciseQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
-            if (error == nil) {
-              println(result)
-              self.exercises = result as! [PFObject]
-              self.tableView.reloadData()
-            } else {
-              println(error?.description)
-            }
-          })
-        }
-        // Do any additional setup after loading the view.
-    
-        
+      
+      refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+      tableView.insertSubview(refreshControl, atIndex: 0)
+      onRefresh()
     }
-    
+  
+  func onRefresh() {
+    var exerciseQuery = PFQuery(className: "Exercise")
+    if let curPhysician = Util.currentPhysician() {
+      exerciseQuery.whereKey("physician", equalTo: curPhysician)
+      exerciseQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
+        if (error == nil) {
+          println(result)
+          self.exercises = result as! [PFObject]
+          self.tableView.reloadData()
+        } else {
+          println(error?.description)
+        }
+        self.refreshControl.endRefreshing()
+      })
+    }
+  }
+  
     //TABLE VIEW DELEGATE METHODS
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 100;
@@ -50,14 +56,12 @@ class ProviderManageExercisesViewController: UIViewController, UITableViewDelega
         var cell = tableView.dequeueReusableCellWithIdentifier("ExerciseCell") as! ExerciseCell
         cell.selectionStyle = .None    //Prevents highlighting
         cell.setup(exercises[indexPath.row])
-        
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exercises.count
     }
-    //TABLE VIEW DELEGATE METHODS
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

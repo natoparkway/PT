@@ -40,9 +40,12 @@ class ProviderCreateNewPatientViewController: UIViewController {
     var user = PFUser()
     user.setValue(self.emailTextField.text, forKey: "username")
     user.setValue(password, forKey: "password")
+    
     if (user.signUp()) {
       patient.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
         if (success) {
+          user.setValue(patient, forKey: "patient")
+          user.save()
           self.displayMessage("New patient created!")
         } else {
           let errorString = error!.userInfo?["error"] as! String
