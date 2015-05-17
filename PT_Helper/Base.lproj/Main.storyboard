@@ -839,7 +839,7 @@
                                 <rect key="frame" x="105" y="342" width="111" height="111"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7RL-UK-C0b">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7RL-UK-C0b">
                                 <rect key="frame" x="136" y="509" width="49" height="39"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Start">
@@ -847,7 +847,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="startButtonClicked:" destination="jmf-Ya-7CB" eventType="touchUpInside" id="drl-7w-VYr"/>
+                                    <action selector="startButtonClicked:" destination="jmf-Ya-7CB" eventType="touchUpInside" id="5JW-f2-LvP"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sets To Go" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRr-pA-Xm4">
@@ -858,9 +858,14 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SBQ-nZ-4BQ" firstAttribute="top" secondItem="7RL-UK-C0b" secondAttribute="bottom" constant="20" id="B3e-Gi-lcH"/>
+                            <constraint firstAttribute="centerX" secondItem="7RL-UK-C0b" secondAttribute="centerX" id="dKd-Ma-ih2"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="exerciseNameLabel" destination="BMg-MN-jje" id="KJ2-2c-Ali"/>
+                        <outlet property="sceneButton" destination="7RL-UK-C0b" id="f57-dk-MRZ"/>
                         <outlet property="setsCompletedView" destination="T2j-bc-ZR4" id="qOJ-jF-7S0"/>
                         <outlet property="timerView" destination="K7f-nz-Dpl" id="4Ag-Sj-VvN"/>
                         <segue destination="uoU-SP-Rb1" kind="modal" identifier="ToCongratulationsView" id="1Ga-Nj-J34"/>

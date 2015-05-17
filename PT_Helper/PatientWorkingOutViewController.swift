@@ -26,13 +26,17 @@ class PatientWorkingOutViewController: UIViewController {
     let timerColor: UIColor = UIColor.greenColor()
     let congratsSegue = "ToCongratulationsView"
     
+
+    @IBOutlet weak var sceneButton: UIButton!
     @IBOutlet weak var timerView: KAProgressLabel!
     @IBOutlet weak var setsCompletedView: CircleWithTextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        println(exercise)
         exerciseNameLabel.text = exercise["name"] as? String
         isDuration = exercise["isDuration"] as! Bool
+        isDuration = false
         setsToComplete = (exercise["numSets"] as! NSString).integerValue
         
         if isDuration {
@@ -48,18 +52,31 @@ class PatientWorkingOutViewController: UIViewController {
     
     //Adds a view that displays the number of reps completed. Also removes timerView
     func setUpRepsView() {
+        let frame = self.timerView.frame
         let width = self.timerView.frame.width
         let height = self.timerView.frame.height
         let constraints = self.timerView.constraints()
         timerView.removeFromSuperview() //Remove timer
         
+        //Add reps counter
+        var repsCircleView = CircleWithTextView(frame: frame)
+        repsCircleView.updateCounter(exercise["numRepetitions"] as! String)
+        view.addSubview(repsCircleView)
         
+        //Change button text
+        sceneButton.setTitle("Finished Set", forState: nil)
     }
     
     //Start button clicked
     @IBAction func startButtonClicked(sender: AnyObject) {
-        if !timerIsRunning {
+        if isDuration && !timerIsRunning {
             startTimer()
+        } else if !isDuration {
+            setsCompleted++
+            if setsCompleted == setsToComplete {
+                performSegueWithIdentifier("ToCongratulationsView", sender: self)
+            }
+            updateSetsCompleted()
         }
     }
     

@@ -19,6 +19,7 @@ class CircleWithTextView: UIView {
     
     override init(frame: CGRect){
         super.init(frame: frame)
+        println("constructing")
         setup()
         counterLabel.text = "-1" //Default text
     }
@@ -33,7 +34,7 @@ class CircleWithTextView: UIView {
         if let bgColor = backgroundColor {
             color = backgroundColor
         } else {
-            color = UIColor.redColor()
+            color = UIColor.greenColor()
         }
         
         addNib()
@@ -49,6 +50,10 @@ class CircleWithTextView: UIView {
         circularView.layer.cornerRadius = circularView.frame.width / 2
         addSubview(circularView)
         
+    }
+    
+    func updateColor(color: UIColor) {
+        self.color = color
     }
     
     //Public method to change counterLabel
