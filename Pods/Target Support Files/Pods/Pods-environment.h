@@ -72,6 +72,12 @@
 #define COCOAPODS_VERSION_MINOR_DateTools 5
 #define COCOAPODS_VERSION_PATCH_DateTools 0
 
+// IQDropDownTextField
+#define COCOAPODS_POD_AVAILABLE_IQDropDownTextField
+#define COCOAPODS_VERSION_MAJOR_IQDropDownTextField 1
+#define COCOAPODS_VERSION_MINOR_IQDropDownTextField 0
+#define COCOAPODS_VERSION_PATCH_IQDropDownTextField 5
+
 // KAProgressLabel
 #define COCOAPODS_POD_AVAILABLE_KAProgressLabel
 #define COCOAPODS_VERSION_MAJOR_KAProgressLabel 3

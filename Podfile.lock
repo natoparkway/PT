@@ -26,6 +26,7 @@ PODS:
   - Bolts/Tasks (1.1.5)
   - DACircularProgress (2.3.1)
   - DateTools (1.5.0)
+  - IQDropDownTextField (1.0.5)
   - KAProgressLabel (3.2)
   - MBProgressHUD (0.9.1)
   - Parse (1.7.2.2):
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - BDBOAuth1Manager
   - DACircularProgress
   - DateTools
+  - IQDropDownTextField
   - KAProgressLabel
   - MBProgressHUD
   - Parse
@@ -46,6 +48,7 @@ SPEC CHECKSUMS:
   Bolts: aac24961496d504aa56fc267cde95162a71bac39
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DateTools: b93a2c2017747329c6077c7d7e8a75106e23d0d7
+  IQDropDownTextField: 055600e77e85cccdda17debbe14203057858ea8a
   KAProgressLabel: 4362a1d37c5a7bc7c10cd059fd2da7cb9599cb50
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Parse: 6187586a80eb7b4960d755f85e1353148a611f87
