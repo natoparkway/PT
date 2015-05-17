@@ -13,9 +13,10 @@ class DetailedExerciseViewController: UIViewController {
     @IBOutlet weak var exerciseImage: UIImageView!
     @IBOutlet weak var exerciseNameLabel: UILabel!
     @IBOutlet weak var exerciseDescriptionLabel: UILabel!
+    let toWorkoutSegue = "ToWorkingOutVC"
     let iphoneWidth = CGFloat(320)
     
-    var exercise:PFObject!
+    var exercise: PFObject!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,16 +30,21 @@ class DetailedExerciseViewController: UIViewController {
      */
     func updateView() {
         let name = exercise["name"] as! String
-        let description = exercise["description"] as! String
+        //let description = exercise["description"] as! String
         exerciseNameLabel.text = name
         exerciseDescriptionLabel.text = description
       
     }
-    
+
     //Accounts for wrap around bug
     func correctWrapAround() {
         exerciseNameLabel.preferredMaxLayoutWidth = exerciseNameLabel.frame.size.width
         exerciseDescriptionLabel.preferredMaxLayoutWidth = exerciseNameLabel.frame.size.width
+    }
+    
+    //Workout button was clicked
+    @IBAction func workoutButtonClicked(sender: AnyObject) {
+        performSegueWithIdentifier(toWorkoutSegue, sender: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,6 +57,13 @@ class DetailedExerciseViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if let id = segue.identifier {
+            if id == toWorkoutSegue {
+                var workingOutVC = segue.destinationViewController as! PatientWorkingOutViewController
+                workingOutVC.exercise = exercise
+            }
+        }
 
     }
     

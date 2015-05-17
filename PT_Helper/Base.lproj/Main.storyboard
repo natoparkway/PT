@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
@@ -127,7 +127,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Injury (e.g. blah blah)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dlh-TP-5AS">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Injury (e.g. plantar fasciitis)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dlh-TP-5AS">
                                 <rect key="frame" x="40" y="133" width="240" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -394,7 +394,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="s@l.com" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7rZ-6I-Jpb">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="sherm@gmail.com" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7rZ-6I-Jpb">
                                 <rect key="frame" x="65" y="221" width="190" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -706,6 +706,16 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBc-uE-foA">
+                                <rect key="frame" x="131" y="518" width="58" height="30"/>
+                                <state key="normal" title="Workout">
+                                    <color key="titleColor" red="0.0" green="0.77006392050000005" blue="0.23276925379999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="workoutButtonClicked:" destination="Ng3-hM-ede" eventType="touchUpInside" id="OPk-YK-z0a"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -747,16 +757,17 @@
                         <outlet property="exerciseDescriptionLabel" destination="UVA-ax-GOT" id="zfm-8Q-siI"/>
                         <outlet property="exerciseImage" destination="uYI-Ha-Yhc" id="H4R-de-9if"/>
                         <outlet property="exerciseNameLabel" destination="g98-1C-Wec" id="l3Y-wP-rFJ"/>
+                        <segue destination="jmf-Ya-7CB" kind="modal" identifier="ToWorkingOutVC" id="dWx-wa-Fop"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="suJ-VV-9p0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1944" y="17"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Exercise List Navigation Controller-->
         <scene sceneID="JRy-ER-fCS">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yXP-Eu-74I" sceneMemberID="viewController">
+                <navigationController title="Exercise List Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="yXP-Eu-74I" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="q0Y-UX-rhQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -826,7 +837,7 @@
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K7f-nz-Dpl" customClass="KAProgressLabel">
                                 <rect key="frame" x="105" y="342" width="111" height="111"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7RL-UK-C0b">
                                 <rect key="frame" x="136" y="509" width="49" height="39"/>
@@ -849,6 +860,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="exerciseNameLabel" destination="BMg-MN-jje" id="KJ2-2c-Ali"/>
                         <outlet property="setsCompletedView" destination="T2j-bc-ZR4" id="qOJ-jF-7S0"/>
                         <outlet property="timerView" destination="K7f-nz-Dpl" id="4Ag-Sj-VvN"/>
                         <segue destination="uoU-SP-Rb1" kind="modal" identifier="ToCongratulationsView" id="1Ga-Nj-J34"/>
@@ -870,24 +882,108 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7t-IK-Rmg">
-                                <rect key="frame" x="129" y="251" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7t-IK-Rmg">
+                                <rect key="frame" x="80" y="35" width="160" height="26"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Congratulations_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="j3D-I4-LbA">
+                                <rect key="frame" x="124" y="69" width="73" height="69"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="73" id="Q38-VN-LgP"/>
+                                    <constraint firstAttribute="height" constant="69" id="sLr-8r-fr6"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You completed:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUz-w7-owh">
+                                <rect key="frame" x="100" y="205" width="120" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9bn-oV-Nw7" customClass="CircleWithTextView" customModule="PT_Helper" customModuleProvider="target">
+                                <rect key="frame" x="123" y="234" width="75" height="75"/>
+                                <color key="backgroundColor" red="0.0" green="0.77006392050000005" blue="0.23276925379999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="1Fc-kB-c92"/>
+                                    <constraint firstAttribute="height" constant="75" id="ktj-KL-8ev"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D2w-I6-LQc" customClass="CircleWithTextView" customModule="PT_Helper" customModuleProvider="target">
+                                <rect key="frame" x="123" y="356" width="75" height="75"/>
+                                <color key="backgroundColor" red="0.0" green="0.77006392050000005" blue="0.23276925379999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="QtZ-SH-PgE"/>
+                                    <constraint firstAttribute="width" constant="75" id="XjD-E0-d1y"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sets" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4S-Sq-TGk">
+                                <rect key="frame" x="144" y="309" width="32" height="18"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDw-tP-Dij">
+                                <rect key="frame" x="101" y="471" width="118" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gS7-Kp-MfT">
+                                <rect key="frame" x="93" y="510" width="134" height="30"/>
+                                <state key="normal" title="Return to Exercises">
+                                    <color key="titleColor" red="0.0" green="0.77006392050000005" blue="0.23276925379999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="returnToExerciseClicked:" destination="uoU-SP-Rb1" eventType="touchUpInside" id="1iC-EM-xr9"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMX-aH-IL4">
+                                <rect key="frame" x="142" y="431" width="37" height="18"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="E4S-Sq-TGk" secondAttribute="centerX" id="4Mt-he-8SS"/>
+                            <constraint firstAttribute="centerX" secondItem="oMX-aH-IL4" secondAttribute="centerX" id="7BH-p3-8Kz"/>
+                            <constraint firstItem="oMX-aH-IL4" firstAttribute="top" secondItem="D2w-I6-LQc" secondAttribute="bottom" id="8oM-Tj-EzJ"/>
+                            <constraint firstAttribute="centerX" secondItem="D2w-I6-LQc" secondAttribute="centerX" id="8pC-9K-49w"/>
+                            <constraint firstAttribute="centerX" secondItem="YUz-w7-owh" secondAttribute="centerX" id="Bus-xl-6mR"/>
+                            <constraint firstItem="YUz-w7-owh" firstAttribute="top" secondItem="j3D-I4-LbA" secondAttribute="bottom" constant="67" id="EvA-Hz-KCW"/>
+                            <constraint firstAttribute="centerX" secondItem="gS7-Kp-MfT" secondAttribute="centerX" id="IXV-Oz-xw1"/>
+                            <constraint firstItem="tFJ-4W-qFw" firstAttribute="top" secondItem="gS7-Kp-MfT" secondAttribute="bottom" constant="28" id="O3A-bY-P1t"/>
+                            <constraint firstItem="fDw-tP-Dij" firstAttribute="top" secondItem="oMX-aH-IL4" secondAttribute="bottom" constant="22" id="Qq8-rD-jDO"/>
+                            <constraint firstItem="E4S-Sq-TGk" firstAttribute="top" secondItem="9bn-oV-Nw7" secondAttribute="bottom" id="R7u-Hn-6Tr"/>
+                            <constraint firstAttribute="centerX" secondItem="9bn-oV-Nw7" secondAttribute="centerX" id="UfX-0e-Gww"/>
+                            <constraint firstItem="B7t-IK-Rmg" firstAttribute="top" secondItem="I0E-tu-UyU" secondAttribute="bottom" constant="15" id="ZRy-tJ-215"/>
+                            <constraint firstAttribute="centerX" secondItem="fDw-tP-Dij" secondAttribute="centerX" id="gCd-Ec-syb"/>
+                            <constraint firstAttribute="centerX" secondItem="j3D-I4-LbA" secondAttribute="centerX" id="hce-Kn-OYX"/>
+                            <constraint firstItem="D2w-I6-LQc" firstAttribute="top" secondItem="E4S-Sq-TGk" secondAttribute="bottom" constant="29" id="rxP-a5-bTm"/>
+                            <constraint firstItem="9bn-oV-Nw7" firstAttribute="top" secondItem="YUz-w7-owh" secondAttribute="bottom" constant="8" id="uOk-N7-SEp"/>
+                            <constraint firstAttribute="centerX" secondItem="B7t-IK-Rmg" secondAttribute="centerX" id="xso-EL-FPS"/>
+                            <constraint firstItem="j3D-I4-LbA" firstAttribute="top" secondItem="B7t-IK-Rmg" secondAttribute="bottom" constant="8" id="zj8-hE-stI"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="exerciseNameLabel" destination="fDw-tP-Dij" id="KkF-gG-oex"/>
+                        <outlet property="repsCircleView" destination="D2w-I6-LQc" id="6Rn-ZN-4Fa"/>
+                        <outlet property="repsOrSecondsLabel" destination="oMX-aH-IL4" id="A43-jp-jJu"/>
+                        <outlet property="setsCircleView" destination="9bn-oV-Nw7" id="CwY-RP-y7L"/>
+                        <segue destination="yXP-Eu-74I" kind="modal" identifier="BackToExerciseList" id="kJh-mC-2Lf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lYS-CO-Su3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3498" y="709"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Detailed Exercise Navigation Controller-->
         <scene sceneID="Pjr-lx-Thu">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bjJ-FN-5tm" sceneMemberID="viewController">
+                <navigationController title="Detailed Exercise Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="bjJ-FN-5tm" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YI9-2A-kjc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1070,6 +1166,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Congratulations_Icon" width="64" height="64"/>
         <image name="Jumping_Jack" width="600" height="700"/>
         <image name="Running_Man" width="32" height="32"/>
         <image name="White_Arrow_left" width="24" height="24"/>
@@ -1080,7 +1177,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="4OP-xb-JOi"/>
+        <segue reference="dWx-wa-Fop"/>
         <segue reference="e1A-Zf-sLH"/>
-        <segue reference="hfg-dT-jR8"/>
     </inferredMetricsTieBreakers>
 </document>

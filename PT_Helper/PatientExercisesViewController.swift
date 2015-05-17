@@ -10,12 +10,6 @@ import UIKit
 
 class PatientExercisesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var sampleData = ["name": "Hip Abduction",
-        "exerciseDescription": "Sample description",
-        "duration": 30,
-        "numRepetitions": 12,
-        "daysPerWeek": 3]
-    
     var exercises: [PFObject] = []
 
     @IBOutlet weak var tableView: UITableView!
@@ -27,16 +21,16 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
       
         var exerciseQuery = PFQuery(className: "Exercise")
         if let curPatient = Util.currentPatient() {
-          exerciseQuery.whereKey("patients", equalTo: curPatient)
-          println(curPatient)
-          exerciseQuery.includeKey("patients")
-          exerciseQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
+            exerciseQuery.whereKey("patients", equalTo: curPatient)
+            exerciseQuery.includeKey("patients")
+            exerciseQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
+        
             if (error == nil) {
-              println(result)
-              self.exercises = result as! [PFObject]
-              self.tableView.reloadData()
+                println("Got Exercises Sucessfully")
+                self.exercises = result as! [PFObject]
+                self.tableView.reloadData()
             } else {
-              println(error?.description)
+                println(error?.description)
             }
           })
         }

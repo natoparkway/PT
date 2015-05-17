@@ -11,19 +11,36 @@ import Darwin
 
 class PatientCongratulationsViewController: UIViewController {
 
+    
+    @IBOutlet weak var setsCircleView: CircleWithTextView!
+    @IBOutlet weak var repsCircleView: CircleWithTextView!
+    var isDuration = false
+    var repsOrSecondsDone: Int!
+    var setsCompleted: Int!
+    @IBOutlet weak var repsOrSecondsLabel: UILabel!
+    @IBOutlet weak var exerciseNameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        sleep(3)
-//        performSegueWithIdentifier("BackToExerciseList", sender: self)
-
-        // Do any additional setup after loading the view.
+        println(repsOrSecondsDone)
+        repsCircleView.updateCounter(String(repsOrSecondsDone))
+        setsCircleView.updateCounter(String(setsCompleted))
+        
+        if isDuration {
+            repsOrSecondsLabel.text = "Seconds"
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func returnToExerciseClicked(sender: AnyObject) {
+        performSegueWithIdentifier("BackToExerciseList", sender: self)
+    }
 
     /*
     // MARK: - Navigation

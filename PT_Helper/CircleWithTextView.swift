@@ -20,14 +20,13 @@ class CircleWithTextView: UIView {
     override init(frame: CGRect){
         super.init(frame: frame)
         setup()
-        counterLabel.text = "Something" //Doesn't work
-        
+        counterLabel.text = "-1" //Default text
     }
     
     required init(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
         setup()
-        counterLabel.text = "1" //Doesn't work
+        counterLabel.text = "-1" //Default text
     }
     
     func setup() {
