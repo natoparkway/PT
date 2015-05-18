@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ExerciseFinishedDelegate {
+    func exerciseFinished()
+}
+
 class PatientWorkingOutViewController: UIViewController {
 
     @IBOutlet weak var exerciseNameLabel: UILabel!
@@ -19,12 +23,18 @@ class PatientWorkingOutViewController: UIViewController {
     var isDuration: Bool = true
     var setsToComplete: Int!
     
+    //Indicates whether this exercise is a standalone (and then goes to a congratulations view)
+    //or tells a container view to switch to the next exercise
+    var partOfFullWorkout = false
+    
     var timer: NSTimer!
     let timerWidth: CGFloat = 10.0
     var setsCompleted: Int = 0
     var timerIsRunning = false
     let timerColor: UIColor = UIColor.greenColor()
     let congratsSegue = "ToCongratulationsView"
+    
+    var delegate: ExerciseFinishedDelegate?
     
 
     @IBOutlet weak var sceneButton: UIButton!
@@ -33,7 +43,6 @@ class PatientWorkingOutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println(exercise)
         exerciseNameLabel.text = exercise["name"] as? String
         isDuration = exercise["isDuration"] as! Bool
         isDuration = false
@@ -74,9 +83,7 @@ class PatientWorkingOutViewController: UIViewController {
             startTimer()
         } else if !isDuration {
             setsCompleted++
-            if setsCompleted == setsToComplete {
-                performSegueWithIdentifier("ToCongratulationsView", sender: self)
-            }
+            ifDonePerformSegue()
             updateSetsCompleted()
         }
     }
@@ -128,8 +135,18 @@ class PatientWorkingOutViewController: UIViewController {
             setsCompleted++
             updateSetsCompleted()   //Updates GUI
             timerIsRunning = false
-            if setsCompleted == setsToComplete {
-                performSegueWithIdentifier("ToCongratulationsView", sender: self)
+            ifDonePerformSegue()
+        }
+    }
+    
+    //If the patient has completed the specified amount of exercise, segue
+    //If this exercise is part of the full workout, tell the container view that the exercise has finished
+    func ifDonePerformSegue() {
+        if setsCompleted == setsToComplete {
+            if partOfFullWorkout {
+                delegate?.exerciseFinished()
+            } else {
+               performSegueWithIdentifier("ToCongratulationsView", sender: self)
             }
         }
     }

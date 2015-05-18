@@ -377,6 +377,39 @@
             </objects>
             <point key="canvasLocation" x="-1288" y="-548"/>
         </scene>
+        <!--Workout Container-->
+        <scene sceneID="Toe-36-Dbz">
+            <objects>
+                <viewController title="Workout Container" id="QBT-ph-A6I" customClass="WorkoutContainerViewController" customModule="PT_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hK1-oI-J8z"/>
+                        <viewControllerLayoutGuide type="bottom" id="S9K-kJ-lFB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Iqm-3A-y1W">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ltX-eO-ULA">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ltX-eO-ULA" firstAttribute="top" secondItem="Iqm-3A-y1W" secondAttribute="top" id="3TJ-4H-DeB"/>
+                            <constraint firstAttribute="trailing" secondItem="ltX-eO-ULA" secondAttribute="trailing" id="Gzs-ua-bNd"/>
+                            <constraint firstItem="S9K-kJ-lFB" firstAttribute="top" secondItem="ltX-eO-ULA" secondAttribute="bottom" id="dtM-Ng-yb7"/>
+                            <constraint firstItem="ltX-eO-ULA" firstAttribute="leading" secondItem="Iqm-3A-y1W" secondAttribute="leading" id="qVt-g6-roo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="currentExerciseView" destination="ltX-eO-ULA" id="GEd-90-VKk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V8U-mL-GVt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="968" y="-316"/>
+        </scene>
         <!--Patient Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -674,7 +707,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="jmf-Ya-7CB" kind="modal" identifier="ToWorkingOut" id="TOV-eH-0V1"/>
+                                    <segue destination="QBT-ph-A6I" kind="modal" identifier="ToWorkoutView" id="wfs-Dz-Yxq"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -816,10 +849,10 @@
             </objects>
             <point key="canvasLocation" x="651" y="334"/>
         </scene>
-        <!--Patient Working Out View Controller-->
+        <!--Workout View-->
         <scene sceneID="cic-1V-NDG">
             <objects>
-                <viewController id="jmf-Ya-7CB" customClass="PatientWorkingOutViewController" customModule="PT_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WorkoutViewController" title="Workout View" id="jmf-Ya-7CB" customClass="PatientWorkingOutViewController" customModule="PT_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w8r-pP-x7t"/>
                         <viewControllerLayoutGuide type="bottom" id="SBQ-nZ-4BQ"/>
@@ -1014,6 +1047,7 @@
                     </view>
                     <connections>
                         <outlet property="exerciseNameLabel" destination="fDw-tP-Dij" id="KkF-gG-oex"/>
+                        <outlet property="nextButton" destination="gS7-Kp-MfT" id="l7Y-Lz-eCq"/>
                         <outlet property="repsCircleView" destination="D2w-I6-LQc" id="6Rn-ZN-4Fa"/>
                         <outlet property="repsOrSecondsLabel" destination="oMX-aH-IL4" id="A43-jp-jJu"/>
                         <outlet property="setsCircleView" destination="9bn-oV-Nw7" id="CwY-RP-y7L"/>
@@ -1222,7 +1256,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="e1A-Zf-sLH"/>
-        <segue reference="BjH-IV-WbL"/>
-        <segue reference="TOV-eH-0V1"/>
+        <segue reference="kJh-mC-2Lf"/>
     </inferredMetricsTieBreakers>
 </document>

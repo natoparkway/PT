@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F0897691B0988980060E17E /* WorkoutContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0897681B0988980060E17E /* WorkoutContainerViewController.swift */; };
 		0F179D6D1B01B03F00EE4744 /* DetailedExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F179D6C1B01B03F00EE4744 /* DetailedExerciseViewController.swift */; };
 		0F179D701B01BDF600EE4744 /* PatientWorkingOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F179D6F1B01BDF600EE4744 /* PatientWorkingOutViewController.swift */; };
 		0F179D721B01BFB500EE4744 /* CircleWithTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F179D711B01BFB500EE4744 /* CircleWithTextView.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F0897681B0988980060E17E /* WorkoutContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutContainerViewController.swift; sourceTree = "<group>"; };
 		0F179D6C1B01B03F00EE4744 /* DetailedExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedExerciseViewController.swift; sourceTree = "<group>"; };
 		0F179D6F1B01BDF600EE4744 /* PatientWorkingOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientWorkingOutViewController.swift; sourceTree = "<group>"; };
 		0F179D711B01BFB500EE4744 /* CircleWithTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleWithTextView.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 		0F2AE4321B008A3400CB96A3 /* PatientViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0F0897681B0988980060E17E /* WorkoutContainerViewController.swift */,
 				0F179D6F1B01BDF600EE4744 /* PatientWorkingOutViewController.swift */,
 				0F2AE4281B007B0F00CB96A3 /* PatientLoginViewController.swift */,
 				0FA617671B07121700A83054 /* PatientCongratulationsViewController.swift */,
@@ -401,6 +404,7 @@
 				B5B4C73D1B06AF57004D5FFD /* Util.swift in Sources */,
 				0F2AE4291B007B0F00CB96A3 /* PatientLoginViewController.swift in Sources */,
 				CA0EB8F21B03E5A90060FA8E /* ProviderHomeViewController.swift in Sources */,
+				0F0897691B0988980060E17E /* WorkoutContainerViewController.swift in Sources */,
 				B5B4C7371B05140D004D5FFD /* ProviderPatientsViewController.swift in Sources */,
 				0F2AE4091B00719C00CB96A3 /* AppDelegate.swift in Sources */,
 				CA0EB8F41B03EA610060FA8E /* ProviderManageExercisesViewController.swift in Sources */,

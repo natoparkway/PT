@@ -79,8 +79,15 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
         if let id = segue.identifier {
             if id == "ToDetailedExercise" {
                 toDetailedExerciseSegue(segue, cell: sender as! ExerciseCell)
+            } else if id == "ToWorkoutView" {
+                toWorkoutViewSegue(segue)
             }
         }
+    }
+    
+    func toWorkoutViewSegue(segue: UIStoryboardSegue) {
+        var workoutVC = segue.destinationViewController as! WorkoutContainerViewController
+        workoutVC.exercises = exercises
     }
     
     func toDetailedExerciseSegue(segue: UIStoryboardSegue, cell: ExerciseCell) {
