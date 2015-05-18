@@ -13,13 +13,13 @@ class WorkoutContainerViewController: UIViewController, ExerciseFinishedDelegate
     @IBOutlet weak var currentExerciseView: UIView!
     var exerciseIndex = 0
     var exercises: [PFObject] = []
+    let iphoneWidth = 320
     
     var workingOutViewController: PatientWorkingOutViewController? {
         didSet {
             workingOutViewController!.exercise = exercises[exerciseIndex]
             workingOutViewController!.view.frame = currentExerciseView.bounds
             
-
             
             //Set fields
             workingOutViewController!.delegate = self
@@ -31,7 +31,7 @@ class WorkoutContainerViewController: UIViewController, ExerciseFinishedDelegate
             }
             
             //Place off screen initially
-            currentExerciseView.frame.origin = CGPoint(x: currentExerciseView.frame.width, y: 0)
+            currentExerciseView.frame.origin = CGPoint(x: CGFloat(iphoneWidth), y: 0)
             currentExerciseView.addSubview(workingOutViewController!.view)
             
             animateTransition(currentExerciseView)
@@ -41,7 +41,7 @@ class WorkoutContainerViewController: UIViewController, ExerciseFinishedDelegate
     }
 
     func animateTransition(view: UIView) {
-        UIView.animateWithDuration(1.0, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1.0, options: nil, animations: { () -> Void in
+        UIView.animateWithDuration(1.1, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1.0, options: nil, animations: { () -> Void in
             
             view.frame.origin = CGPoint(x: 0, y: 0)
             
@@ -60,6 +60,11 @@ class WorkoutContainerViewController: UIViewController, ExerciseFinishedDelegate
     
     //Delegate method - called when an exercise finishes
     func exerciseFinished() {
+        if exercises.count == exerciseIndex {
+            performSegueWithIdentifier("BackToExerciseList", sender: self)
+            return
+        }
+        
         setNewExerciseView()
     }
     

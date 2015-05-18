@@ -10,8 +10,9 @@ import UIKit
 
 class PatientLoginViewController: UIViewController, UITextFieldDelegate {
 
-  @IBOutlet var passwordField: UITextField!
-  @IBOutlet var emailField: UITextField!
+    let transitionManager = SlideTransitionDelegate()
+    @IBOutlet var passwordField: UITextField!
+    @IBOutlet var emailField: UITextField!
   
   @IBAction func onTap(sender: UITapGestureRecognizer) {
     view.endEditing(true)
@@ -63,11 +64,21 @@ class PatientLoginViewController: UIViewController, UITextFieldDelegate {
   */
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-      if (segue.identifier == "physicianSignupSegue") {
-        var finishSignupVC = segue.destinationViewController as! ProviderSignupVIewController
-        finishSignupVC.email = emailField.text
-        finishSignupVC.password = passwordField.text
-      }
+        if let id = segue.identifier {
+            if id == "physicianSignupSegue" {
+                var finishSignupVC = segue.destinationViewController as! ProviderSignupVIewController
+                finishSignupVC.email = emailField.text
+                finishSignupVC.password = passwordField.text
+            }
+            
+            if id == "ToPatientExercises" {
+                println("custom transition")
+                var patientExercisesNav = segue.destinationViewController as! UINavigationController
+                var patientExercisesVC = patientExercisesNav.topViewController as! PatientExercisesViewController
+                patientExercisesVC.modalPresentationStyle = .Custom
+                patientExercisesVC.transitioningDelegate = self.transitionManager
+            }
+        }
     }
   
 

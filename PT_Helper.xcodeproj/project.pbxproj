@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F0897691B0988980060E17E /* WorkoutContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0897681B0988980060E17E /* WorkoutContainerViewController.swift */; };
+		0F08976C1B099C2D0060E17E /* SlideTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F08976B1B099C2D0060E17E /* SlideTransitionDelegate.swift */; };
 		0F179D6D1B01B03F00EE4744 /* DetailedExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F179D6C1B01B03F00EE4744 /* DetailedExerciseViewController.swift */; };
 		0F179D701B01BDF600EE4744 /* PatientWorkingOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F179D6F1B01BDF600EE4744 /* PatientWorkingOutViewController.swift */; };
 		0F179D721B01BFB500EE4744 /* CircleWithTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F179D711B01BFB500EE4744 /* CircleWithTextView.swift */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		0F0897681B0988980060E17E /* WorkoutContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutContainerViewController.swift; sourceTree = "<group>"; };
+		0F08976B1B099C2D0060E17E /* SlideTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTransitionDelegate.swift; sourceTree = "<group>"; };
 		0F179D6C1B01B03F00EE4744 /* DetailedExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedExerciseViewController.swift; sourceTree = "<group>"; };
 		0F179D6F1B01BDF600EE4744 /* PatientWorkingOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientWorkingOutViewController.swift; sourceTree = "<group>"; };
 		0F179D711B01BFB500EE4744 /* CircleWithTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleWithTextView.swift; sourceTree = "<group>"; };
@@ -109,6 +111,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F08976A1B099BE40060E17E /* Custom Transition Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				0F08976B1B099C2D0060E17E /* SlideTransitionDelegate.swift */,
+			);
+			name = "Custom Transition Delegates";
+			sourceTree = "<group>";
+		};
 		0F179D6E1B01B04B00EE4744 /* Shared View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +160,7 @@
 		0F2AE4051B00719C00CB96A3 /* PT_Helper */ = {
 			isa = PBXGroup;
 			children = (
+				0F08976A1B099BE40060E17E /* Custom Transition Delegates */,
 				CA0EB8F01B03E57A0060FA8E /* ProviderViewControllers */,
 				0F179D731B01BFBF00EE4744 /* Custom Views */,
 				0F179D6E1B01B04B00EE4744 /* Shared View Controllers */,
@@ -395,6 +406,7 @@
 				0F2AE4351B008AF400CB96A3 /* Exercise.swift in Sources */,
 				0F179D721B01BFB500EE4744 /* CircleWithTextView.swift in Sources */,
 				CA0EB8F61B03EF6E0060FA8E /* ProviderCreateNewPatientViewController.swift in Sources */,
+				0F08976C1B099C2D0060E17E /* SlideTransitionDelegate.swift in Sources */,
 				0F2AE42B1B0084A300CB96A3 /* PatientExercisesViewController.swift in Sources */,
 				0F179D6D1B01B03F00EE4744 /* DetailedExerciseViewController.swift in Sources */,
 				B5B4C7351B051398004D5FFD /* PatientCell.swift in Sources */,

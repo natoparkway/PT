@@ -9,11 +9,12 @@
 import UIKit
 
 class ProviderSignupVIewController: UIViewController {
-  var email:String!
-  var password:String!
-  @IBOutlet var firstNameField: UITextField!
-  @IBOutlet var lastNameField: UITextField!
-  @IBOutlet var phoneField: UITextField!
+    let transitionManager = SlideTransitionDelegate()
+    var email:String!
+    var password:String!
+    @IBOutlet var firstNameField: UITextField!
+    @IBOutlet var lastNameField: UITextField!
+    @IBOutlet var phoneField: UITextField!
   
   @IBAction func onTap(sender: UITapGestureRecognizer) {
     view.endEditing(true)
@@ -28,17 +29,6 @@ class ProviderSignupVIewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
   func displayError(error: NSError) {
     let errorString = error.userInfo?["error"] as? NSString
@@ -67,4 +57,22 @@ class ProviderSignupVIewController: UIViewController {
       }
     }
   }
+
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
+        
+        if let id = segue.identifier {
+            if id == "toPhysicianHome" {
+                //Do something
+            }
+            
+        }
+    }
+    
+    
 }

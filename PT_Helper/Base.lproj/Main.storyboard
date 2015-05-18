@@ -404,11 +404,12 @@
                     </view>
                     <connections>
                         <outlet property="currentExerciseView" destination="ltX-eO-ULA" id="GEd-90-VKk"/>
+                        <segue destination="yXP-Eu-74I" kind="modal" identifier="BackToExerciseList" id="JLJ-CZ-LjM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V8U-mL-GVt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="968" y="-316"/>
+            <point key="canvasLocation" x="1085" y="-366"/>
         </scene>
         <!--Patient Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -1256,6 +1257,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="e1A-Zf-sLH"/>
-        <segue reference="kJh-mC-2Lf"/>
+        <segue reference="hfg-dT-jR8"/>
     </inferredMetricsTieBreakers>
 </document>

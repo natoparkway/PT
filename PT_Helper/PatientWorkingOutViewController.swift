@@ -45,7 +45,7 @@ class PatientWorkingOutViewController: UIViewController {
         super.viewDidLoad()
         exerciseNameLabel.text = exercise["name"] as? String
         isDuration = exercise["isDuration"] as! Bool
-        isDuration = false
+//        isDuration = false //Uncomment this for debugging faster so you don't have to wait for timer
         setsToComplete = (exercise["numSets"] as! NSString).integerValue
         
         if isDuration {
