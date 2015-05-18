@@ -74,9 +74,9 @@ class PatientLoginViewController: UIViewController, UITextFieldDelegate {
             if id == "ToPatientExercises" {
                 println("custom transition")
                 var patientExercisesNav = segue.destinationViewController as! UINavigationController
-                var patientExercisesVC = patientExercisesNav.topViewController as! PatientExercisesViewController
-                patientExercisesVC.modalPresentationStyle = .Custom
-                patientExercisesVC.transitioningDelegate = self.transitionManager
+                var patientExercisesVC = patientExercisesNav.visibleViewController as! PatientExercisesViewController
+                patientExercisesNav.modalPresentationStyle = .Custom
+                patientExercisesNav.transitioningDelegate = self.transitionManager
             }
         }
     }

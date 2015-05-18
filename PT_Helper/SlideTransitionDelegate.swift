@@ -19,7 +19,7 @@ class SlideTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate, 
         println("animating")    //Doesn't print
         // get reference to our fromView, toView and the container view that we should perform the transition in
         let container = transitionContext.containerView()
-        let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey)!
+        let fromView = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!.view
         let toView = transitionContext.viewForKey(UITransitionContextToViewKey)!
         
         // set up from 2D transforms that we'll use in the animation
@@ -81,12 +81,14 @@ class SlideTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate, 
         
         // these methods are the perfect place to set our `presenting` flag to either true or false - voila!
         self.presenting = true
+        println("here")
         return self
     }
     
     // return the animator used when dismissing from a viewcontroller
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         self.presenting = false
+        println("here1")
         return self
     }
 
