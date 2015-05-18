@@ -34,7 +34,7 @@ class CircleWithTextView: UIView {
         if let bgColor = backgroundColor {
             color = backgroundColor
         } else {
-            color = UIColor.greenColor()
+            color = UIColor.greenColor()    //Default color when programatically instantiated
         }
         
         addNib()
@@ -45,11 +45,15 @@ class CircleWithTextView: UIView {
         var nib = UINib(nibName: "CircularView", bundle: nil)
         var objects = nib.instantiateWithOwner(self, options: nil)
         circularView.frame = self.bounds
-        circularView.layer.borderWidth = lineWidth
+        circularView.layer.borderWidth = circularView.frame.width / 8
         circularView.layer.borderColor = color.CGColor
         circularView.layer.cornerRadius = circularView.frame.width / 2
         addSubview(circularView)
         
+    }
+    
+    func setFont(font: UIFont) {
+        counterLabel.font = font
     }
     
     func updateColor(color: UIColor) {
@@ -59,6 +63,7 @@ class CircleWithTextView: UIView {
     //Public method to change counterLabel
     func updateCounter(count: String) {
         counterLabel.text = count
+        
     }
 
     // Only override drawRect: if you perform custom drawing.

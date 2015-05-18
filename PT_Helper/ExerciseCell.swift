@@ -26,13 +26,15 @@ class ExerciseCell: UITableViewCell {
      * Updates contents of ExerciseCell. Sets exercise global variable and sets cell contents and gui accordingly.
      */
     func setup(e: PFObject) {
-      let name = e["name"] as! String
-      let daysPerWeek = e["timesPerWeek"] as! String
+        let name = e["name"] as! String
+        let daysPerWeek = e["timesPerWeek"] as! String
         let numReps = e["numRepetitions"] as! String
         let duration = e["duration"] as! String
-        daysPerWeekView.updateCounter(daysPerWeek)
-        repetitionsView.updateCounter(numReps)
-        setsOrTimeView.updateCounter(duration)
+        
+        //We need to remove white space as well
+        daysPerWeekView.updateCounter(daysPerWeek.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
+        repetitionsView.updateCounter(numReps.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
+        setsOrTimeView.updateCounter(duration.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
         exerciseNameLabel.text = name
     }
 

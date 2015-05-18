@@ -17,6 +17,7 @@ class PatientCongratulationsViewController: UIViewController {
     var isDuration = false
     var repsOrSecondsDone: Int!
     var setsCompleted: Int!
+    var exerciseName: String!
     @IBOutlet weak var repsOrSecondsLabel: UILabel!
     @IBOutlet weak var exerciseNameLabel: UILabel!
     
@@ -25,6 +26,10 @@ class PatientCongratulationsViewController: UIViewController {
         println(repsOrSecondsDone)
         repsCircleView.updateCounter(String(repsOrSecondsDone))
         setsCircleView.updateCounter(String(setsCompleted))
+        repsCircleView.setFont(UIFont.boldSystemFontOfSize(24.0))
+        setsCircleView.setFont(UIFont.boldSystemFontOfSize(24.0))
+        
+        exerciseNameLabel.text = exerciseName
         
         if isDuration {
             repsOrSecondsLabel.text = "Seconds"

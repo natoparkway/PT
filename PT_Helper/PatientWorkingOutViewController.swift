@@ -60,7 +60,8 @@ class PatientWorkingOutViewController: UIViewController {
         
         //Add reps counter
         var repsCircleView = CircleWithTextView(frame: frame)
-        repsCircleView.updateCounter(exercise["numRepetitions"] as! String)
+        repsCircleView.updateCounter((exercise["numRepetitions"] as! String).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
+        repsCircleView.setFont(UIFont.boldSystemFontOfSize(36.0))
         view.addSubview(repsCircleView)
         
         //Change button text
@@ -152,6 +153,7 @@ class PatientWorkingOutViewController: UIViewController {
                 var congratsVC = segue.destinationViewController as! PatientCongratulationsViewController
                 congratsVC.setsCompleted = setsCompleted
                 congratsVC.isDuration = isDuration
+                congratsVC.exerciseName = exercise["name"] as! String
                 
                 if isDuration {
                     congratsVC.repsOrSecondsDone = Int(duration!)
