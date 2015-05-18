@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import AVKit
+import MobileCoreServices
+import MediaPlayer
+import Foundation
+import AVFoundation
 
-class DetailedExerciseViewController: UIViewController {
+class DetailedExerciseViewController: UIViewController, AVAudioPlayerDelegate {
 
     @IBOutlet weak var exerciseImage: UIImageView!
     @IBOutlet weak var exerciseNameLabel: UILabel!
@@ -18,10 +23,51 @@ class DetailedExerciseViewController: UIViewController {
     
     var exercise: PFObject!
     
+    //avfoundation stuff from stack overflow
+    //var player : AVAudioPlayer! = nil
+    var playerLayer : AVPlayerLayer? = nil
+    var asset : AVAsset? = nil
+    var playerItem: AVPlayerItem? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         correctWrapAround()
         updateView()
+        
+        var videoFile = exercise["video"] as! PFFile
+        
+        
+        let videoURL = NSURL(string: videoFile.url!)!
+        
+//        asset = AVAsset.assetWithURL(videoURL) as? AVAsset
+//        playerItem = AVPlayerItem(asset: asset)
+//        
+//        player = AVPlayer(playerItem: self.playerItem)
+//        
+//        playerLayer = AVPlayerLayer(player: self.player)
+//        playerLayer!.frame = exerciseImage.frame
+//        exerciseImage.layer.addSublayer(self.playerLayer)
+//        
+        
+        var player = AVPlayer(URL: videoURL)
+        let playerController = AVPlayerViewController()
+        playerController.player = player
+        self.addChildViewController(playerController)
+        self.view.addSubview(playerController.view)
+        playerController.view.frame = exerciseImage.frame
+        player.play()
+        
+//        //var videoURL = NSURL(string: exercise["videoURL"] as! String)
+//        var videoURL = NSURL(string: videoFile.url!)!
+//        println("\(videoURL)")
+//        var moviePlayer = MPMoviePlayerController(contentURL: videoURL)
+//
+//        moviePlayer.contentURL = videoURL
+//        moviePlayer.view.frame = exerciseImage.frame
+//        self.view.addSubview(moviePlayer.view)
+//        moviePlayer.prepareToPlay()
+//        moviePlayer.play()
+        
         // Do any additional setup after loading the view.
     }
     
