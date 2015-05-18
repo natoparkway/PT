@@ -24,6 +24,7 @@ class CreateNewExerciseViewController: UIViewController, UIImagePickerController
     var picker: UIImagePickerController!
     var moviePlayer: MPMoviePlayerController!
     var PFVideoFile: PFFile!
+    var videoURL: String!
     
     var patientHash = [String:String]()
   var patients:[PFObject] = []
@@ -64,6 +65,7 @@ class CreateNewExerciseViewController: UIViewController, UIImagePickerController
     exercise["isDuration"] = true
     exercise["physician"] = Util.currentPhysician()
     exercise["video"] = PFVideoFile
+    exercise["videoURL"] = videoURL
     var patient = PFObject(className: "Patient")
     let patientQuery = PFQuery(className: "Patient")
     var fullName = patientNameField.text
@@ -105,9 +107,11 @@ class CreateNewExerciseViewController: UIViewController, UIImagePickerController
             println("hopefully got the movie")
             
             var url = info[UIImagePickerControllerMediaURL] as! NSURL
+            
             var path = url.path!
             
-            
+            videoURL = url.absoluteString!
+            println("the url initially is \(url) and then the videoURL we are saving is \(videoURL)")
            var videoData = NSData(contentsOfURL: url)
            let videoFile = PFFile(name: "ExerciseVideo.mov", data: videoData!)
             PFVideoFile = videoFile
@@ -122,7 +126,7 @@ class CreateNewExerciseViewController: UIViewController, UIImagePickerController
             //var url = info[0]?.objectForKey(UIImagePickerControllerMediaURL) as! NSURL
                 //objectForKey(UIImagePickerControllerMediaURL) as NSURL
             
-            moviePlayer = MPMoviePlayerController(contentURL: url)
+            moviePlayer = MPMoviePlayerController(contentURL: NSURL(string: videoURL!)!)
             
             moviePlayer.view.frame = profileImageView.frame
             self.view.addSubview(moviePlayer.view)

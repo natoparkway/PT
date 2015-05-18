@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -862,7 +862,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8KA-AD-RCi">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8KA-AD-RCi">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="228"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Goblet Squat" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMg-MN-jje">
@@ -871,7 +871,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is a description of the exercise" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ht8-CW-g2P">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This is a description of the exercise" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ht8-CW-g2P">
                                         <rect key="frame" x="39" y="69" width="242" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -886,8 +886,17 @@
                                             <segue destination="yXP-Eu-74I" kind="modal" identifier="BackToExerciseList" id="4OP-xb-JOi"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gn6-3W-aak">
+                                        <rect key="frame" x="0.0" y="98" width="320" height="130"/>
+                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.77006392050000005" blue="0.23276925379999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Gn6-3W-aak" secondAttribute="trailing" id="3Tg-8D-Ins"/>
+                                    <constraint firstItem="Gn6-3W-aak" firstAttribute="leading" secondItem="8KA-AD-RCi" secondAttribute="leading" id="T4d-l9-SSw"/>
+                                    <constraint firstItem="Gn6-3W-aak" firstAttribute="top" secondItem="Ht8-CW-g2P" secondAttribute="bottom" constant="8" id="jUg-ji-7p6"/>
+                                </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kg9-nc-2TN">
                                 <rect key="frame" x="16" y="236" width="0.0" height="0.0"/>
@@ -932,6 +941,7 @@
                         <outlet property="sceneButton" destination="7RL-UK-C0b" id="f57-dk-MRZ"/>
                         <outlet property="setsCompletedView" destination="T2j-bc-ZR4" id="qOJ-jF-7S0"/>
                         <outlet property="timerView" destination="K7f-nz-Dpl" id="4Ag-Sj-VvN"/>
+                        <outlet property="videoFrameView" destination="Gn6-3W-aak" id="sdh-mX-hHu"/>
                         <segue destination="uoU-SP-Rb1" kind="modal" identifier="ToCongratulationsView" id="1Ga-Nj-J34"/>
                     </connections>
                 </viewController>
@@ -1257,6 +1267,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="e1A-Zf-sLH"/>
-        <segue reference="hfg-dT-jR8"/>
+        <segue reference="4OP-xb-JOi"/>
     </inferredMetricsTieBreakers>
 </document>

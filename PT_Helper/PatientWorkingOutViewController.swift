@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import MobileCoreServices
+import MediaPlayer
+import Foundation
 
 protocol ExerciseFinishedDelegate {
     func exerciseFinished()
@@ -14,6 +17,7 @@ protocol ExerciseFinishedDelegate {
 
 class PatientWorkingOutViewController: UIViewController {
 
+    @IBOutlet weak var videoFrameView: UIView!
     @IBOutlet weak var exerciseNameLabel: UILabel!
     
     var exercise: PFObject!
@@ -55,6 +59,16 @@ class PatientWorkingOutViewController: UIViewController {
             numReps = (exercise["numRepetitions"] as! NSString).integerValue
             setUpRepsView()
         }
+        var videoFile = exercise["video"] as! PFFile
+        var videoURL = NSURL(string: exercise["videoURL"] as! String)
+        println("\(videoFile.url!)")
+        var moviePlayer = MPMoviePlayerController(contentURL: NSURL(string: videoFile.url!)!)
+
+        
+        moviePlayer.view.frame = videoFrameView.frame
+        self.view.addSubview(moviePlayer.view)
+        moviePlayer.prepareToPlay()
+        moviePlayer.play()
         
         updateSetsCompleted()
     }
