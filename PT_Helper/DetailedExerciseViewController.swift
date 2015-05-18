@@ -33,7 +33,8 @@ class DetailedExerciseViewController: UIViewController, AVAudioPlayerDelegate {
         super.viewDidLoad()
         correctWrapAround()
         updateView()
-        
+        println("printing what i think is the video file")
+        if(exercise["video"] != nil){
         var videoFile = exercise["video"] as! PFFile
         
         
@@ -56,6 +57,10 @@ class DetailedExerciseViewController: UIViewController, AVAudioPlayerDelegate {
         self.view.addSubview(playerController.view)
         playerController.view.frame = exerciseImage.frame
         player.play()
+        }
+        else{
+            
+        }
         
 //        //var videoURL = NSURL(string: exercise["videoURL"] as! String)
 //        var videoURL = NSURL(string: videoFile.url!)!

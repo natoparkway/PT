@@ -59,6 +59,7 @@ class PatientWorkingOutViewController: UIViewController {
             numReps = (exercise["numRepetitions"] as! NSString).integerValue
             setUpRepsView()
         }
+        if(exercise["video"] != nil){
         var videoFile = exercise["video"] as! PFFile
         var videoURL = NSURL(string: exercise["videoURL"] as! String)
         println("\(videoFile.url!)")
@@ -69,7 +70,7 @@ class PatientWorkingOutViewController: UIViewController {
         self.view.addSubview(moviePlayer.view)
         moviePlayer.prepareToPlay()
         moviePlayer.play()
-        
+        }
         updateSetsCompleted()
     }
     
