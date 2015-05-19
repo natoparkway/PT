@@ -719,7 +719,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X7C-fo-c7K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064" y="334"/>
+            <point key="canvasLocation" x="1062" y="438"/>
         </scene>
         <!--Detailed Exercise View-->
         <scene sceneID="EVf-QY-myz">
@@ -871,7 +871,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This is a description of the exercise" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ht8-CW-g2P">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="This is a description of the exercise" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ht8-CW-g2P">
                                         <rect key="frame" x="39" y="69" width="242" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -886,16 +886,15 @@
                                             <segue destination="yXP-Eu-74I" kind="modal" identifier="BackToExerciseList" id="4OP-xb-JOi"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gn6-3W-aak">
-                                        <rect key="frame" x="0.0" y="98" width="320" height="130"/>
-                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5E4-tH-1fN">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="136"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.77006392050000005" blue="0.23276925379999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Gn6-3W-aak" secondAttribute="trailing" id="3Tg-8D-Ins"/>
-                                    <constraint firstItem="Gn6-3W-aak" firstAttribute="leading" secondItem="8KA-AD-RCi" secondAttribute="leading" id="T4d-l9-SSw"/>
-                                    <constraint firstItem="Gn6-3W-aak" firstAttribute="top" secondItem="Ht8-CW-g2P" secondAttribute="bottom" constant="8" id="jUg-ji-7p6"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="5E4-tH-1fN" secondAttribute="trailing" id="V3c-Un-eg4"/>
+                                    <constraint firstItem="5E4-tH-1fN" firstAttribute="leading" secondItem="8KA-AD-RCi" secondAttribute="leadingMargin" id="c8V-JK-cEd"/>
+                                    <constraint firstItem="5E4-tH-1fN" firstAttribute="top" secondItem="Ht8-CW-g2P" secondAttribute="bottom" constant="2" id="u9a-3Y-tf1"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kg9-nc-2TN">
@@ -941,7 +940,7 @@
                         <outlet property="sceneButton" destination="7RL-UK-C0b" id="f57-dk-MRZ"/>
                         <outlet property="setsCompletedView" destination="T2j-bc-ZR4" id="qOJ-jF-7S0"/>
                         <outlet property="timerView" destination="K7f-nz-Dpl" id="4Ag-Sj-VvN"/>
-                        <outlet property="videoFrameView" destination="Gn6-3W-aak" id="sdh-mX-hHu"/>
+                        <outlet property="videoImageView" destination="5E4-tH-1fN" id="mLz-Qe-ZGI"/>
                         <segue destination="uoU-SP-Rb1" kind="modal" identifier="ToCongratulationsView" id="1Ga-Nj-J34"/>
                     </connections>
                 </viewController>
@@ -1266,7 +1265,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="e1A-Zf-sLH"/>
         <segue reference="4OP-xb-JOi"/>
+        <segue reference="e1A-Zf-sLH"/>
     </inferredMetricsTieBreakers>
 </document>

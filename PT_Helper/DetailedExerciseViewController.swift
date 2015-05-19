@@ -23,6 +23,9 @@ class DetailedExerciseViewController: UIViewController, AVAudioPlayerDelegate {
     
     var exercise: PFObject!
     
+    //constant representing number of random images to cycle through
+    let workoutImages = ["gym1", "gym2", "gym3", "gym4"]
+    
     //avfoundation stuff from stack overflow
     //var player : AVAudioPlayer! = nil
     var playerLayer : AVPlayerLayer? = nil
@@ -40,16 +43,6 @@ class DetailedExerciseViewController: UIViewController, AVAudioPlayerDelegate {
         
         let videoURL = NSURL(string: videoFile.url!)!
         
-//        asset = AVAsset.assetWithURL(videoURL) as? AVAsset
-//        playerItem = AVPlayerItem(asset: asset)
-//        
-//        player = AVPlayer(playerItem: self.playerItem)
-//        
-//        playerLayer = AVPlayerLayer(player: self.player)
-//        playerLayer!.frame = exerciseImage.frame
-//        exerciseImage.layer.addSublayer(self.playerLayer)
-//        
-        
         var player = AVPlayer(URL: videoURL)
         let playerController = AVPlayerViewController()
         playerController.player = player
@@ -59,6 +52,9 @@ class DetailedExerciseViewController: UIViewController, AVAudioPlayerDelegate {
         player.play()
         }
         else{
+            let index = arc4random_uniform(UInt32(workoutImages.count))
+            println("the index of the array is \(index)")
+            exerciseImage.image = UIImage(named: workoutImages[Int(index)])
             
         }
         

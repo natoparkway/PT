@@ -10,6 +10,8 @@ import UIKit
 import MobileCoreServices
 import MediaPlayer
 import Foundation
+import AVFoundation
+import AVKit
 
 protocol ExerciseFinishedDelegate {
     func exerciseFinished()
@@ -17,15 +19,18 @@ protocol ExerciseFinishedDelegate {
 
 class PatientWorkingOutViewController: UIViewController {
 
-    @IBOutlet weak var videoFrameView: UIView!
     @IBOutlet weak var exerciseNameLabel: UILabel!
     
+    @IBOutlet weak var videoImageView: UIImageView!
     var exercise: PFObject!
     var elapsedTime: Double = 0.0
     var numReps: Int?
     var duration: Double?
     var isDuration: Bool = true
     var setsToComplete: Int!
+    
+    //constant representing number of random images to cycle through
+    let workoutImages = ["gym1", "gym2", "gym3", "gym4"]
     
     //Indicates whether this exercise is a standalone (and then goes to a congratulations view)
     //or tells a container view to switch to the next exercise
@@ -60,16 +65,23 @@ class PatientWorkingOutViewController: UIViewController {
             setUpRepsView()
         }
         if(exercise["video"] != nil){
-        var videoFile = exercise["video"] as! PFFile
-        var videoURL = NSURL(string: exercise["videoURL"] as! String)
-        println("\(videoFile.url!)")
-        var moviePlayer = MPMoviePlayerController(contentURL: NSURL(string: videoFile.url!)!)
-
-        
-        moviePlayer.view.frame = videoFrameView.frame
-        self.view.addSubview(moviePlayer.view)
-        moviePlayer.prepareToPlay()
-        moviePlayer.play()
+            var videoFile = exercise["video"] as! PFFile
+            
+            
+            let videoURL = NSURL(string: videoFile.url!)!
+            
+            var player = AVPlayer(URL: videoURL)
+            let playerController = AVPlayerViewController()
+            playerController.player = player
+            self.addChildViewController(playerController)
+            self.view.addSubview(playerController.view)
+            playerController.view.frame = videoImageView.frame
+            player.play()
+        }
+        else{
+           let index = arc4random_uniform(UInt32(workoutImages.count))
+            videoImageView.image = UIImage(named: workoutImages[Int(index)])
+            videoImageView.contentMode = UIViewContentMode.ScaleAspectFit
         }
         updateSetsCompleted()
     }
