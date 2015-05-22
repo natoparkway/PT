@@ -16,8 +16,6 @@ class PatientCongratulationsViewController: UIViewController {
     @IBOutlet weak var setsCircleView: CircleWithTextView!
     @IBOutlet weak var repsCircleView: CircleWithTextView!
     @IBOutlet weak var repsOrSecondsLabel: UILabel!
-    @IBOutlet weak var exerciseNameLabel: UILabel!
-    @IBOutlet weak var nextButton: UIButton!
 
     
     var isDuration = false          //Is the exercise duration based?
@@ -25,24 +23,23 @@ class PatientCongratulationsViewController: UIViewController {
     var setsCompleted: Int!
     var exerciseName: String!
     
-    var partOfFullWorkout = false   //Has the user clicked to do a full workout or just a single exercise
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateCircleViews()
-        exerciseNameLabel.text = exerciseName
+        navigationItem.title = exerciseName
         
         if isDuration {
             repsOrSecondsLabel.text = "Seconds"
         }
         
         //If this is part of the full workout, we want the button to say "Next"
-        if partOfFullWorkout {
-            nextButton.setTitle("Next", forState: nil)
-        }
         
     }
     
+    @IBAction func backButtonClicked(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     func updateCircleViews() {
         repsCircleView.updateCounter(String(repsOrSecondsDone))
         setsCircleView.updateCounter(String(setsCompleted))

@@ -15,15 +15,16 @@ class WorkoutContainerViewController: UIViewController, ExerciseFinishedDelegate
     var exercises: [PFObject] = []
     let iphoneWidth = 320
     
-    var workingOutViewController: PatientWorkingOutViewController? {
+    var workingOutNavController: UINavigationController? {
         didSet {
-            workingOutViewController!.exercise = exercises[exerciseIndex]
-            workingOutViewController!.view.frame = currentExerciseView.bounds
+            var workingOutViewController = workingOutNavController?.topViewController as! PatientWorkingOutViewController
+            workingOutViewController.exercise = exercises[exerciseIndex]
+            workingOutNavController!.view.frame = currentExerciseView.bounds
             
             
             //Set fields
-            workingOutViewController!.delegate = self
-            workingOutViewController!.partOfFullWorkout = true
+            workingOutViewController.delegate = self
+            workingOutViewController.partOfFullWorkout = true
             
             //Remove all current subviews
             for subview in currentExerciseView.subviews {
@@ -32,7 +33,7 @@ class WorkoutContainerViewController: UIViewController, ExerciseFinishedDelegate
             
             //Place off screen initially
             currentExerciseView.frame.origin = CGPoint(x: CGFloat(iphoneWidth), y: 0)
-            currentExerciseView.addSubview(workingOutViewController!.view)
+            currentExerciseView.addSubview(workingOutNavController!.view)
             
             animateTransition(currentExerciseView)
             exerciseIndex++
@@ -41,19 +42,16 @@ class WorkoutContainerViewController: UIViewController, ExerciseFinishedDelegate
     }
 
     func animateTransition(view: UIView) {
-        UIView.animateWithDuration(1.1, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1.0, options: nil, animations: { () -> Void in
-            
+        UIView.animateWithDuration(0.6, animations: { () -> Void in
             view.frame.origin = CGPoint(x: 0, y: 0)
-            
-            }) { (finished: Bool) -> Void in
-            println("done")
+        }) { (finished) -> Void in
+            //Do something
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        workingOutViewController = storyboard!.instantiateViewControllerWithIdentifier("WorkoutViewController") as?PatientWorkingOutViewController
+        setNewExerciseView()
         
         // Do any additional setup after loading the view.
     }
@@ -61,7 +59,7 @@ class WorkoutContainerViewController: UIViewController, ExerciseFinishedDelegate
     //Delegate method - called when an exercise finishes
     func exerciseFinished() {
         if exercises.count == exerciseIndex {
-            performSegueWithIdentifier("BackToExerciseList", sender: self)
+            dismissViewControllerAnimated(true, completion: nil)
             return
         }
         
@@ -69,7 +67,7 @@ class WorkoutContainerViewController: UIViewController, ExerciseFinishedDelegate
     }
     
     func setNewExerciseView() {
-        workingOutViewController = storyboard!.instantiateViewControllerWithIdentifier("WorkoutViewController") as?PatientWorkingOutViewController
+        workingOutNavController = storyboard!.instantiateViewControllerWithIdentifier("WorkoutViewNav") as? UINavigationController
     }
 
     override func didReceiveMemoryWarning() {

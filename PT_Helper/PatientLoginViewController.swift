@@ -9,10 +9,9 @@
 import UIKit
 
 class PatientLoginViewController: UIViewController, UITextFieldDelegate {
-
-    let transitionManager = SlideTransitionDelegate()
     @IBOutlet var passwordField: UITextField!
     @IBOutlet var emailField: UITextField!
+    var userExercises: [PFObject] = []
   
   @IBAction func onTap(sender: UITapGestureRecognizer) {
     view.endEditing(true)
@@ -36,15 +35,34 @@ class PatientLoginViewController: UIViewController, UITextFieldDelegate {
           
           
           if (Util.currentPhysician() != nil) {
-        self.performSegueWithIdentifier("physicianLoginSegue", sender: self)
+            self.performSegueWithIdentifier("physicianLoginSegue", sender: self)
           } else {
-            self.performSegueWithIdentifier("ToPatientExercises", sender: self)
+            self.performPatientSegue()
           }
         } else {
           self.displayError(error!)
         }
       }
       
+    }
+    
+    //Gets user exercise data from parse, then logs in
+    func performPatientSegue() {
+        var exerciseQuery = PFQuery(className: "Exercise")
+        if let curPatient = Util.currentPatient() {
+            exerciseQuery.whereKey("patients", equalTo: curPatient)
+            exerciseQuery.includeKey("patients")
+            exerciseQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
+                
+                if (error == nil) {
+                    println("Got Exercises Sucessfully")
+                    self.userExercises = result as! [PFObject]
+                    self.performSegueWithIdentifier("ToStoryboardSegue", sender: self)
+                } else {
+                    println(error?.description)
+                }
+            })
+        }
     }
   
   func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -71,12 +89,11 @@ class PatientLoginViewController: UIViewController, UITextFieldDelegate {
                 finishSignupVC.password = passwordField.text
             }
             
-            if id == "ToPatientExercises" {
-                println("custom transition")
-                var patientExercisesNav = segue.destinationViewController as! UINavigationController
-                var patientExercisesVC = patientExercisesNav.visibleViewController as! PatientExercisesViewController
-                patientExercisesNav.modalPresentationStyle = .Custom
-                patientExercisesNav.transitioningDelegate = self.transitionManager
+            if id == "ToStoryboardSegue" {
+                var patientTabBar = segue.destinationViewController as! UITabBarController
+                var patientViewNav = patientTabBar.viewControllers![0] as! UINavigationController
+                var patientViewVC = patientViewNav.topViewController as! PatientHomeViewController
+                patientViewVC.exercises = userExercises
             }
         }
     }

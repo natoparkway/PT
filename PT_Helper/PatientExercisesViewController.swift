@@ -19,21 +19,7 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
         tableView.delegate = self
         tableView.dataSource = self
       
-        var exerciseQuery = PFQuery(className: "Exercise")
-        if let curPatient = Util.currentPatient() {
-            exerciseQuery.whereKey("patients", equalTo: curPatient)
-            exerciseQuery.includeKey("patients")
-            exerciseQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
-        
-            if (error == nil) {
-                println("Got Exercises Sucessfully")
-                self.exercises = result as! [PFObject]
-                self.tableView.reloadData()
-            } else {
-                println(error?.description)
-            }
-          })
-        }
+
       
 
         // Do any additional setup after loading the view.

@@ -19,7 +19,6 @@ protocol ExerciseFinishedDelegate {
 
 class PatientWorkingOutViewController: UIViewController {
 
-    @IBOutlet weak var exerciseNameLabel: UILabel!
     
     @IBOutlet weak var videoImageView: UIImageView!
     var exercise: PFObject!
@@ -40,23 +39,45 @@ class PatientWorkingOutViewController: UIViewController {
     let timerWidth: CGFloat = 10.0
     var setsCompleted: Int = 0
     var timerIsRunning = false
-    let timerColor: UIColor = UIColor.greenColor()
-    let congratsSegue = "ToCongratulationsView"
+    var timerColor: UIColor = UIColor.greenColor()  //Default color
     
     var delegate: ExerciseFinishedDelegate?
     
-
-    @IBOutlet weak var sceneButton: UIButton!
     @IBOutlet weak var timerView: KAProgressLabel!
     @IBOutlet weak var setsCompletedView: CircleWithTextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        exerciseNameLabel.text = exercise["name"] as? String
+        allowWrapAroundForLabels()
+        navigationItem.title = exercise["name"] as? String
         isDuration = exercise["isDuration"] as! Bool
-//        isDuration = false //Uncomment this for debugging faster so you don't have to wait for timer
         setsToComplete = (exercise["numSets"] as! NSString).integerValue
         
+        addSetCounter() //Either sets up timer or adds rep counter
+        
+        if(exercise["video"] != nil){
+            setUpVideo()
+        } else {
+           removeVideoAndDisplayDescription()
+        }
+        
+        updateSetsCompleted()
+    }
+    
+    
+    /*
+    * Allows labels to wrap around by setting preferred max width.
+    */
+    func allowWrapAroundForLabels() {
+//        exerciseDescriptionLabel.preferredMaxLayoutWidth = exerciseDescriptionLabel.frame.width
+    }
+    
+    /*
+     * Adds relevant exercise counter to the middle of the screen. 
+     * If the exercise is duration based, adds a timer.
+     * If the exercise is repetition based, it adds a counter and changes the bottom button.
+     */
+    func addSetCounter() {
         if isDuration {
             duration = (exercise["duration"] as! NSString).doubleValue
             setUpTimer()
@@ -64,26 +85,32 @@ class PatientWorkingOutViewController: UIViewController {
             numReps = (exercise["numRepetitions"] as! NSString).integerValue
             setUpRepsView()
         }
-        if(exercise["video"] != nil){
-            var videoFile = exercise["video"] as! PFFile
-            
-            
-            let videoURL = NSURL(string: videoFile.url!)!
-            
-            var player = AVPlayer(URL: videoURL)
-            let playerController = AVPlayerViewController()
-            playerController.player = player
-            self.addChildViewController(playerController)
-            self.view.addSubview(playerController.view)
-            playerController.view.frame = videoImageView.frame
-            player.play()
-        }
-        else{
-           let index = arc4random_uniform(UInt32(workoutImages.count))
-            videoImageView.image = UIImage(named: workoutImages[Int(index)])
-            videoImageView.contentMode = UIViewContentMode.ScaleAspectFit
-        }
-        updateSetsCompleted()
+    }
+    
+    
+    /*
+     * Removes the UIImageView containing the video and instead displays the exercise description.
+     */
+    func removeVideoAndDisplayDescription() {
+        let index = arc4random_uniform(UInt32(workoutImages.count))
+        videoImageView.image = UIImage(named: workoutImages[Int(index)])
+        videoImageView.contentMode = UIViewContentMode.ScaleAspectFit
+    }
+    
+    /*
+     * Displays exercise video on screen.
+     */
+    func setUpVideo() {
+        var videoFile = exercise["video"] as! PFFile
+        let videoURL = NSURL(string: videoFile.url!)!
+        
+        var player = AVPlayer(URL: videoURL)
+        let playerController = AVPlayerViewController()
+        playerController.player = player
+        playerController.view.frame = videoImageView.bounds
+        playerController.player.play()
+        videoImageView.addSubview(playerController.view)
+        
     }
     
     //Adds a view that displays the number of reps completed. Also removes timerView
@@ -98,14 +125,17 @@ class PatientWorkingOutViewController: UIViewController {
         var repsCircleView = CircleWithTextView(frame: frame)
         repsCircleView.updateCounter((exercise["numRepetitions"] as! String).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
         repsCircleView.setFont(UIFont.boldSystemFontOfSize(36.0))
-        view.addSubview(repsCircleView)
         
-        //Change button text
-        sceneButton.setTitle("Finished Set", forState: nil)
+        //Add gesture recognizer
+        var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "counterTapped:")
+        repsCircleView.addGestureRecognizer(tapGestureRecognizer)
+        
+        //Add subview
+        view.addSubview(repsCircleView)
     }
     
-    //Start button clicked
-    @IBAction func startButtonClicked(sender: AnyObject) {
+
+    @IBAction func counterTapped(sender: AnyObject) {
         if isDuration && !timerIsRunning {
             startTimer()
         } else if !isDuration {
@@ -138,7 +168,11 @@ class PatientWorkingOutViewController: UIViewController {
     
     //Specifies the physical attributes of the timer
     func setUpTimer() {
+        if let color = timerView.backgroundColor {
+            timerColor = color
+        }
         timerView.fillColor = UIColor.clearColor()
+        timerView.backgroundColor = UIColor.clearColor()
         timerView.trackColor = UIColor.clearColor()
         timerView.progressColor = timerColor
         timerView.progress = CGFloat(1.0)
@@ -173,7 +207,7 @@ class PatientWorkingOutViewController: UIViewController {
             if partOfFullWorkout {
                 delegate?.exerciseFinished()
             } else {
-               performSegueWithIdentifier("ToCongratulationsView", sender: self)
+                performSegueWithIdentifier("ToCongratulationsView", sender: self)
             }
         }
     }
@@ -193,19 +227,7 @@ class PatientWorkingOutViewController: UIViewController {
         // Pass the selected object to the new view controller.
         
         if let id = segue.identifier {
-            if id == congratsSegue {
-                var congratsVC = segue.destinationViewController as! PatientCongratulationsViewController
-                congratsVC.setsCompleted = setsCompleted
-                congratsVC.isDuration = isDuration
-                congratsVC.exerciseName = exercise["name"] as! String
-                
-                if isDuration {
-                    congratsVC.repsOrSecondsDone = Int(duration!)
-                } else {
-                    congratsVC.repsOrSecondsDone = numReps
-                }
-                
-            }
+
         }
     }
     
