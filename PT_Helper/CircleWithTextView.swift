@@ -33,7 +33,7 @@ class CircleWithTextView: UIView {
         if let bgColor = backgroundColor {
             color = backgroundColor
         } else {
-            color = UIColor(red: 222/255, green: 64/255, blue: 50/255, alpha: 1.0)    //Default color when programatically instantiated
+            color = UIColor(red: 115/255, green: 255/255, blue: 171/255, alpha: 1.0)    //Default color when programatically instantiated
         }
         
         addNib()

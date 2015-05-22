@@ -27,6 +27,7 @@ class PatientWorkingOutViewController: UIViewController {
     var duration: Double?
     var isDuration: Bool = true
     var setsToComplete: Int!
+    var font = UIFont.boldSystemFontOfSize(24.0)
     
     //constant representing number of random images to cycle through
     let workoutImages = ["gym1", "gym2", "gym3", "gym4"]
@@ -44,6 +45,7 @@ class PatientWorkingOutViewController: UIViewController {
     var delegate: ExerciseFinishedDelegate?
     
     @IBOutlet weak var timerView: KAProgressLabel!
+    var repsCircleView: CircleWithTextView!
     @IBOutlet weak var setsCompletedView: CircleWithTextView!
     
     override func viewDidLoad() {
@@ -122,9 +124,10 @@ class PatientWorkingOutViewController: UIViewController {
         timerView.removeFromSuperview() //Remove timer
         
         //Add reps counter
-        var repsCircleView = CircleWithTextView(frame: frame)
+        repsCircleView = CircleWithTextView(frame: frame)
         repsCircleView.updateCounter((exercise["numRepetitions"] as! String).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
-        repsCircleView.setFont(UIFont.boldSystemFontOfSize(36.0))
+        repsCircleView.setFont(font)
+        repsCircleView.circularView.layer.borderWidth = timerWidth
         
         //Add gesture recognizer
         var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "counterTapped:")
@@ -133,26 +136,52 @@ class PatientWorkingOutViewController: UIViewController {
         //Add subview
         view.addSubview(repsCircleView)
     }
-    
 
     @IBAction func counterTapped(sender: AnyObject) {
-        if isDuration && !timerIsRunning {
-            startTimer()
+        if isDuration {
+            
+            if !timerIsRunning {
+                startTimer()
+            } else {
+                stopTimer()
+            }
+            
         } else if !isDuration {
             setsCompleted++
+            animateRepsView()
             ifDonePerformSegue()
             updateSetsCompleted()
         }
     }
     
+    //Stops the timer, but does not reset the timing values.
+    func stopTimer() {
+        //animateTimer(true)
+        timerIsRunning = false
+        timer.invalidate()
+    }
+    
     //Sets up and starts the timer
     func startTimer() {
+        //animateTimer(false)
         //Resets progress view and timer
-        resetStats()
         timerIsRunning = true
         
         //Schedules a timer that updates every 0.1 seconds
         timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
+    }
+    
+    func animateRepsView() {
+        var scale: CGFloat = 1.1
+
+        UIView.animateWithDuration(0.2, animations: { () -> Void in
+            self.repsCircleView.transform = CGAffineTransformScale(self.repsCircleView.transform, scale, scale)
+            }) { (finished) -> Void in
+                UIView.animateWithDuration(0.2, animations: { () -> Void in
+                    self.repsCircleView.transform = CGAffineTransformScale(self.repsCircleView.transform, 1 / scale, 1 / scale)
+                })
+        }
+        
     }
     
     //Resets the necessary properties for the timerView and elapsed time
@@ -179,7 +208,8 @@ class PatientWorkingOutViewController: UIViewController {
         timerView.trackWidth = timerWidth
         timerView.progressWidth = timerWidth
         timerView.roundedCornersWidth = timerWidth
-        timerView.text = "Ready?"
+        timerView.text = String(format:"%.1f", duration!)
+        timerView.font = font
     }
     
     //Called whenever the timer "ticks"
@@ -196,6 +226,7 @@ class PatientWorkingOutViewController: UIViewController {
             setsCompleted++
             updateSetsCompleted()   //Updates GUI
             timerIsRunning = false
+            resetStats()
             ifDonePerformSegue()
         }
     }
@@ -207,7 +238,7 @@ class PatientWorkingOutViewController: UIViewController {
             if partOfFullWorkout {
                 delegate?.exerciseFinished()
             } else {
-                performSegueWithIdentifier("ToCongratulationsView", sender: self)
+                //Dismiss or something
             }
         }
     }

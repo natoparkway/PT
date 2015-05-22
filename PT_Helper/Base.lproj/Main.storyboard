@@ -747,7 +747,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="288"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="liT-8S-cSH">
-                                        <rect key="frame" x="0.0" y="54" width="320" height="288"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="288"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.36736764789999998" blue="0.27057844219999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -770,7 +770,7 @@
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K7f-nz-Dpl" customClass="KAProgressLabel">
                                 <rect key="frame" x="105" y="408" width="111" height="111"/>
-                                <color key="backgroundColor" red="0.44943200347048495" green="1" blue="0.67078193100901473" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.45098039215686275" green="1" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="zls-uO-cFS" appends="YES" id="jqX-uO-AJY"/>
