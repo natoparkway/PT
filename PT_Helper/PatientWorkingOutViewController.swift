@@ -109,9 +109,11 @@ class PatientWorkingOutViewController: UIViewController {
         var player = AVPlayer(URL: videoURL)
         let playerController = AVPlayerViewController()
         playerController.player = player
-        playerController.view.frame = videoImageView.bounds
+        self.addChildViewController(playerController)
+        self.view.addSubview(playerController.view)
+        playerController.view.frame = CGRect(x: videoImageView.frame.origin.x, y: videoImageView.frame.origin.y + 64, width: videoImageView.frame.width, height: videoImageView.frame.height)
+        
         playerController.player.play()
-        videoImageView.addSubview(playerController.view)
         
     }
     
