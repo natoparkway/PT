@@ -24,4 +24,18 @@ class Util {
     }
     return nil
   }
+  
+  class func getNameFromExercise(exercise: PFObject)->String
+  {
+    let template = exercise["template"] as! PFObject
+    template.fetch()
+    return template["name"] as! String
+  }
+  
+  class func getVideoFromExercise(exercise: PFObject)->PFFile?
+  {
+    let template = exercise["template"] as! PFObject
+    template.fetch()
+    return template["video"] as? PFFile
+  }
 }

@@ -52,7 +52,7 @@ class PatientWorkingOutViewController: UIViewController {
         super.viewDidLoad()
         allowWrapAroundForLabels()
       
-        navigationItem.title = exercise["name"] as? String
+        navigationItem.title = Util.getNameFromExercise(exercise) 
         setsToComplete = exercise["sets"] as! Int
         
         addSetCounter() //Either sets up timer or adds rep counter
@@ -62,8 +62,9 @@ class PatientWorkingOutViewController: UIViewController {
       } else {
         isDuration = isDurationBoolean!
       }
-        if(exercise["video"] != nil){
-            setUpVideo()
+      var videoFile = Util.getVideoFromExercise(exercise)
+        if(videoFile != nil){
+            setUpVideo(videoFile!)
         } else {
            removeVideoAndDisplayDescription()
         }
@@ -102,8 +103,7 @@ class PatientWorkingOutViewController: UIViewController {
     /*
      * Displays exercise video on screen.
      */
-    func setUpVideo() {
-        var videoFile = exercise["video"] as! PFFile
+  func setUpVideo(videoFile: PFFile) {
         let videoURL = NSURL(string: videoFile.url!)!
         
         var player = AVPlayer(URL: videoURL)

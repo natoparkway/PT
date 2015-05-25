@@ -20,60 +20,19 @@ class CreateNewExerciseViewController: UIViewController, UIImagePickerController
     var moviePlayer: MPMoviePlayerController!
     var PFVideoFile: PFFile!
     var videoURL: String!
-    
-//    var patientHash = [String:String]()
-//  var patients:[PFObject] = []
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-//        patientNameField.isOptionalDropDown = false
-//        let patientQuery = PFQuery(className: "Patient")
-//        if let curPhysician = Util.currentPhysician() {
-//          patientQuery.whereKey("physician", equalTo: curPhysician)
-//          patientQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
-//            if (error == nil) {
-//              self.patients = result as! [PFObject]
-//              var patientNames:[String] = []
-//            
-//              for p in self.patients {
-//                let first = p["first_name"] as! String
-//                let last = p["last_name"] as! String
-//                patientNames.append(first + " " + last)
-//                self.patientHash[first + " " + last] = p.objectId!
-//              }
-//              self.patientNameField.itemList = patientNames
-//            } else {
-//              println(error?.description)
-//            }
-//          })
-//        }
-        // Do any additional setup after loading the view.
     }
     
   @IBAction func saveExercise(sender: AnyObject) {
     var exerciseTemplate = PFObject(className: "ExerciseTemplate")
     exerciseTemplate["name"] = exerciseNameField.text
-    // TODO: Figure out how to not hardcode this
     exerciseTemplate["physician"] = Util.currentPhysician()
     if (PFVideoFile != nil) {
       exerciseTemplate["video"] = PFVideoFile
     }
     exerciseTemplate.save()
-//    var patient = PFObject(className: "Patient")
-//    let patientQuery = PFQuery(className: "Patient")
-//    var fullName = patientNameField.text
-//    var fullNameArr = split(fullName) {$0 == " "}
-//    var firstName: String = fullNameArr[0]
-//    var lastName: String = fullNameArr[1]
-//    patientQuery.whereKey("objectId", equalTo: patientHash[firstName + " " + lastName]!)
-//    patientQuery.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error: NSError?) -> Void in
-//      if (error == nil) {
-//        var patient = result![0] as! PFObject
-//        exercise.addObject(patient, forKey: "patients")
-//        exercise.save()
-//      } else {
-//        self.displayMessage("Patient not found", title: "Alert")
-//      }
-//    }
     navigationController?.popToRootViewControllerAnimated(true)
   }
   
