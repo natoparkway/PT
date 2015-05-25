@@ -54,7 +54,9 @@ class CreateNewExerciseViewController: UIViewController, UIImagePickerController
     exerciseTemplate["name"] = exerciseNameField.text
     // TODO: Figure out how to not hardcode this
     exerciseTemplate["physician"] = Util.currentPhysician()
-    exerciseTemplate["video"] = PFVideoFile
+    if (PFVideoFile != nil) {
+      exerciseTemplate["video"] = PFVideoFile
+    }
     exerciseTemplate.save()
 //    var patient = PFObject(className: "Patient")
 //    let patientQuery = PFQuery(className: "Patient")

@@ -47,7 +47,9 @@ class NewExerciseViewController: UIViewController, IQDropDownTextFieldDelegate {
   
   @IBAction func saveExercise(sender: AnyObject) {
     var exercise = PFObject(className: "Exercise")
-    exercise["template"] = exerciseTemplate
+    var templateName = templateDropdown.text
+    var exerciseTemplate = exerciseTemplatesMap[templateName]!
+    exercise.setObject(exerciseTemplate, forKey: "template")
     exercise["repetitions"] = numRepsLabel.text!.toInt()
     exercise["sets"] = numSetsLabel.text!.toInt()
     exercise["degrees"] = numDegreesLabel.text!.toInt()
@@ -63,8 +65,7 @@ class NewExerciseViewController: UIViewController, IQDropDownTextFieldDelegate {
   }
   
   func textFieldDidEndEditing(textField: UITextField) {
-    var templateName = templateDropdown.text
-    exerciseTemplate = exerciseTemplatesMap[templateName]!
+    
     
     // TODO: Display video here...
   }

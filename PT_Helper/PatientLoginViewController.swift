@@ -50,13 +50,13 @@ class PatientLoginViewController: UIViewController, UITextFieldDelegate {
     func performPatientSegue() {
         var exerciseQuery = PFQuery(className: "Exercise")
         if let curPatient = Util.currentPatient() {
-            exerciseQuery.whereKey("patients", equalTo: curPatient)
-            exerciseQuery.includeKey("patients")
+            exerciseQuery.whereKey("patient", equalTo: curPatient)
             exerciseQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
                 
                 if (error == nil) {
                     println("Got Exercises Sucessfully")
                     self.userExercises = result as! [PFObject]
+                    println(self.userExercises)
                     self.performSegueWithIdentifier("ToStoryboardSegue", sender: self)
                 } else {
                     println(error?.description)

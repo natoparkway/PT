@@ -51,12 +51,17 @@ class PatientWorkingOutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         allowWrapAroundForLabels()
+      
         navigationItem.title = exercise["name"] as? String
-        isDuration = exercise["isDuration"] as! Bool
-        setsToComplete = (exercise["numSets"] as! NSString).integerValue
+        setsToComplete = exercise["sets"] as! Int
         
         addSetCounter() //Either sets up timer or adds rep counter
-        
+        var isDurationBoolean = exercise["isDuration"] as? Bool
+      if (isDurationBoolean == nil) {
+        isDuration = false
+      } else {
+        isDuration = isDurationBoolean!
+      }
         if(exercise["video"] != nil){
             setUpVideo()
         } else {
@@ -80,13 +85,8 @@ class PatientWorkingOutViewController: UIViewController {
      * If the exercise is repetition based, it adds a counter and changes the bottom button.
      */
     func addSetCounter() {
-        if isDuration {
-            duration = (exercise["duration"] as! NSString).doubleValue
-            setUpTimer()
-        } else {
-            numReps = (exercise["numRepetitions"] as! NSString).integerValue
-            setUpRepsView()
-        }
+      numReps = exercise["repetitions"] as! Int
+      setUpRepsView()
     }
     
     
@@ -127,7 +127,8 @@ class PatientWorkingOutViewController: UIViewController {
         
         //Add reps counter
         repsCircleView = CircleWithTextView(frame: frame)
-        repsCircleView.updateCounter((exercise["numRepetitions"] as! String).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
+        let numReps = exercise["repetitions"] as! Int
+        repsCircleView.updateCounter("\(numReps)".stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
         repsCircleView.setFont(font)
         repsCircleView.circularView.layer.borderWidth = timerWidth
         

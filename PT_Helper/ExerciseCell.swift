@@ -11,9 +11,9 @@ import UIKit
 class ExerciseCell: UITableViewCell {
 
     @IBOutlet weak var exerciseNameLabel: UILabel!
-    @IBOutlet weak var repetitionsLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var daysPerWeekLabel: UILabel!
+    @IBOutlet weak var numRepsLabel: UILabel!
+    @IBOutlet weak var numSetsLabel: UILabel!
+    @IBOutlet weak var numDegreesLabel: UILabel!
     @IBOutlet weak var daysPerWeekView: CircleWithTextView!
     @IBOutlet weak var repetitionsView: CircleWithTextView!
     @IBOutlet weak var setsOrTimeView: CircleWithTextView!
@@ -26,15 +26,23 @@ class ExerciseCell: UITableViewCell {
      * Updates contents of ExerciseCell. Sets exercise global variable and sets cell contents and gui accordingly.
      */
     func setup(e: PFObject) {
-        let name = e["name"] as! String
-        let daysPerWeek = e["timesPerWeek"] as! String
-        let numReps = e["numRepetitions"] as! String
-        let duration = e["duration"] as! String
-        
+        var template = PFObject(className: "ExerciseTemplate")
+        template = e["template"] as! PFObject
+        let name = template["name"] as! String
+        let numDegrees = e["degrees"] as! Int
+        numDegreesLabel.text = "\(numDegrees)"
+      
+        let numReps = e["repetitions"] as! Int
+        numRepsLabel.text = "\(numReps)"
+      
+      
+        let numSets = e["sets"] as! Int
+        numSetsLabel.text = "\(numSets)"
+      
         //We need to remove white space as well
-        daysPerWeekView.updateCounter(daysPerWeek.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
-        repetitionsView.updateCounter(numReps.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
-        setsOrTimeView.updateCounter(duration.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
+//        daysPerWeekView.updateCounter(daysPerWeek.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
+//        repetitionsView.updateCounter(numReps.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
+//        setsOrTimeView.updateCounter(duration.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
         exerciseNameLabel.text = name
     }
 

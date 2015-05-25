@@ -45,8 +45,13 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    var cell = tableView.dequeueReusableCellWithIdentifier("ExerciseCell") as! ExerciseCell
-    cell.setup(exercises[indexPath.row])
+    var cell = tableView.dequeueReusableCellWithIdentifier("ExerciseTemplateCell") as! ExerciseTemplateCell
+    var exercise = exercises[indexPath.row]
+    let template = exercise["template"] as! PFObject
+    template.fetch()
+    println(template)
+    println(template["name"])
+    cell.nameLabel.text = template["name"] as? String
     return cell
   }
     
