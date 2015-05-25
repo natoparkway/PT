@@ -62,15 +62,24 @@ class ProviderPatientsViewController: UIViewController, UITableViewDelegate, UIT
     cell.setup(patients[indexPath.row])
     return cell
   }
+  
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    performSegueWithIdentifier("manageExerciseSegue", sender: indexPath)
+  }
 
     /*
     // MARK: - Navigation
-
+    */
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+      if (segue.identifier == "manageExerciseSegue") {
+        var vc = segue.destinationViewController as! ProviderManagePatientExercises
+        var indexPath = sender as! NSIndexPath
+        vc.patient = patients[indexPath.row]
+      }
+      
+      
     }
-    */
+  
 
 }

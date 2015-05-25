@@ -8,28 +8,59 @@
 
 import UIKit
 
-class ProviderManagePatientExercises: UIViewController {
+class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+  @IBOutlet var tableView: UITableView!
+  var exercises: [PFObject] = []
+  var refreshControl = UIRefreshControl()
+  var patient: PFObject = PFObject(className: "Patient")
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        onRefresh()
+      refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+      tableView.insertSubview(refreshControl, atIndex: 0)
+      tableView.delegate = self
+      tableView.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+  
+  func onRefresh() {
+    let query = PFQuery(className: "Exercise")
+    query.whereKey("patient", equalTo: patient)
+    query.findObjectsInBackgroundWithBlock { (result: [AnyObject]?, error: NSError?) -> Void in
+      if (error == nil) {
+        self.exercises = result as! [PFObject]
+        self.tableView.reloadData()
+      }
+      self.refreshControl.endRefreshing()
+    }
+  }
+  
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return exercises.count
+  }
+  
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    var cell = tableView.dequeueReusableCellWithIdentifier("ExerciseCell") as! ExerciseCell
+    cell.setup(exercises[indexPath.row])
+    return cell
+  }
     
 
     /*
     // MARK: - Navigation
-
+    */
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+      if (segue.identifier == "newExerciseSegue") {
+        var vc = segue.destinationViewController as! NewExerciseViewController
+        vc.patient = patient
+      }
     }
-    */
+  
 
 }

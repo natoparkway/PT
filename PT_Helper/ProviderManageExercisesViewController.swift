@@ -31,7 +31,7 @@ class ProviderManageExercisesViewController: UIViewController, UITableViewDelega
     }
   
   func onRefresh() {
-    var exerciseQuery = PFQuery(className: "Exercise")
+    var exerciseQuery = PFQuery(className: "ExerciseTemplate")
     if let curPhysician = Util.currentPhysician() {
       exerciseQuery.whereKey("physician", equalTo: curPhysician)
       exerciseQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
@@ -49,13 +49,14 @@ class ProviderManageExercisesViewController: UIViewController, UITableViewDelega
   
     //TABLE VIEW DELEGATE METHODS
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100;
+        return 60;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("ExerciseCell") as! ExerciseCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("ExerciseTemplateCell") as! ExerciseTemplateCell
         cell.selectionStyle = .None    //Prevents highlighting
-        cell.setup(exercises[indexPath.row])
+        var et = exercises[indexPath.row] as! PFObject
+        cell.nameLabel.text = et["name"] as! String
         return cell
     }
     
