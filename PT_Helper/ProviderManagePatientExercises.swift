@@ -50,6 +50,10 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
     cell.nameLabel.text = Util.getNameFromExercise(exercise)
     return cell
   }
+  
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    performSegueWithIdentifier("editExerciseSegue", sender: indexPath)
+  }
     
 
     /*
@@ -60,6 +64,13 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
       if (segue.identifier == "newExerciseSegue") {
         var vc = segue.destinationViewController as! NewExerciseViewController
         vc.patient = patient
+      }
+      
+      if (segue.identifier == "editExerciseSegue") {
+        var indexPath = sender as! NSIndexPath
+        
+        var vc = segue.destinationViewController as! EditExerciseViewController
+        vc.exercise = exercises[indexPath.row]
       }
     }
   

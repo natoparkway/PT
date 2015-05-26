@@ -52,7 +52,7 @@ class PatientWorkingOutViewController: UIViewController {
         super.viewDidLoad()
         allowWrapAroundForLabels()
       
-        navigationItem.title = Util.getNameFromExercise(exercise) 
+        navigationItem.title = Util.getNameFromExercise(exercise)
         setsToComplete = exercise["sets"] as! Int
         
         addSetCounter() //Either sets up timer or adds rep counter
