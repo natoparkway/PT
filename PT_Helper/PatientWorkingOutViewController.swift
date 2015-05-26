@@ -20,6 +20,7 @@ protocol ExerciseFinishedDelegate {
 class PatientWorkingOutViewController: UIViewController {
 
     
+    @IBOutlet weak var exerciseDescription: UILabel!
     @IBOutlet weak var videoImageView: UIImageView!
     var exercise: PFObject!
     var elapsedTime: Double = 0.0
@@ -28,6 +29,10 @@ class PatientWorkingOutViewController: UIViewController {
     var isDuration: Bool = true
     var setsToComplete: Int!
     var font = UIFont.boldSystemFontOfSize(24.0)
+    var videoCentered = true
+    let videoOffScreenPos: CGFloat = 40 //Minimum amount of the video showing in the screen
+    let minimumDistToSnap: CGFloat = 120 //Minimum distance the screen has to be moved before we snap it
+    var videoView: UIView!
     
     //constant representing number of random images to cycle through
     let workoutImages = ["gym1", "gym2", "gym3", "gym4"]
@@ -50,25 +55,23 @@ class PatientWorkingOutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        videoView = videoImageView
         allowWrapAroundForLabels()
       
+        exerciseDescription.text = exercise["description"] as? String
         navigationItem.title = Util.getNameFromExercise(exercise) 
         setsToComplete = exercise["sets"] as! Int
         
+        isDuration = exercise["isDuration"] as! Bool
         addSetCounter() //Either sets up timer or adds rep counter
-        var isDurationBoolean = exercise["isDuration"] as? Bool
-      if (isDurationBoolean == nil) {
-        isDuration = false
-      } else {
-        isDuration = isDurationBoolean!
-      }
-      var videoFile = Util.getVideoFromExercise(exercise)
+            
+        var videoFile = Util.getVideoFromExercise(exercise)
         if(videoFile != nil){
             setUpVideo(videoFile!)
         } else {
-           removeVideoAndDisplayDescription()
+            removeVideoAndDisplayDescription()
         }
-        
+            
         updateSetsCompleted()
     }
     
@@ -77,7 +80,7 @@ class PatientWorkingOutViewController: UIViewController {
     * Allows labels to wrap around by setting preferred max width.
     */
     func allowWrapAroundForLabels() {
-//        exerciseDescriptionLabel.preferredMaxLayoutWidth = exerciseDescriptionLabel.frame.width
+        exerciseDescription.preferredMaxLayoutWidth = exerciseDescription.frame.width
     }
     
     /*
@@ -86,8 +89,13 @@ class PatientWorkingOutViewController: UIViewController {
      * If the exercise is repetition based, it adds a counter and changes the bottom button.
      */
     func addSetCounter() {
-      numReps = exercise["repetitions"] as! Int
-      setUpRepsView()
+        if isDuration {
+            duration = exercise["duration"] as? Double
+            setUpTimer()
+        } else {
+            numReps = exercise["repetitions"] as? Int
+            setUpRepsView()
+        }
     }
     
     
@@ -98,6 +106,7 @@ class PatientWorkingOutViewController: UIViewController {
         let index = arc4random_uniform(UInt32(workoutImages.count))
         videoImageView.image = UIImage(named: workoutImages[Int(index)])
         videoImageView.contentMode = UIViewContentMode.ScaleAspectFit
+        addPanGestureRecognizer(videoImageView)
     }
     
     /*
@@ -112,9 +121,69 @@ class PatientWorkingOutViewController: UIViewController {
         self.addChildViewController(playerController)
         self.view.addSubview(playerController.view)
         playerController.view.frame = CGRect(x: videoImageView.frame.origin.x, y: videoImageView.frame.origin.y + 64, width: videoImageView.frame.width, height: videoImageView.frame.height)
+    
+        addPanGestureRecognizer(playerController.view)
+    }
+    
+    func addPanGestureRecognizer(view: UIView) {
+        var panGesture = UIPanGestureRecognizer(target: self, action: "videoPanned:")
+        videoView = view
+        view.addGestureRecognizer(panGesture)
+    }
+    
+    
+    func videoPanned(sender: UIPanGestureRecognizer) {
+        var velocity = sender.velocityInView(view)
+        var isMovingRight = velocity.x > 0
         
-        playerController.player.play()
+        if sender.state == UIGestureRecognizerState.Began {
+            
+        } else if sender.state == UIGestureRecognizerState.Changed {
+            animateImageView(isMovingRight, translation: sender.translationInView(view))
+            
+        } else if sender.state == UIGestureRecognizerState.Ended {
+            snapVideoViewToPosition(isMovingRight, translation: sender.translationInView(view))
+        }
         
+        sender.setTranslation(CGPointZero, inView: view)
+
+    }
+    
+    func snapVideoViewToPosition(isMovingRight: Bool, translation: CGPoint) {
+        var movedEnoughRight = self.videoView.frame.origin.x > minimumDistToSnap
+        var movedEnoughLeft = self.videoView.frame.origin.x < view.frame.width - minimumDistToSnap
+        
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
+            
+            if(isMovingRight && movedEnoughRight) {
+                self.videoView.center.x = self.view.frame.width - self.videoOffScreenPos + self.videoView.frame.width / 2
+            } else if(movedEnoughLeft) {
+                self.videoView.center.x = self.view.center.x
+            }
+            
+        }) { (finished) -> Void in
+            
+        }
+    }
+    
+    func animateImageView(isMovingRight: Bool, translation: CGPoint) {
+        var scale = CGFloat(1.0)
+        if shouldBeSlow(isMovingRight) {
+            scale = 0.1
+        }
+        
+        videoView.center.x += scale * translation.x
+
+    }
+    
+    func shouldBeSlow(isMovingRight: Bool) -> Bool {
+        //If we have moved off the left edge of the screen and are moving left
+        var condition1 = videoView.center.x < view.center.x && !isMovingRight
+        
+        //If we have reached the furthest point on screen we allow the video to go and are moving right
+        var condition2 = videoView.frame.origin.x > view.frame.width - videoOffScreenPos && isMovingRight
+        
+        return condition1 || condition2
     }
     
     //Adds a view that displays the number of reps completed. Also removes timerView
