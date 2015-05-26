@@ -64,28 +64,33 @@ class CreateNewExerciseViewController: UIViewController, UIImagePickerController
             videoURL = url.absoluteString!
             println("the url initially is \(url) and then the videoURL we are saving is \(videoURL)")
            var videoData = NSData(contentsOfURL: url)
-           let videoFile = PFFile(name: "ExerciseVideo.mov", data: videoData!)
-            PFVideoFile = videoFile
-            videoFile.save()
-            
-            dismissViewControllerAnimated(true, completion: nil)
-
-            
-            if( UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path)){
-                UISaveVideoAtPathToSavedPhotosAlbum(path, nil, nil, nil)
-            }
-            //var url = info[0]?.objectForKey(UIImagePickerControllerMediaURL) as! NSURL
+            if(videoData?.length <= 10485760){
+                let videoFile = PFFile(name: "ExerciseVideo.mov", data: videoData!)
+                PFVideoFile = videoFile
+                videoFile.save()
+                
+                dismissViewControllerAnimated(true, completion: nil)
+                
+                
+                if( UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path)){
+                    UISaveVideoAtPathToSavedPhotosAlbum(path, nil, nil, nil)
+                }
+                //var url = info[0]?.objectForKey(UIImagePickerControllerMediaURL) as! NSURL
                 //objectForKey(UIImagePickerControllerMediaURL) as NSURL
-            
-            moviePlayer = MPMoviePlayerController(contentURL: NSURL(string: videoURL!)!)
-            
-            moviePlayer.view.frame = profileImageView.frame
-            self.view.addSubview(moviePlayer.view)
-            moviePlayer.prepareToPlay()
-            moviePlayer.play()
-            
-            var PFMovieFile = PFFile()
-        
+                
+                moviePlayer = MPMoviePlayerController(contentURL: NSURL(string: videoURL!)!)
+                
+                moviePlayer.view.frame = profileImageView.frame
+                self.view.addSubview(moviePlayer.view)
+                moviePlayer.prepareToPlay()
+                moviePlayer.play()
+                
+                var PFMovieFile = PFFile()
+            }
+            else{
+                dismissViewControllerAnimated(true, completion: nil)
+                displayMessage("Please select a smaller video", title: "Video Too Large")
+            }
             
         }
     }

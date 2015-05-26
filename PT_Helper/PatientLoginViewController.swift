@@ -83,6 +83,7 @@ class PatientLoginViewController: UIViewController, UITextFieldDelegate {
     loginButtonClicked(textField)
     return true
   }
+    
   func displayError(error: NSError) {
     let errorString = error.userInfo?["error"] as? NSString
     var alert = UIAlertController(title: "Alert", message: errorString as! String, preferredStyle: UIAlertControllerStyle.Alert)
