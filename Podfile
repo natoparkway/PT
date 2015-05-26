@@ -8,3 +8,5 @@ pod "DACircularProgress"
 pod "Parse"
 pod "IQDropDownTextField"
 pod "KAProgressLabel"
+pod "M13ProgressSuite"
+pod 'YLProgressBar', '~> 3.5.2'
