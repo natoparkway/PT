@@ -41,13 +41,13 @@ class ProviderManageExercisesViewController: UIViewController, UITableViewDelega
     }
   }
   
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 60
-    }
+  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    return 60
+  }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("ExerciseTemplateCell") as! ExerciseTemplateCell
-        cell.selectionStyle = .None    //Prevents highlighting
+      cell.selectionStyle = .None    //Prevents highlighting
         var et = exercises[indexPath.row] as! PFObject
         cell.nameLabel.text = et["name"] as! String
         return cell

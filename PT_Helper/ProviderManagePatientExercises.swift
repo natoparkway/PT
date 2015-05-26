@@ -40,7 +40,7 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
     }
   }
   
-  func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     return 60
   }
   

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rhP-0q-b9D">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rhP-0q-b9D">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -27,13 +27,20 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ziG-YJ-Rmk" id="Zgt-pJ-zhZ">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Exercise Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k85-s3-1lg">
-                                                    <rect key="frame" x="15" y="19" width="115" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k85-s3-1lg">
+                                                    <rect key="frame" x="15" y="19" width="270" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="270" id="JTS-wm-ZxB"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="k85-s3-1lg" firstAttribute="leading" secondItem="Zgt-pJ-zhZ" secondAttribute="leading" constant="15" id="4x0-Qw-Itx"/>
+                                                <constraint firstAttribute="centerY" secondItem="k85-s3-1lg" secondAttribute="centerY" id="TDh-PQ-4xF"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameLabel" destination="k85-s3-1lg" id="Oae-sl-Mi0"/>
@@ -441,7 +448,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0sO-yt-7hb" secondAttribute="trailing" constant="12" id="GNE-Wh-A7l"/>
                                                 <constraint firstItem="0sO-yt-7hb" firstAttribute="leading" secondItem="Q2A-y6-eJQ" secondAttribute="leading" constant="15" id="ORI-rQ-Wch"/>
-                                                <constraint firstItem="0sO-yt-7hb" firstAttribute="top" secondItem="Q2A-y6-eJQ" secondAttribute="top" constant="19" id="Xah-dJ-3cM"/>
+                                                <constraint firstAttribute="centerY" secondItem="0sO-yt-7hb" secondAttribute="centerY" id="ouO-Wg-ihm"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1453,11 +1460,11 @@
             </objects>
             <point key="canvasLocation" x="691" y="1002"/>
         </scene>
-        <!--Item-->
+        <!--Patients-->
         <scene sceneID="Wu2-j6-p7j">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lFZ-f9-5V0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="JD4-Gl-7Bw"/>
+                    <tabBarItem key="tabBarItem" title="Patients" image="patient" selectedImage="patient" id="JD4-Gl-7Bw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pqg-pf-AZL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1472,11 +1479,11 @@
             </objects>
             <point key="canvasLocation" x="1300" y="1002"/>
         </scene>
-        <!--Item-->
+        <!--Exercises-->
         <scene sceneID="dBD-pa-hrc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j2i-m4-TvK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="j0x-nB-oYH"/>
+                    <tabBarItem key="tabBarItem" title="Exercises" image="exercise" id="j0x-nB-oYH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iia-jA-NV6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1566,6 +1573,8 @@
         <image name="Running_Man_Large" width="256" height="256"/>
         <image name="White_Arrow_left" width="24" height="24"/>
         <image name="down" width="561" height="508"/>
+        <image name="exercise" width="26" height="30"/>
+        <image name="patient" width="30" height="30"/>
         <image name="up" width="531" height="506"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
