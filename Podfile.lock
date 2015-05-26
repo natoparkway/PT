@@ -28,9 +28,11 @@ PODS:
   - DateTools (1.5.0)
   - IQDropDownTextField (1.0.5)
   - KAProgressLabel (3.2)
+  - M13ProgressSuite (1.2.7)
   - MBProgressHUD (0.9.1)
   - Parse (1.7.2.2):
     - Bolts/Tasks (>= 1.1.5)
+  - YLProgressBar (3.5.2)
 
 DEPENDENCIES:
   - AFNetworking
@@ -39,8 +41,10 @@ DEPENDENCIES:
   - DateTools
   - IQDropDownTextField
   - KAProgressLabel
+  - M13ProgressSuite
   - MBProgressHUD
   - Parse
+  - YLProgressBar (~> 3.5.2)
 
 SPEC CHECKSUMS:
   AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
@@ -50,7 +54,9 @@ SPEC CHECKSUMS:
   DateTools: b93a2c2017747329c6077c7d7e8a75106e23d0d7
   IQDropDownTextField: 055600e77e85cccdda17debbe14203057858ea8a
   KAProgressLabel: 4362a1d37c5a7bc7c10cd059fd2da7cb9599cb50
+  M13ProgressSuite: 03d194af6359da440641ba758aed5a18b0386a86
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Parse: 6187586a80eb7b4960d755f85e1353148a611f87
+  YLProgressBar: e4ec7c064c4e1e1717705d1ec6b4335696e764f1
 
 COCOAPODS: 0.36.3

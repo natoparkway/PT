@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol WorkoutFinishedDelegate {
+    func workOutFinished()
+}
+
 class WorkoutContainerViewController: UIViewController, ExerciseFinishedDelegate {
 
+    var delegate: WorkoutFinishedDelegate?
     @IBOutlet weak var currentExerciseView: UIView!
     var exerciseIndex = 0
     var exercises: [PFObject] = []
@@ -57,8 +62,9 @@ class WorkoutContainerViewController: UIViewController, ExerciseFinishedDelegate
     }
     
     //Delegate method - called when an exercise finishes
-    func exerciseFinished() {
-        if exercises.count == exerciseIndex {
+    func exerciseFinished(earlyExit: Bool) {
+        if exercises.count == exerciseIndex || earlyExit {
+            delegate?.workOutFinished()
             dismissViewControllerAnimated(true, completion: nil)
             return
         }

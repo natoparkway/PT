@@ -6,3 +6,5 @@
 #import "DACircularProgressView.h"
 #import "KAProgressLabel.h"
 #import "IQDropDownTextField.h"
+#import "M13ProgressViewBorderedBar.h"
+#import "YLProgressBar.h"
