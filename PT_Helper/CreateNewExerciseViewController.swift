@@ -99,6 +99,7 @@ class CreateNewExerciseViewController: UIViewController, UIImagePickerController
         picker = UIImagePickerController()
         picker.delegate = self
         picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        picker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(picker.sourceType)!
         
         presentViewController(picker, animated: true, completion: nil)
     }

@@ -89,6 +89,11 @@ class ProviderPatientsViewController: UIViewController, UITableViewDelegate, UIT
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return stateIndex.count
   }
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UITableViewHeaderFooterView()
+        view.contentView.backgroundColor = UIColor(red: 255/255.0, green: 107/255.0, blue: 97/255.0, alpha: 0.8)
+        return view
+    }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return stateIndex[section] as! String
