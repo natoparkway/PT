@@ -41,7 +41,7 @@ class PatientHomeViewController: UIViewController, WorkoutFinishedDelegate {
     
     //Delegate method
     func workOutFinished() {
-        progressBar.progress += 0.33
+        progressBar.progress += 1/3
     }
     
     @IBAction func workoutButtonClicked(sender: AnyObject) {
