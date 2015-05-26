@@ -10,6 +10,7 @@ import UIKit
 
 class ProviderCreateNewPatientViewController: UIViewController {
 
+    @IBOutlet weak var workoutsUntilApp: UITextField!
   @IBOutlet var firstNameTextField: UITextField!
   @IBOutlet var lastNameTextField: UITextField!
   @IBOutlet weak var injuryTextField: UITextField!
@@ -24,8 +25,9 @@ class ProviderCreateNewPatientViewController: UIViewController {
 
   @IBAction func savePatient(sender: UIBarButtonItem) {
     var patient = PFObject(className: "Patient")
-    patient["first_name"] = firstNameTextField.text
-    patient["last_name"] = lastNameTextField.text
+    patient["first_name"] = firstNameTextField.text.capitalizedString
+    patient["last_name"] = lastNameTextField.text.capitalizedString
+    patient["workoutsUntilAppointment"] = workoutsUntilApp.text.toInt()
     
     // TODO: change this to be dynamic
     var password = "abc"
@@ -46,7 +48,7 @@ class ProviderCreateNewPatientViewController: UIViewController {
         if (success) {
           user.setValue(patient, forKey: "patient")
           user.save()
-          self.displayMessage("New patient created!")
+          self.navigationController?.popViewControllerAnimated(true)
         } else {
           let errorString = error!.userInfo?["error"] as! String
           self.displayMessage(errorString)
@@ -64,20 +66,23 @@ class ProviderCreateNewPatientViewController: UIViewController {
     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
     self.presentViewController(alert, animated: true, completion: nil)
   }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+    
     }
-    */
+
 
 }

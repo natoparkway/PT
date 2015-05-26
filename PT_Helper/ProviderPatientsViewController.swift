@@ -12,7 +12,10 @@ class ProviderPatientsViewController: UIViewController, UITableViewDelegate, UIT
 
   var patients: [PFObject] = []
   var refreshControl = UIRefreshControl()
+    var stateIndex = NSMutableArray()
+
   @IBOutlet var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -21,6 +24,11 @@ class ProviderPatientsViewController: UIViewController, UITableViewDelegate, UIT
       tableView.insertSubview(refreshControl, atIndex: 0)
       onRefresh()
         // Do any additional setup after loading the view.
+        
+            }
+    
+    override func viewWillAppear(animated: Bool) {
+        onRefresh()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,31 +43,98 @@ class ProviderPatientsViewController: UIViewController, UITableViewDelegate, UIT
       }
     }
   }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
   func onRefresh() {
     let patientQuery = PFQuery(className: "Patient")
     if let curPhysician = Util.currentPhysician() {
       patientQuery.whereKey("physician", equalTo: curPhysician)
+        patientQuery.orderByAscending("first_name")
       patientQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
         if (error == nil) {
+            println("im saving the patients")
           self.patients = result as! [PFObject]
+          //  println("the patients are \(self.patients)")
           self.tableView.reloadData()
+            
+            println("the count of patients is \(self.patients.count)")
+            self.stateIndex.removeAllObjects()
+            for (var i = 0; i < self.patients.count; i++) {
+                println("im in the for loop")
+                var firstName = self.patients[i]["first_name"] as! String
+                let idx = advance(firstName.startIndex, 0)
+                var char = firstName[idx]
+                println("this is the char\(char)")
+                var temp = "\(char)"
+                var upperChar = temp.capitalizedString
+                if !self.stateIndex.containsObject(upperChar){
+                    self.stateIndex.addObject(upperChar)
+                }
+            }
+            
+            println(" this is the array\(self.stateIndex)")
+
         } else {
+            println("im not saving the patients")
           println(error?.description)
         }
         self.refreshControl.endRefreshing()
       })
     }
   }
+    
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 1
+    return stateIndex.count
   }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return stateIndex[section] as! String
+    }
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+
+    
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return patients.count
-  }
+    var alphabet = stateIndex[section] as! String
+    var states = NSMutableArray()
+    
+    for (var i = 0; i < patients.count; i++) {
+        var firstName = self.patients[i]["first_name"] as! String
+        let idx = advance(firstName.startIndex, 0)
+        var char = firstName[idx]
+        var temp = "\(char)"
+        var upperChar = temp.capitalizedString
+        if(upperChar == alphabet){
+            states.addObject(upperChar)
+        }
+    }
+    println("\(states)")
+    return states.count
+}
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell = tableView.dequeueReusableCellWithIdentifier("PatientCell") as! PatientCell
-    cell.setup(patients[indexPath.row])
+    var alphabet = stateIndex[indexPath.section] as! String
+    var states = NSMutableArray()
+    
+    for (var i = 0; i < patients.count; i++) {
+        var firstName = self.patients[i]["first_name"] as! String
+        let idx = advance(firstName.startIndex, 0)
+        var char = firstName[idx]
+        var temp = "\(char)"
+        var upperChar = temp.capitalizedString
+        if(upperChar == alphabet){
+            states.addObject(self.patients[i])
+        }
+    }
+
+    if(states.count>0){
+        cell.setup(states[indexPath.row] as! PFObject)
+    }
     return cell
   }
   
