@@ -30,6 +30,7 @@
 		B54E741F1B114A8F0064BB8A /* ProviderManagePatientExercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54E741E1B114A8F0064BB8A /* ProviderManagePatientExercises.swift */; };
 		B54E74211B1276030064BB8A /* NewExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54E74201B1276030064BB8A /* NewExerciseViewController.swift */; };
 		B5841B7F1B1291F80075AA47 /* ExerciseTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5841B7E1B1291F80075AA47 /* ExerciseTemplateCell.swift */; };
+		B5841B811B13A4320075AA47 /* EditExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5841B801B13A4320075AA47 /* EditExerciseViewController.swift */; };
 		B5B4C7351B051398004D5FFD /* PatientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4C7341B051398004D5FFD /* PatientCell.swift */; };
 		B5B4C7371B05140D004D5FFD /* ProviderPatientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4C7361B05140D004D5FFD /* ProviderPatientsViewController.swift */; };
 		B5B4C7391B051DBC004D5FFD /* ProviderSignupVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4C7381B051DBC004D5FFD /* ProviderSignupVIewController.swift */; };
@@ -85,6 +86,7 @@
 		B54E741E1B114A8F0064BB8A /* ProviderManagePatientExercises.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderManagePatientExercises.swift; sourceTree = "<group>"; };
 		B54E74201B1276030064BB8A /* NewExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewExerciseViewController.swift; sourceTree = "<group>"; };
 		B5841B7E1B1291F80075AA47 /* ExerciseTemplateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseTemplateCell.swift; sourceTree = "<group>"; };
+		B5841B801B13A4320075AA47 /* EditExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExerciseViewController.swift; sourceTree = "<group>"; };
 		B5B4C72D1B02EC90004D5FFD /* PT_Helper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PT_Helper-Bridging-Header.h"; sourceTree = "<group>"; };
 		B5B4C7341B051398004D5FFD /* PatientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientCell.swift; sourceTree = "<group>"; };
 		B5B4C7361B05140D004D5FFD /* ProviderPatientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderPatientsViewController.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				CA5EF18F1B072B710048BAB2 /* CreateNewExerciseViewController.swift */,
 				B54E741E1B114A8F0064BB8A /* ProviderManagePatientExercises.swift */,
 				B54E74201B1276030064BB8A /* NewExerciseViewController.swift */,
+				B5841B801B13A4320075AA47 /* EditExerciseViewController.swift */,
 			);
 			name = ProviderViewControllers;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				0F179D6D1B01B03F00EE4744 /* DetailedExerciseViewController.swift in Sources */,
 				B5B4C7351B051398004D5FFD /* PatientCell.swift in Sources */,
 				CA5EF1901B072B710048BAB2 /* CreateNewExerciseViewController.swift in Sources */,
+				B5841B811B13A4320075AA47 /* EditExerciseViewController.swift in Sources */,
 				0FA617681B07121700A83054 /* PatientCongratulationsViewController.swift in Sources */,
 				0F2AE42F1B00894E00CB96A3 /* ExerciseCell.swift in Sources */,
 				B54E741F1B114A8F0064BB8A /* ProviderManagePatientExercises.swift in Sources */,

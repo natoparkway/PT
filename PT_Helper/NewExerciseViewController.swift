@@ -8,26 +8,33 @@
 
 import UIKit
 
-class NewExerciseViewController: UIViewController, IQDropDownTextFieldDelegate {
+class NewExerciseViewController: UIViewController, IQDropDownTextFieldDelegate, UITextViewDelegate {
 
   
   @IBAction func onTap(sender: UITapGestureRecognizer) {
     view.endEditing(true)
   }
+  
   @IBOutlet var templateDropdown: IQDropDownTextField!
-  @IBOutlet var numRepsLabel: UILabel!
-  @IBOutlet var numDegreesLabel: UILabel!
+  @IBOutlet var isDurationSwitch: UISwitch!
+  @IBOutlet var numRepsOrDurationLabel: UILabel!
+  @IBOutlet var repsOrDurationLabel: UILabel!
   @IBOutlet var numSetsLabel: UILabel!
   @IBOutlet var descriptionTextView: UITextView!
-  @IBOutlet var patientNameLabel: UILabel!
   var exerciseTemplates : [PFObject] = []
   var exerciseTemplatesMap = [String: PFObject]()
   var patient = PFObject(className: "Patient")
+  var initialDescription:String = ""
   var exerciseTemplate  = PFObject(className: "ExerciseTemplate")
     override func viewDidLoad() {
         super.viewDidLoad()
         let query = PFQuery(className: "ExerciseTemplate")
-      patientNameLabel.text = patient["first_name"] as! String
+      
+      // setting the initial placeholder for description
+      let firstName = patient["first_name"] as! String
+      let lastName = patient["last_name"] as! String
+      
+      initialDescription = "Write any specific instructions you have for " + firstName + " " + lastName
       templateDropdown.delegate = self
       query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error: NSError?) -> Void in
         if (error == nil) {
@@ -41,18 +48,48 @@ class NewExerciseViewController: UIViewController, IQDropDownTextFieldDelegate {
           self.templateDropdown.itemList = exerciseNames
         }
       }
+      descriptionTextView.delegate = self
       
         // Do any additional setup after loading the view.
     }
+  @IBAction func decreaseRepsDuration(sender: UIButton) {
+    var newVal = numRepsOrDurationLabel.text!.toInt()! - 1;
+    numRepsOrDurationLabel.text = "\(newVal)"
+  }
+  @IBAction func increaseRepsDuration(sender: UIButton) {
+    var newVal = numRepsOrDurationLabel.text!.toInt()! + 1;
+    numRepsOrDurationLabel.text = "\(newVal)"
+  }
   
+  @IBAction func increaseSets(sender: UIButton) {
+    var newVal = numSetsLabel.text!.toInt()! + 1;
+    numSetsLabel.text = "\(newVal)"
+  }
+  
+  @IBAction func decreaseSets(sender: UIButton) {
+    var newVal = numSetsLabel.text!.toInt()! - 1;
+    numSetsLabel.text = "\(newVal)"
+  }
+  
+  @IBAction func switchFlipped(sender: UISwitch) {
+    if (isDurationSwitch.on) {
+      repsOrDurationLabel.text = "DURATION"
+    } else {
+      repsOrDurationLabel.text = "REPS"
+    }
+  }
   @IBAction func saveExercise(sender: AnyObject) {
     var exercise = PFObject(className: "Exercise")
     var templateName = templateDropdown.text
     var exerciseTemplate = exerciseTemplatesMap[templateName]!
     exercise.setObject(exerciseTemplate, forKey: "template")
-    exercise["repetitions"] = numRepsLabel.text!.toInt()
+    exercise["isDuration"] = isDurationSwitch.on
+    if (isDurationSwitch.on) {
+      exercise["duration"] = numRepsOrDurationLabel.text!.toInt()
+    } else {
+      exercise["repetitions"] = numRepsOrDurationLabel.text!.toInt()
+    }
     exercise["sets"] = numSetsLabel.text!.toInt()
-    exercise["degrees"] = numDegreesLabel.text!.toInt()
     exercise["patient"] = patient
     exercise["description"] = descriptionTextView.text
     exercise["physician"] = Util.currentPhysician()
@@ -63,12 +100,18 @@ class NewExerciseViewController: UIViewController, IQDropDownTextFieldDelegate {
       }
     }
   }
-  
-  func textFieldDidEndEditing(textField: UITextField) {
-    
-    
-    // TODO: Display video here...
+  func textViewDidBeginEditing(textView: UITextView) {
+    if (textView.text == initialDescription) {
+      textView.text = "";
+    }
   }
+  func textFieldDidEndEditing(textField: UITextField) {
+    if (textField == templateDropdown) {
+      // TODO: Display video here...
+    }
+  }
+  
+  
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
