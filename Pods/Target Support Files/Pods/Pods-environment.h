@@ -84,6 +84,12 @@
 #define COCOAPODS_VERSION_MINOR_KAProgressLabel 2
 #define COCOAPODS_VERSION_PATCH_KAProgressLabel 0
 
+// M13ProgressSuite
+#define COCOAPODS_POD_AVAILABLE_M13ProgressSuite
+#define COCOAPODS_VERSION_MAJOR_M13ProgressSuite 1
+#define COCOAPODS_VERSION_MINOR_M13ProgressSuite 2
+#define COCOAPODS_VERSION_PATCH_M13ProgressSuite 7
+
 // MBProgressHUD
 #define COCOAPODS_POD_AVAILABLE_MBProgressHUD
 #define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0
@@ -96,4 +102,10 @@
 // so we were not able to define version macros.
 // Please contact the author.
 // Version: 1.7.2.2.
+
+// YLProgressBar
+#define COCOAPODS_POD_AVAILABLE_YLProgressBar
+#define COCOAPODS_VERSION_MAJOR_YLProgressBar 3
+#define COCOAPODS_VERSION_MINOR_YLProgressBar 5
+#define COCOAPODS_VERSION_PATCH_YLProgressBar 2
 

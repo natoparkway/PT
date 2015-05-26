@@ -13,8 +13,13 @@ class ExerciseTemplateCell: UITableViewCell {
   @IBOutlet var nameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+      nameLabel.preferredMaxLayoutWidth = nameLabel.frame.width
         // Initialization code
     }
+  
+  override func layoutSubviews() {
+    nameLabel.preferredMaxLayoutWidth = nameLabel.frame.width
+  }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

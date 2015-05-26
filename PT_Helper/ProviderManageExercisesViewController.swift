@@ -9,12 +9,6 @@
 import UIKit
 
 class ProviderManageExercisesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    var sampleData = ["name": "Hip Abduction",
-        "exerciseDescription": "Sample description",
-        "duration": 30,
-        "numRepetitions": 12,
-        "daysPerWeek": 3]
   
   var refreshControl = UIRefreshControl()
   var exercises:[PFObject] = []
@@ -34,6 +28,7 @@ class ProviderManageExercisesViewController: UIViewController, UITableViewDelega
     var exerciseQuery = PFQuery(className: "ExerciseTemplate")
     if let curPhysician = Util.currentPhysician() {
       exerciseQuery.whereKey("physician", equalTo: curPhysician)
+      exerciseQuery.includeKey("template")
       exerciseQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
         if (error == nil) {
           println(result)
@@ -47,14 +42,13 @@ class ProviderManageExercisesViewController: UIViewController, UITableViewDelega
     }
   }
   
-    //TABLE VIEW DELEGATE METHODS
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 60;
-    }
+  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    return 60
+  }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("ExerciseTemplateCell") as! ExerciseTemplateCell
-        cell.selectionStyle = .None    //Prevents highlighting
+      cell.selectionStyle = .None    //Prevents highlighting
         var et = exercises[indexPath.row] as! PFObject
         cell.nameLabel.text = et["name"] as! String
         return cell

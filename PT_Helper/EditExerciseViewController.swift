@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class EditExerciseViewController: UIViewController {
 
   var exercise: PFObject = PFObject(className: "Exercise")
-  @IBOutlet var videoView: UIImageView!
   @IBOutlet var numRepsOrDurationLabel: UILabel!
   @IBOutlet var repsOrDurationLabel: UILabel! // this is what says reps or duration under the number itself
+  @IBOutlet var videoImageView: UIImageView!
   @IBOutlet var numSetsLabel: UILabel!
   @IBOutlet var exerciseNameLabel: UILabel!
   @IBOutlet var descriptionTextView: UITextView!
@@ -37,7 +39,10 @@ class EditExerciseViewController: UIViewController {
       switchFlipped(isDurationSwitch)
       descriptionTextView.text = exercise["description"] as! String
         exerciseNameLabel.text = Util.getNameFromExercise(exercise)
-        // Do any additional setup after loading the view.
+      var videoFile = Util.getVideoFromExercise(exercise)
+      if (videoFile != nil) {
+        setUpVideo(videoFile!)
+      }
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,6 +50,22 @@ class EditExerciseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+  @IBAction func saveExercise(sender: UIBarButtonItem) {
+    exercise["isDuration"] = isDurationSwitch.on
+    if (isDurationSwitch.on) {
+      exercise["duration"] = numRepsOrDurationLabel.text!.toInt()
+    } else {
+      exercise["repetitions"] = numRepsOrDurationLabel.text!.toInt()
+    }
+    exercise["sets"] = numSetsLabel.text!.toInt()
+    exercise["description"] = descriptionTextView.text
+    exercise.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+      if (success) {
+        // notify physician of the save
+        self.navigationController?.popViewControllerAnimated(true)
+      }
+    }
+  }
   @IBAction func onTap(sender: UITapGestureRecognizer) {
     view.endEditing(true)
   }
@@ -55,6 +76,19 @@ class EditExerciseViewController: UIViewController {
     } else {
       repsOrDurationLabel.text = "REPS"
     }
+  }
+  
+  
+  
+  func setUpVideo(videoFile: PFFile) {
+    let videoURL = NSURL(string: videoFile.url!)!
+    var player = AVPlayer(URL: videoURL)
+    let playerController = AVPlayerViewController()
+    playerController.player = player
+    self.addChildViewController(playerController)
+    self.view.addSubview(playerController.view)
+    playerController.view.frame = CGRect(x: videoImageView.frame.origin.x, y: videoImageView.frame.origin.y, width: videoImageView.frame.width, height: videoImageView.frame.height)
+    
   }
   
   

@@ -20,6 +20,9 @@ protocol ExerciseFinishedDelegate {
 class PatientWorkingOutViewController: UIViewController {
 
 
+  
+    @IBOutlet weak var repetitionsOrSecondsLabel: UILabel!
+    @IBOutlet weak var countersContainerView: UIView!
     @IBOutlet weak var exerciseDescription: UILabel!
     @IBOutlet weak var videoImageView: UIImageView!
     var exercise: PFObject!
@@ -63,6 +66,10 @@ class PatientWorkingOutViewController: UIViewController {
         setsToComplete = exercise["sets"] as! Int
 
         isDuration = exercise["isDuration"] as! Bool
+        if isDuration {
+            repetitionsOrSecondsLabel.text = "Seconds"
+        }
+        
         addSetCounter() //Either sets up timer or adds rep counter
 
         var videoFile = Util.getVideoFromExercise(exercise)
@@ -105,7 +112,7 @@ class PatientWorkingOutViewController: UIViewController {
     func removeVideoAndDisplayDescription() {
         let index = arc4random_uniform(UInt32(workoutImages.count))
         videoImageView.image = UIImage(named: workoutImages[Int(index)])
-        videoImageView.contentMode = UIViewContentMode.ScaleAspectFit
+        videoImageView.contentMode = UIViewContentMode.ScaleToFill
         addPanGestureRecognizer(videoImageView)
     }
 
@@ -157,8 +164,12 @@ class PatientWorkingOutViewController: UIViewController {
 
             if(isMovingRight && movedEnoughRight) {
                 self.videoView.center.x = self.view.frame.width - self.videoOffScreenPos + self.videoView.frame.width / 2
-            } else if(movedEnoughLeft) {
+            } else if(!isMovingRight && movedEnoughLeft) {
                 self.videoView.center.x = self.view.center.x
+            } else if isMovingRight {
+                self.videoView.center.x = self.view.center.x
+            } else {
+                self.videoView.center.x = self.view.frame.width - self.videoOffScreenPos + self.videoView.frame.width / 2
             }
 
         }) { (finished) -> Void in
@@ -197,7 +208,6 @@ class PatientWorkingOutViewController: UIViewController {
         let width = self.timerView.frame.width
         let height = self.timerView.frame.height
         let constraints = self.timerView.constraints()
-        timerView.removeFromSuperview() //Remove timer
 
         //Add reps counter
         repsCircleView = CircleWithTextView(frame: frame)
@@ -205,13 +215,16 @@ class PatientWorkingOutViewController: UIViewController {
         repsCircleView.updateCounter("\(numReps)".stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
         repsCircleView.setFont(font)
         repsCircleView.circularView.layer.borderWidth = timerWidth
+//        repsCircleView.addConstraints(timerView.constraints())
+        
+        timerView.removeFromSuperview() //Remove timer
 
         //Add gesture recognizer
         var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "counterTapped:")
         repsCircleView.addGestureRecognizer(tapGestureRecognizer)
 
         //Add subview
-        view.addSubview(repsCircleView)
+        countersContainerView.addSubview(repsCircleView)
     }
 
     @IBAction func counterTapped(sender: AnyObject) {
@@ -263,7 +276,8 @@ class PatientWorkingOutViewController: UIViewController {
 
     //Resets the necessary properties for the timerView and elapsed time
     func resetStats() {
-        timerView.progress = CGFloat(0)
+        timerView.progress = CGFloat(1.0)
+        timerView.text = String(format:"%.1f", duration!)
         elapsedTime = 0.0
     }
 
@@ -299,7 +313,6 @@ class PatientWorkingOutViewController: UIViewController {
         if elapsedTime > duration {
             timerView.progress = CGFloat(1.0)
             timer.invalidate()
-            timerView.text = "Way To Go!"
             setsCompleted++
             updateSetsCompleted()   //Updates GUI
             timerIsRunning = false

@@ -135,6 +135,7 @@ class ProviderPatientsViewController: UIViewController, UITableViewDelegate, UIT
     if(states.count>0){
         cell.setup(states[indexPath.row] as! PFObject)
     }
+    cell.selectionStyle = UITableViewCellSelectionStyle.None
     return cell
   }
   
