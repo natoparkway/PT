@@ -14,7 +14,7 @@ import AVFoundation
 import AVKit
 
 protocol ExerciseFinishedDelegate {
-    func exerciseFinished()
+    func exerciseFinished(earlyExit: Bool)
 }
 
 class PatientWorkingOutViewController: UIViewController {
@@ -186,6 +186,11 @@ class PatientWorkingOutViewController: UIViewController {
         return condition1 || condition2
     }
     
+    @IBAction func backButtonTapped(sender: AnyObject) {
+        delegate?.exerciseFinished(true)
+    }
+    
+    
     //Adds a view that displays the number of reps completed. Also removes timerView
     func setUpRepsView() {
         let frame = self.timerView.frame
@@ -308,7 +313,7 @@ class PatientWorkingOutViewController: UIViewController {
     func ifDonePerformSegue() {
         if setsCompleted == setsToComplete {
             if partOfFullWorkout {
-                delegate?.exerciseFinished()
+                delegate?.exerciseFinished(false)
             } else {
                 //Dismiss or something
             }

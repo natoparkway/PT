@@ -948,7 +948,20 @@
                             <constraint firstAttribute="trailing" secondItem="8KA-AD-RCi" secondAttribute="trailing" id="yb2-sM-hex"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Exercise Name" id="hKW-oe-ui7"/>
+                    <navigationItem key="navigationItem" title="Exercise Name" id="hKW-oe-ui7">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="vPD-Vz-LCt">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="btJ-hd-bs5">
+                                <rect key="frame" x="16" y="7" width="24" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="White_Arrow_left">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="jmf-Ya-7CB" eventType="touchUpInside" id="nWS-52-TVY"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="exerciseDescription" destination="ZUp-0Y-gkV" id="jAk-KF-PGd"/>
                         <outlet property="setsCompletedView" destination="T2j-bc-ZR4" id="qOJ-jF-7S0"/>
@@ -1262,6 +1275,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.36736764789999998" blue="0.27057844219999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="GothamNarrow-Thin" family="Gotham Narrow" pointSize="0.0"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="textShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
@@ -1285,6 +1299,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.36736764789999998" blue="0.27057844219999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="GothamNarrow-Thin" family="Gotham Narrow" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="textShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>

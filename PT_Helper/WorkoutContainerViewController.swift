@@ -57,8 +57,8 @@ class WorkoutContainerViewController: UIViewController, ExerciseFinishedDelegate
     }
     
     //Delegate method - called when an exercise finishes
-    func exerciseFinished() {
-        if exercises.count == exerciseIndex {
+    func exerciseFinished(earlyExit: Bool) {
+        if exercises.count == exerciseIndex || earlyExit {
             dismissViewControllerAnimated(true, completion: nil)
             return
         }
