@@ -40,6 +40,10 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
     }
   }
   
+  func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    return 60
+  }
+  
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return exercises.count
   }
@@ -48,6 +52,7 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
     var cell = tableView.dequeueReusableCellWithIdentifier("ExerciseTemplateCell") as! ExerciseTemplateCell
     var exercise = exercises[indexPath.row]
     cell.nameLabel.text = Util.getNameFromExercise(exercise)
+    cell.selectionStyle = UITableViewCellSelectionStyle.None
     return cell
   }
   

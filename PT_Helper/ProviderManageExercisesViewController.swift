@@ -9,12 +9,6 @@
 import UIKit
 
 class ProviderManageExercisesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    var sampleData = ["name": "Hip Abduction",
-        "exerciseDescription": "Sample description",
-        "duration": 30,
-        "numRepetitions": 12,
-        "daysPerWeek": 3]
   
   var refreshControl = UIRefreshControl()
   var exercises:[PFObject] = []
@@ -47,9 +41,8 @@ class ProviderManageExercisesViewController: UIViewController, UITableViewDelega
     }
   }
   
-    //TABLE VIEW DELEGATE METHODS
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 60;
+        return 60
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

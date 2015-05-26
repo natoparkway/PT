@@ -23,7 +23,6 @@
 		0F2AE42F1B00894E00CB96A3 /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2AE42E1B00894E00CB96A3 /* ExerciseCell.swift */; };
 		0F2AE4351B008AF400CB96A3 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2AE4341B008AF400CB96A3 /* Exercise.swift */; };
 		0FA617681B07121700A83054 /* PatientCongratulationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA617671B07121700A83054 /* PatientCongratulationsViewController.swift */; };
-		0FB1B6AD1B1438A200D62D37 /* GothamNarrow-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0FB1B6AC1B1438A200D62D37 /* GothamNarrow-Thin.otf */; };
 		0FDF9C4F1B0EC4A200F71005 /* PatientHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDF9C4E1B0EC4A200F71005 /* PatientHomeViewController.swift */; };
 		0FEFC4BD1B06F48A0099954C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEFC4BC1B06F48A0099954C /* QuartzCore.framework */; };
 		74F3134F7EF0F35269DC55F1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C3CFD0231F5465C90B94198 /* libPods.a */; };
@@ -76,7 +75,6 @@
 		0F2AE42E1B00894E00CB96A3 /* ExerciseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
 		0F2AE4341B008AF400CB96A3 /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		0FA617671B07121700A83054 /* PatientCongratulationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientCongratulationsViewController.swift; sourceTree = "<group>"; };
-		0FB1B6AC1B1438A200D62D37 /* GothamNarrow-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GothamNarrow-Thin.otf"; path = "../../../../../Downloads/Gotham/GothamNarrow-Thin.otf"; sourceTree = "<group>"; };
 		0FDF9C4E1B0EC4A200F71005 /* PatientHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientHomeViewController.swift; sourceTree = "<group>"; };
 		0FEFC4BC1B06F48A0099954C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0FEFC4BE1B06FCF30099954C /* KYCircularProgress.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KYCircularProgress.framework; path = "Pods/../build/Debug-iphoneos/Pods/KYCircularProgress.framework"; sourceTree = "<group>"; };
@@ -189,7 +187,6 @@
 				0F2AE4111B00719C00CB96A3 /* LaunchScreen.xib */,
 				0F2AE4061B00719C00CB96A3 /* Supporting Files */,
 				B5B4C73C1B06AF57004D5FFD /* Util.swift */,
-				0FB1B6AC1B1438A200D62D37 /* GothamNarrow-Thin.otf */,
 			);
 			path = PT_Helper;
 			sourceTree = "<group>";
@@ -382,7 +379,6 @@
 				0F2AE40E1B00719C00CB96A3 /* Main.storyboard in Resources */,
 				0F179D751B01C59400EE4744 /* CircularView.xib in Resources */,
 				0F2AE4131B00719C00CB96A3 /* LaunchScreen.xib in Resources */,
-				0FB1B6AD1B1438A200D62D37 /* GothamNarrow-Thin.otf in Resources */,
 				0F2AE4101B00719C00CB96A3 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -60,6 +60,7 @@ class ProviderPatientsViewController: UIViewController, UITableViewDelegate, UIT
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell = tableView.dequeueReusableCellWithIdentifier("PatientCell") as! PatientCell
     cell.setup(patients[indexPath.row])
+    cell.selectionStyle = UITableViewCellSelectionStyle.None
     return cell
   }
   

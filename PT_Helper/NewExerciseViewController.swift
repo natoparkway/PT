@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class NewExerciseViewController: UIViewController, IQDropDownTextFieldDelegate, UITextViewDelegate {
 
@@ -15,6 +17,7 @@ class NewExerciseViewController: UIViewController, IQDropDownTextFieldDelegate, 
     view.endEditing(true)
   }
   
+  @IBOutlet var videoImageView: UIImageView!
   @IBOutlet var templateDropdown: IQDropDownTextField!
   @IBOutlet var isDurationSwitch: UISwitch!
   @IBOutlet var numRepsOrDurationLabel: UILabel!
@@ -24,7 +27,7 @@ class NewExerciseViewController: UIViewController, IQDropDownTextFieldDelegate, 
   var exerciseTemplates : [PFObject] = []
   var exerciseTemplatesMap = [String: PFObject]()
   var patient = PFObject(className: "Patient")
-  var initialDescription:String = ""
+  var initialDescription: String = ""
   var exerciseTemplate  = PFObject(className: "ExerciseTemplate")
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,7 @@ class NewExerciseViewController: UIViewController, IQDropDownTextFieldDelegate, 
       let lastName = patient["last_name"] as! String
       
       initialDescription = "Write any specific instructions you have for " + firstName + " " + lastName
+      descriptionTextView.text = initialDescription
       templateDropdown.delegate = self
       query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error: NSError?) -> Void in
         if (error == nil) {
@@ -52,6 +56,8 @@ class NewExerciseViewController: UIViewController, IQDropDownTextFieldDelegate, 
       
         // Do any additional setup after loading the view.
     }
+  
+  
   @IBAction func decreaseRepsDuration(sender: UIButton) {
     var newVal = numRepsOrDurationLabel.text!.toInt()! - 1;
     numRepsOrDurationLabel.text = "\(newVal)"
@@ -81,6 +87,10 @@ class NewExerciseViewController: UIViewController, IQDropDownTextFieldDelegate, 
   @IBAction func saveExercise(sender: AnyObject) {
     var exercise = PFObject(className: "Exercise")
     var templateName = templateDropdown.text
+    if (templateName == "") {
+      displayMessage("Please select a type of exercise from the dropdown.")
+      return
+    }
     var exerciseTemplate = exerciseTemplatesMap[templateName]!
     exercise.setObject(exerciseTemplate, forKey: "template")
     exercise["isDuration"] = isDurationSwitch.on
@@ -100,15 +110,44 @@ class NewExerciseViewController: UIViewController, IQDropDownTextFieldDelegate, 
       }
     }
   }
+  
+  func displayMessage(message: String) {
+    var alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+    self.presentViewController(alert, animated: true, completion: nil)
+  }
+  
   func textViewDidBeginEditing(textView: UITextView) {
     if (textView.text == initialDescription) {
       textView.text = "";
     }
   }
-  func textFieldDidEndEditing(textField: UITextField) {
+  
+  func textField(textField: IQDropDownTextField!, didSelectItem item: String!) {
     if (textField == templateDropdown) {
-      // TODO: Display video here...
+      if (exerciseTemplatesMap[item] == nil) {
+        return
+      }
+      let template = exerciseTemplatesMap[item]! as! PFObject
+      
+      if (template["video"] == nil) {
+        return
+      }
+      let videoFile = template["video"] as! PFFile
+      setUpVideo(videoFile)
     }
+  }
+  
+  func setUpVideo(videoFile: PFFile) {
+    let videoURL = NSURL(string: videoFile.url!)!
+    
+    var player = AVPlayer(URL: videoURL)
+    let playerController = AVPlayerViewController()
+    playerController.player = player
+    self.addChildViewController(playerController)
+    self.view.addSubview(playerController.view)
+    playerController.view.frame = CGRect(x: videoImageView.frame.origin.x, y: videoImageView.frame.origin.y, width: videoImageView.frame.width, height: videoImageView.frame.height)
+
   }
   
   
