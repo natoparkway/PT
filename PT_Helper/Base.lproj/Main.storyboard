@@ -1464,7 +1464,11 @@
         <scene sceneID="Wu2-j6-p7j">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lFZ-f9-5V0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Patients" image="patient" selectedImage="patient" id="JD4-Gl-7Bw"/>
+                    <tabBarItem key="tabBarItem" title="Patients" image="patient" selectedImage="patient" id="JD4-Gl-7Bw">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="TabBarItemHomeSelected"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pqg-pf-AZL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1483,7 +1487,11 @@
         <scene sceneID="dBD-pa-hrc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j2i-m4-TvK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Exercises" image="exercise" id="j0x-nB-oYH"/>
+                    <tabBarItem key="tabBarItem" title="Exercises" image="exercise" selectedImage="exercise" id="j0x-nB-oYH">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="TabBarItemHomeSelected"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iia-jA-NV6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1571,6 +1579,7 @@
         <image name="Dumbell Black" width="26" height="26"/>
         <image name="Running_Man" width="32" height="32"/>
         <image name="Running_Man_Large" width="256" height="256"/>
+        <image name="TabBarItemHomeSelected" width="3211" height="5734"/>
         <image name="White_Arrow_left" width="24" height="24"/>
         <image name="down" width="561" height="508"/>
         <image name="exercise" width="26" height="30"/>

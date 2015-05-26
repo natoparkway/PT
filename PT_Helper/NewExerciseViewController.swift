@@ -130,11 +130,11 @@ class NewExerciseViewController: UIViewController, IQDropDownTextFieldDelegate, 
       }
       let template = exerciseTemplatesMap[item]! as! PFObject
       
-      if (template["video"] == nil) {
+      let videoFile = template["video"] as? PFFile
+      if (videoFile == nil) {
         return
       }
-      let videoFile = template["video"] as! PFFile
-      setUpVideo(videoFile)
+      setUpVideo(videoFile!)
     }
   }
   

@@ -34,10 +34,16 @@ class PatientLoginViewController: UIViewController, UITextFieldDelegate {
           // determine if physician login view is appropriate
           
           
-          if (Util.currentPhysician() != nil) {
-            self.performSegueWithIdentifier("physicianLoginSegue", sender: self)
+          if let curPhysician = PFUser.currentUser()?["physician"] as? PFObject {
+            curPhysician.fetchInBackgroundWithBlock({ (physician: PFObject?, error: NSError?) -> Void in
+              self.performSegueWithIdentifier("physicianLoginSegue", sender: self)
+            })
           } else {
-            self.performPatientSegue()
+            if let curPatient = PFUser.currentUser()?["patient"] as? PFObject {
+              curPatient.fetchInBackgroundWithBlock({ (patient: PFObject?, error: NSError?) -> Void in
+                self.performPatientSegue()
+              })
+            }
           }
         } else {
           self.displayError(error!)
@@ -45,12 +51,13 @@ class PatientLoginViewController: UIViewController, UITextFieldDelegate {
       }
       
     }
-    
+  
     //Gets user exercise data from parse, then logs in
     func performPatientSegue() {
         var exerciseQuery = PFQuery(className: "Exercise")
         if let curPatient = Util.currentPatient() {
             exerciseQuery.whereKey("patient", equalTo: curPatient)
+            exerciseQuery.includeKey("template")
             exerciseQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
                 
                 if (error == nil) {

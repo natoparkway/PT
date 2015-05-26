@@ -28,6 +28,7 @@ class ProviderManageExercisesViewController: UIViewController, UITableViewDelega
     var exerciseQuery = PFQuery(className: "ExerciseTemplate")
     if let curPhysician = Util.currentPhysician() {
       exerciseQuery.whereKey("physician", equalTo: curPhysician)
+      exerciseQuery.includeKey("template")
       exerciseQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
         if (error == nil) {
           println(result)
