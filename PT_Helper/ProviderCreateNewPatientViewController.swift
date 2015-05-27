@@ -28,6 +28,7 @@ class ProviderCreateNewPatientViewController: UIViewController {
     patient["first_name"] = firstNameTextField.text.capitalizedString
     patient["last_name"] = lastNameTextField.text.capitalizedString
     patient["workoutsUntilAppointment"] = workoutsUntilApp.text.toInt()
+    patient["totalWorkouts"] = workoutsUntilApp.text.toInt()
     
     // TODO: change this to be dynamic
     var password = "abc"
@@ -38,6 +39,10 @@ class ProviderCreateNewPatientViewController: UIViewController {
     patient["gender"] = "M"
     patient["physician"] = Util.currentPhysician()
     
+//    var curUser = PFUser.currentUser()
+//    var curUsername = curUser!["username"] as! String
+//    var curPassword = curUser!["password"] as! String
+    
     // Make PFUser so that the patient can login
     var user = PFUser()
     user.setValue(self.emailTextField.text, forKey: "username")
@@ -47,8 +52,18 @@ class ProviderCreateNewPatientViewController: UIViewController {
       patient.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
         if (success) {
           user.setValue(patient, forKey: "patient")
-          user.save()
-          self.navigationController?.popViewControllerAnimated(true)
+            user.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                //          self.navigationController?.popViewControllerAnimated(true)
+                println("we hit done")
+                var alert = UIAlertController(title: "Alert", message: "New Patient Created", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (alert: UIAlertAction!) -> Void in
+                    self.navigationController?.popViewControllerAnimated(true)
+                    println("completed")
+//                    PFUser.logInWithUsername(curUsername, password: curPassword)
+                }))
+                self.presentViewController(alert, animated: true, completion: nil)
+                println("completed again")
+          })
         } else {
           let errorString = error!.userInfo?["error"] as! String
           self.displayMessage(errorString)

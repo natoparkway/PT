@@ -23,9 +23,12 @@ class WorkoutContainerViewController: UIViewController, ExerciseFinishedDelegate
     var workingOutNavController: UINavigationController? {
         didSet {
             var workingOutViewController = workingOutNavController?.topViewController as! PatientWorkingOutViewController
+            println("\(exercises)")
+            println("\(exerciseIndex)")
+            if exercises.count > 0 {
             workingOutViewController.exercise = exercises[exerciseIndex]
-            workingOutNavController!.view.frame = currentExerciseView.bounds
-            
+                workingOutNavController!.view.frame = currentExerciseView.bounds
+            }
             
             //Set fields
             workingOutViewController.delegate = self
