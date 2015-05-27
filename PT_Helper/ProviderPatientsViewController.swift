@@ -89,6 +89,11 @@ class ProviderPatientsViewController: UIViewController, UITableViewDelegate, UIT
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return stateIndex.count
   }
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UITableViewHeaderFooterView()
+        view.contentView.backgroundColor = UIColor(red: 255/255.0, green: 107/255.0, blue: 97/255.0, alpha: 0.8)
+        return view
+    }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return stateIndex[section] as! String
@@ -151,7 +156,22 @@ class ProviderPatientsViewController: UIViewController, UITableViewDelegate, UIT
       if (segue.identifier == "manageExerciseSegue") {
         var vc = segue.destinationViewController as! ProviderManagePatientExercises
         var indexPath = sender as! NSIndexPath
-        vc.patient = patients[indexPath.row]
+        
+        var alphabet = stateIndex[indexPath.section] as! String
+        var states = NSMutableArray()
+        
+        for (var i = 0; i < patients.count; i++) {
+            var firstName = self.patients[i]["first_name"] as! String
+            let idx = advance(firstName.startIndex, 0)
+            var char = firstName[idx]
+            var temp = "\(char)"
+            var upperChar = temp.capitalizedString
+            if(upperChar == alphabet){
+                states.addObject(self.patients[i])
+            }
+        }
+
+        vc.patient = states[indexPath.row] as! PFObject
       }
       
       

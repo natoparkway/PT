@@ -28,7 +28,7 @@ class Util {
   class func getNameFromExercise(exercise: PFObject)->String
   {
     let template = exercise["template"] as! PFObject
-//    template.fetch()
+    //      template.fetch()
     return template["name"] as! String
   }
   

@@ -28,6 +28,8 @@ class PatientLoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func loginButtonClicked(sender: AnyObject) {
+        var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.labelText = "Logging In"
       PFUser.logInWithUsernameInBackground(emailField.text, password: passwordField.text) { (user: PFUser?, error: NSError?) -> Void in
         if (error == nil) {
           // login successful
@@ -37,19 +39,24 @@ class PatientLoginViewController: UIViewController, UITextFieldDelegate {
           if let curPhysician = PFUser.currentUser()?["physician"] as? PFObject {
             curPhysician.fetchInBackgroundWithBlock({ (physician: PFObject?, error: NSError?) -> Void in
               self.performSegueWithIdentifier("physicianLoginSegue", sender: self)
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+
             })
           } else {
             if let curPatient = PFUser.currentUser()?["patient"] as? PFObject {
               curPatient.fetchInBackgroundWithBlock({ (patient: PFObject?, error: NSError?) -> Void in
                 self.performPatientSegue()
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+
               })
             }
           }
         } else {
           self.displayError(error!)
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+
         }
       }
-      
     }
   
     //Gets user exercise data from parse, then logs in
@@ -76,6 +83,7 @@ class PatientLoginViewController: UIViewController, UITextFieldDelegate {
     loginButtonClicked(textField)
     return true
   }
+    
   func displayError(error: NSError) {
     let errorString = error.userInfo?["error"] as? NSString
     var alert = UIAlertController(title: "Alert", message: errorString as! String, preferredStyle: UIAlertControllerStyle.Alert)
