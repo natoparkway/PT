@@ -39,6 +39,13 @@ class PatientHomeViewController: UIViewController, WorkoutFinishedDelegate {
     
     }
     
+  @IBAction func onLogout(sender: UIBarButtonItem) {
+    PFUser.logOutInBackgroundWithBlock { (error: NSError?) -> Void in
+      if (error == nil) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+      }
+    }
+  }
     //Delegate method
     func workOutFinished() {
         progressBar.progress += 1/3

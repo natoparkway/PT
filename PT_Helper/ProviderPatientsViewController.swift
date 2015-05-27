@@ -39,7 +39,7 @@ class ProviderPatientsViewController: UIViewController, UITableViewDelegate, UIT
   @IBAction func onLogout(sender: UIBarButtonItem) {
     PFUser.logOutInBackgroundWithBlock { (error: NSError?) -> Void in
       if (error == nil) {
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        self.dismissViewControllerAnimated(true, completion: nil)
       }
     }
   }
