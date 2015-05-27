@@ -156,7 +156,22 @@ class ProviderPatientsViewController: UIViewController, UITableViewDelegate, UIT
       if (segue.identifier == "manageExerciseSegue") {
         var vc = segue.destinationViewController as! ProviderManagePatientExercises
         var indexPath = sender as! NSIndexPath
-        vc.patient = patients[indexPath.row]
+        
+        var alphabet = stateIndex[indexPath.section] as! String
+        var states = NSMutableArray()
+        
+        for (var i = 0; i < patients.count; i++) {
+            var firstName = self.patients[i]["first_name"] as! String
+            let idx = advance(firstName.startIndex, 0)
+            var char = firstName[idx]
+            var temp = "\(char)"
+            var upperChar = temp.capitalizedString
+            if(upperChar == alphabet){
+                states.addObject(self.patients[i])
+            }
+        }
+
+        vc.patient = states[indexPath.row] as! PFObject
       }
       
       
