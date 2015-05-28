@@ -28,6 +28,15 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
     UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(phoneNum)")!)
 
   }
+    
+    func dismissKeyboard (){
+        ageTextView.resignFirstResponder()
+        injuryTextView.resignFirstResponder()
+        workoutsUntilApp.resignFirstResponder()
+        emailTextView.resignFirstResponder()
+        patientNameTextView.resignFirstResponder()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         onRefresh()
@@ -70,6 +79,9 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
         self.tableView.reloadData()
     }
     
+    @IBAction func backgroundTap(sender: UITapGestureRecognizer) {
+        println("Background taped")
+    }
     @IBAction func emailButtonTapped(sender: UIButton) {
         let mailComposeViewController = configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
@@ -126,6 +138,14 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
         println("the patients age is \(temp)")
     }
     
+    @IBAction func backgroundTapped(sender: AnyObject) {
+        println("back ground tapped")
+        var temp = sender.superview
+        println("the super view is \(temp)")
+        dismissKeyboard()
+    }
+    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
