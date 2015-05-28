@@ -23,6 +23,11 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
   var refreshControl = UIRefreshControl()
   var patient: PFObject = PFObject(className: "Patient")
     
+  @IBAction func callPatient(sender: UIButton) {
+    var phoneNum = String(patient["phone"] as! Int)
+    UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(phoneNum)")!)
+
+  }
     override func viewDidLoad() {
         super.viewDidLoad()
         onRefresh()
