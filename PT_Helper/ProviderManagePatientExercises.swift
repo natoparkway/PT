@@ -16,6 +16,7 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var emailTextView: UITextView!
     @IBOutlet weak var ageTextView: UITextView!
     @IBOutlet weak var injuryTextView: UITextView!
+    @IBOutlet weak var profileImageView: UIImageView!
   var exercises: [PFObject] = []
   var refreshControl = UIRefreshControl()
   var patient: PFObject = PFObject(className: "Patient")
@@ -35,6 +36,14 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
         tableView.estimatedRowHeight = 20
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        var url = patient["profileImageUrl"] as! String
+        profileImageView.setImageWithURL(NSURL(string: url)!)
+        profileImageView.layer.borderWidth = 1.0
+        profileImageView.layer.masksToBounds = false
+        profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.width/2
+        profileImageView.clipsToBounds = true
+
         var wUntilApp = patient["workoutsUntilAppointment"] as! Int
         workoutsUntilApp.text = String(wUntilApp)
         injuryTextView.text = patient["injury"] as! String
@@ -93,6 +102,22 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return exercises.count
   }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UITableViewHeaderFooterView()
+        return view
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var first = patient["first_name"] as! String
+        var last = patient["last_name"] as! String
+        
+        return "Exercises for \(first) \(last)"
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
     
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
