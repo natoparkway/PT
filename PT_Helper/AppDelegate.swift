@@ -23,6 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialize Parse.
         Parse.setApplicationId("4gQWzfqljZqXMngDNOWbiA80SUPxhlCAZKx2XPSP",
           clientKey: "iptgVFTjHgt1Q1IQgU0JUCMctnztRwPKdg9iEU2i")
+      PFUser.enableRevocableSessionInBackgroundWithBlock { (error: NSError?) -> Void in
+        if (error == nil) {
+          
+        }
+      }
         
         return true
     }

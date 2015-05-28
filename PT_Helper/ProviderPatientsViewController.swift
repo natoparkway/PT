@@ -12,6 +12,7 @@ class ProviderPatientsViewController: UIViewController, UITableViewDelegate, UIT
 
   var patients: [PFObject] = []
   var refreshControl = UIRefreshControl()
+  var curPhysician: PFObject = PFObject(className: "Physician")
     var stateIndex = NSMutableArray()
 
   @IBOutlet var tableView: UITableView!
@@ -50,40 +51,33 @@ class ProviderPatientsViewController: UIViewController, UITableViewDelegate, UIT
     
   func onRefresh() {
     let patientQuery = PFQuery(className: "Patient")
-    if let curPhysician = Util.currentPhysician() {
-      patientQuery.whereKey("physician", equalTo: curPhysician)
-        patientQuery.orderByAscending("first_name")
-      patientQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
-        if (error == nil) {
-            println("im saving the patients")
-          self.patients = result as! [PFObject]
-          //  println("the patients are \(self.patients)")
-          self.tableView.reloadData()
-            
-            println("the count of patients is \(self.patients.count)")
-            self.stateIndex.removeAllObjects()
-            for (var i = 0; i < self.patients.count; i++) {
-                println("im in the for loop")
-                var firstName = self.patients[i]["first_name"] as! String
-                let idx = advance(firstName.startIndex, 0)
-                var char = firstName[idx]
-                println("this is the char\(char)")
-                var temp = "\(char)"
-                var upperChar = temp.capitalizedString
-                if !self.stateIndex.containsObject(upperChar){
-                    self.stateIndex.addObject(upperChar)
-                }
-            }
-            
-            println(" this is the array\(self.stateIndex)")
+    patientQuery.whereKey("physician", equalTo: curPhysician)
+    patientQuery.orderByAscending("first_name")
+    patientQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
+      if (error == nil) {
+        self.patients = result as! [PFObject]
+        //  println("the patients are \(self.patients)")
+        self.tableView.reloadData()
+          
+          self.stateIndex.removeAllObjects()
+          for (var i = 0; i < self.patients.count; i++) {
+              var firstName = self.patients[i]["first_name"] as! String
+              let idx = advance(firstName.startIndex, 0)
+              var char = firstName[idx]
+              var temp = "\(char)"
+              var upperChar = temp.capitalizedString
+              if !self.stateIndex.containsObject(upperChar){
+                  self.stateIndex.addObject(upperChar)
+              }
+          }
+          
 
-        } else {
-            println("im not saving the patients")
-          println(error?.description)
-        }
-        self.refreshControl.endRefreshing()
-      })
-    }
+      } else {
+        println(error?.description)
+      }
+      self.refreshControl.endRefreshing()
+    })
+    
   }
     
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -117,7 +111,6 @@ class ProviderPatientsViewController: UIViewController, UITableViewDelegate, UIT
             states.addObject(upperChar)
         }
     }
-    println("\(states)")
     return states.count
 }
   
@@ -172,6 +165,11 @@ class ProviderPatientsViewController: UIViewController, UITableViewDelegate, UIT
         }
 
         vc.patient = states[indexPath.row] as! PFObject
+      }
+      
+      if (segue.identifier == "newPatientSegue") {
+        var vc = segue.destinationViewController as! ProviderCreateNewPatientViewController
+        vc.curPhysician = self.curPhysician
       }
       
       

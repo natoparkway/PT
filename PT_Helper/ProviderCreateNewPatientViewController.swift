@@ -17,6 +17,8 @@ class ProviderCreateNewPatientViewController: UIViewController {
   @IBOutlet var emailTextField: UITextField!
   @IBOutlet var ageField: UITextField!
   @IBOutlet var maleFemaleButton: UISegmentedControl!
+  
+  var curPhysician: PFObject = PFObject(className: "Physician")
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,28 +38,22 @@ class ProviderCreateNewPatientViewController: UIViewController {
     patient["email"] = emailTextField.text
     patient["age"] = ageField.text.toInt()
     patient["gender"] = "M"
-    patient["physician"] = Util.currentPhysician()
+    patient.setObject(curPhysician, forKey: "physician")
     
     // Make PFUser so that the patient can login
-    var user = PFUser()
-    user.setValue(self.emailTextField.text, forKey: "username")
-    user.setValue(password, forKey: "password")
-    
-    if (user.signUp()) {
-      patient.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-        if (success) {
-          user.setValue(patient, forKey: "patient")
-          user.save()
+    var username = self.emailTextField.text
+    patient.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+      if (success) {
+        var alert = UIAlertController(title: "Success", message: "New Patient Created", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (alert: UIAlertAction!) -> Void in
           self.navigationController?.popViewControllerAnimated(true)
-        } else {
-          let errorString = error!.userInfo?["error"] as! String
-          self.displayMessage(errorString)
-        }
+        }))
+      } else {
+        let errorString = error!.userInfo?["error"] as! String
+        self.displayMessage(errorString)
       }
-    } else {
-      displayMessage("A user with that email exists!")
     }
-
+    
     
   }
   
