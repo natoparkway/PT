@@ -14,7 +14,6 @@
 		0F179D721B01BFB500EE4744 /* CircleWithTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F179D711B01BFB500EE4744 /* CircleWithTextView.swift */; };
 		0F179D751B01C59400EE4744 /* CircularView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F179D741B01C59400EE4744 /* CircularView.xib */; };
 		0F2AE4091B00719C00CB96A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2AE4081B00719C00CB96A3 /* AppDelegate.swift */; };
-		0F2AE40E1B00719C00CB96A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F2AE40C1B00719C00CB96A3 /* Main.storyboard */; };
 		0F2AE4101B00719C00CB96A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F2AE40F1B00719C00CB96A3 /* Images.xcassets */; };
 		0F2AE4131B00719C00CB96A3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F2AE4111B00719C00CB96A3 /* LaunchScreen.xib */; };
 		0F2AE41F1B00719C00CB96A3 /* PT_HelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2AE41E1B00719C00CB96A3 /* PT_HelperTests.swift */; };
@@ -37,6 +36,8 @@
 		CA0EB8F21B03E5A90060FA8E /* ProviderHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0EB8F11B03E5A90060FA8E /* ProviderHomeViewController.swift */; };
 		CA0EB8F41B03EA610060FA8E /* ProviderManageExercisesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0EB8F31B03EA610060FA8E /* ProviderManageExercisesViewController.swift */; };
 		CA0EB8F61B03EF6E0060FA8E /* ProviderCreateNewPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0EB8F51B03EF6E0060FA8E /* ProviderCreateNewPatientViewController.swift */; };
+		CA3EA92E1B16E83600FE9B5B /* ExerciseTemplateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3EA92D1B16E83600FE9B5B /* ExerciseTemplateDetailViewController.swift */; };
+		CA3EA9311B16F89500FE9B5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3EA92F1B16F89500FE9B5B /* Main.storyboard */; };
 		CA5EF1901B072B710048BAB2 /* CreateNewExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EF18F1B072B710048BAB2 /* CreateNewExerciseViewController.swift */; };
 		CA5EF1921B072EC40048BAB2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5EF1911B072EC40048BAB2 /* UIKit.framework */; };
 		CA5EF1981B093A310048BAB2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5EF1971B093A310048BAB2 /* MobileCoreServices.framework */; };
@@ -64,7 +65,6 @@
 		0F2AE4031B00719C00CB96A3 /* PT_Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PT_Helper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F2AE4071B00719C00CB96A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F2AE4081B00719C00CB96A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0F2AE40D1B00719C00CB96A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0F2AE40F1B00719C00CB96A3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0F2AE4121B00719C00CB96A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0F2AE4181B00719C00CB96A3 /* PT_HelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PT_HelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +93,8 @@
 		CA0EB8F11B03E5A90060FA8E /* ProviderHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderHomeViewController.swift; sourceTree = "<group>"; };
 		CA0EB8F31B03EA610060FA8E /* ProviderManageExercisesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderManageExercisesViewController.swift; sourceTree = "<group>"; };
 		CA0EB8F51B03EF6E0060FA8E /* ProviderCreateNewPatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderCreateNewPatientViewController.swift; sourceTree = "<group>"; };
+		CA3EA92D1B16E83600FE9B5B /* ExerciseTemplateDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseTemplateDetailViewController.swift; sourceTree = "<group>"; };
+		CA3EA9301B16F89500FE9B5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CA5EF18F1B072B710048BAB2 /* CreateNewExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewExerciseViewController.swift; sourceTree = "<group>"; };
 		CA5EF1911B072EC40048BAB2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CA5EF1971B093A310048BAB2 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -173,6 +175,7 @@
 		0F2AE4051B00719C00CB96A3 /* PT_Helper */ = {
 			isa = PBXGroup;
 			children = (
+				CA3EA92F1B16F89500FE9B5B /* Main.storyboard */,
 				0FDF9C501B0ED81D00F71005 /* No Longer Used */,
 				0F08976A1B099BE40060E17E /* Custom Transition Delegates */,
 				CA0EB8F01B03E57A0060FA8E /* ProviderViewControllers */,
@@ -182,7 +185,6 @@
 				0F2AE4321B008A3400CB96A3 /* PatientViewControllers */,
 				0F2AE4311B008A2000CB96A3 /* Cells */,
 				0F2AE4081B00719C00CB96A3 /* AppDelegate.swift */,
-				0F2AE40C1B00719C00CB96A3 /* Main.storyboard */,
 				0F2AE40F1B00719C00CB96A3 /* Images.xcassets */,
 				0F2AE4111B00719C00CB96A3 /* LaunchScreen.xib */,
 				0F2AE4061B00719C00CB96A3 /* Supporting Files */,
@@ -280,6 +282,7 @@
 				B54E741E1B114A8F0064BB8A /* ProviderManagePatientExercises.swift */,
 				B54E74201B1276030064BB8A /* NewExerciseViewController.swift */,
 				B5841B801B13A4320075AA47 /* EditExerciseViewController.swift */,
+				CA3EA92D1B16E83600FE9B5B /* ExerciseTemplateDetailViewController.swift */,
 			);
 			name = ProviderViewControllers;
 			sourceTree = "<group>";
@@ -376,10 +379,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F2AE40E1B00719C00CB96A3 /* Main.storyboard in Resources */,
 				0F179D751B01C59400EE4744 /* CircularView.xib in Resources */,
 				0F2AE4131B00719C00CB96A3 /* LaunchScreen.xib in Resources */,
 				0F2AE4101B00719C00CB96A3 /* Images.xcassets in Resources */,
+				CA3EA9311B16F89500FE9B5B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +457,7 @@
 				B5B4C7391B051DBC004D5FFD /* ProviderSignupVIewController.swift in Sources */,
 				0FDF9C4F1B0EC4A200F71005 /* PatientHomeViewController.swift in Sources */,
 				B54E74211B1276030064BB8A /* NewExerciseViewController.swift in Sources */,
+				CA3EA92E1B16E83600FE9B5B /* ExerciseTemplateDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,20 +480,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0F2AE40C1B00719C00CB96A3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0F2AE40D1B00719C00CB96A3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0F2AE4111B00719C00CB96A3 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				0F2AE4121B00719C00CB96A3 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		CA3EA92F1B16F89500FE9B5B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CA3EA9301B16F89500FE9B5B /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
