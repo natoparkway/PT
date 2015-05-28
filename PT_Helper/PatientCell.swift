@@ -13,6 +13,7 @@ class PatientCell: UITableViewCell {
   @IBOutlet var ageGenderLabel: UILabel!
   @IBOutlet var nameLabel: UILabel!
   @IBOutlet var injuryLabel: UILabel!
+  @IBOutlet var profileImage: UIImageView!
   
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +31,12 @@ class PatientCell: UITableViewCell {
     let lastName = patient["last_name"] as! String
     let injury = patient["injury"] as! String
     let age = patient["age"] as! Int
+    let url = patient["profileImageUrl"] as? String
+    if (url == nil) {
+      profileImage.image = UIImage(named: "patient")
+    } else {
+      profileImage.setImageWithURL(NSURL(string: url!)!)
+    }
     let gender = patient["gender"] as! String
     nameLabel.text = firstName + " " + lastName
     injuryLabel.text = injury
