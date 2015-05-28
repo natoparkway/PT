@@ -32,6 +32,8 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
         ageTextView.delegate = self
         injuryTextView.delegate = self
         workoutsUntilApp.delegate = self
+        tableView.estimatedRowHeight = 20
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         var wUntilApp = patient["workoutsUntilAppointment"] as! Int
         workoutsUntilApp.text = String(wUntilApp)
@@ -87,9 +89,6 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
     }
   }
   
-  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    return 30
-  }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return exercises.count
@@ -103,8 +102,7 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell = tableView.dequeueReusableCellWithIdentifier("ExerciseTemplateCell") as! ExerciseTemplateCell
     var exercise = exercises[indexPath.row]
-    println(" the cell im trying to get has an exercise of")
-
+    
     cell.nameLabel.text = Util.getNameFromExercise(exercise)
     cell.selectionStyle = UITableViewCellSelectionStyle.None
     return cell
@@ -127,7 +125,7 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
       
       if (segue.identifier == "editExerciseSegue") {
         var indexPath = sender as! NSIndexPath
-        
+        println("\(sender)")
         var vc = segue.destinationViewController as! EditExerciseViewController
         vc.exercise = exercises[indexPath.row]
       }

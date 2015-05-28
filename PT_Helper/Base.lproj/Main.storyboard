@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExerciseTemplateCell" rowHeight="60" id="ziG-YJ-Rmk" customClass="ExerciseTemplateCell" customModule="PT_Helper" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ExerciseTemplateCell" rowHeight="60" id="ziG-YJ-Rmk" customClass="ExerciseTemplateCell" customModule="PT_Helper" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ziG-YJ-Rmk" id="Zgt-pJ-zhZ">
@@ -43,6 +43,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameLabel" destination="k85-s3-1lg" id="Oae-sl-Mi0"/>
+                                            <segue destination="5aL-2T-C6i" kind="push" identifier="ExerciseTemplateDetailViewController" id="ckF-pn-KVj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -790,6 +791,52 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2794" y="1265"/>
+        </scene>
+        <!--Exercise Template Detail View Controller-->
+        <scene sceneID="K8V-ca-Wcx">
+            <objects>
+                <viewController storyboardIdentifier="ExerciseTemplateDetailViewController" id="5aL-2T-C6i" customClass="ExerciseTemplateDetailViewController" customModule="PT_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xJy-G8-pVn"/>
+                        <viewControllerLayoutGuide type="bottom" id="VxA-GH-ATY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kKj-TT-bqI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hzg-VW-iMb">
+                                <rect key="frame" x="16" y="214" width="288" height="241"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="241" id="AXM-mP-nbv"/>
+                                    <constraint firstAttribute="width" constant="288" id="K3H-bz-4wf"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBX-FU-0Rz">
+                                <rect key="frame" x="139" y="72" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="rBX-FU-0Rz" secondAttribute="trailing" constant="139" id="2mL-ex-W8v"/>
+                            <constraint firstItem="VxA-GH-ATY" firstAttribute="top" secondItem="hzg-VW-iMb" secondAttribute="bottom" constant="113" id="BKM-iV-rUo"/>
+                            <constraint firstAttribute="trailing" secondItem="hzg-VW-iMb" secondAttribute="trailing" constant="16" id="GQd-xE-Yx0"/>
+                            <constraint firstItem="rBX-FU-0Rz" firstAttribute="top" secondItem="xJy-G8-pVn" secondAttribute="bottom" constant="8" id="ozS-ON-N1I"/>
+                            <constraint firstItem="rBX-FU-0Rz" firstAttribute="leading" secondItem="kKj-TT-bqI" secondAttribute="leading" constant="139" id="qhK-hT-Hek"/>
+                            <constraint firstItem="hzg-VW-iMb" firstAttribute="leading" secondItem="kKj-TT-bqI" secondAttribute="leading" constant="16" id="uCT-ta-jzz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="sKp-vm-Ybb"/>
+                    <connections>
+                        <outlet property="templateNameLabel" destination="rBX-FU-0Rz" id="DFM-mF-ju2"/>
+                        <outlet property="videoImageView" destination="hzg-VW-iMb" id="2Vh-Wn-rjo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RfT-lw-Bch" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2322" y="1721"/>
         </scene>
         <!--New Exercise View Controller-->
         <scene sceneID="JW7-uK-YRj">

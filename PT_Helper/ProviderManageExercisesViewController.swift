@@ -11,6 +11,7 @@ import UIKit
 class ProviderManageExercisesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
   var refreshControl = UIRefreshControl()
+    var cellClicked: Int = 10
   var exercises:[PFObject] = []
     @IBOutlet weak var tableView: UITableView!
 
@@ -49,13 +50,20 @@ class ProviderManageExercisesViewController: UIViewController, UITableViewDelega
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("ExerciseTemplateCell") as! ExerciseTemplateCell
       cell.selectionStyle = .None    //Prevents highlighting
-        var et = exercises[indexPath.row] as! PFObject
-        cell.nameLabel.text = et["name"] as! String
+        var et = exercises[indexPath.row]
+        cell.nameLabel.text = (et["name"] as! String)
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exercises.count
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        cellClicked = indexPath.row
+        println("cell clicked is tryna be \(indexPath.row) but really is \(cellClicked)")
+      //  performSegueWithIdentifier("ExerciseTemplateDetailViewController", sender: tableView.cellForRowAtIndexPath(indexPath))
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,14 +72,24 @@ class ProviderManageExercisesViewController: UIViewController, UITableViewDelega
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        println("tryna segue")
+        if(segue.identifier == "ExerciseTemplateDetailViewController"){
+                var indexPath = tableView.indexPathForCell(sender as! ExerciseTemplateCell)
+            
+                var vc = segue.destinationViewController as! ExerciseTemplateDetailViewController
+            println("cell clicked is \(indexPath!.row)")
+                println("the exercise i am passing in is \(exercises[indexPath!.row])")
+                vc.exerciseTemplate = exercises[indexPath!.row]
+            
+        }
     }
-    */
+    
 
 }

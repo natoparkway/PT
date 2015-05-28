@@ -110,6 +110,8 @@ class EditExerciseViewController: UIViewController {
     var newVal = numSetsLabel.text!.toInt()! - 1;
     numSetsLabel.text = "\(newVal)"
   }
+    
+    
   
     /*
     // MARK: - Navigation
