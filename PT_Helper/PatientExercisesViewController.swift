@@ -11,6 +11,7 @@ import UIKit
 class PatientExercisesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var exercises: [PFObject] = []
+    var refreshControl = UIRefreshControl()
     let transitionManager = SlideTransitionDelegate()
 
     @IBOutlet weak var tableView: UITableView!
@@ -22,6 +23,28 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
         tableView.rowHeight = UITableViewAutomaticDimension
 
         // Do any additional setup after loading the view.
+        
+        refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
+        onRefresh()
+    }
+    
+    func onRefresh() {
+        var exerciseQuery = PFQuery(className: "Exercise")
+        if let curPatient = Util.currentPatient() {
+            exerciseQuery.whereKey("patient", equalTo: curPatient)
+           // exerciseQuery.includeKey("template")
+            exerciseQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
+                if (error == nil) {
+                    println(result)
+                    self.exercises = result as! [PFObject]
+                    self.tableView.reloadData()
+                } else {
+                    println(error?.description)
+                }
+                self.refreshControl.endRefreshing()
+            })
+        }
     }
 
   @IBAction func onLogout(sender: UIBarButtonItem) {

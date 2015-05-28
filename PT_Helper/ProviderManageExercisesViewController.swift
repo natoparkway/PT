@@ -10,9 +10,10 @@ import UIKit
 
 class ProviderManageExercisesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
-  var refreshControl = UIRefreshControl()
     var cellClicked: Int = 10
   var exercises:[PFObject] = []
+    var refreshControl = UIRefreshControl()
+    
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {

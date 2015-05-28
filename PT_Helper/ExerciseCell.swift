@@ -27,6 +27,7 @@ class ExerciseCell: UITableViewCell {
     func setup(e: PFObject) {
         var template = PFObject(className: "ExerciseTemplate")
         template = e["template"] as! PFObject
+        template.fetchIfNeeded()
         let name = template["name"] as! String
         exerciseNameLabel.text = name
       
