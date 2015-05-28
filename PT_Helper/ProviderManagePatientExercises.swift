@@ -28,15 +28,7 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
     UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(phoneNum)")!)
 
   }
-    
-    func dismissKeyboard (){
-        ageTextView.resignFirstResponder()
-        injuryTextView.resignFirstResponder()
-        workoutsUntilApp.resignFirstResponder()
-        emailTextView.resignFirstResponder()
-        patientNameTextView.resignFirstResponder()
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         onRefresh()
@@ -139,10 +131,7 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
     }
     
     @IBAction func backgroundTapped(sender: AnyObject) {
-        println("back ground tapped")
-        var temp = sender.superview
-        println("the super view is \(temp)")
-        dismissKeyboard()
+        view.endEditing(true)
     }
     
 

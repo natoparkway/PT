@@ -114,6 +114,12 @@ class CreateNewExerciseViewController: UIViewController, UIImagePickerController
         profileImageView.image = image
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func backgroundTapped(sender: AnyObject) {
+        println("background of exercise template tapped")
+        exerciseNameField.resignFirstResponder()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
