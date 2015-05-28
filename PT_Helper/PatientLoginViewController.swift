@@ -12,6 +12,8 @@ class PatientLoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var passwordField: UITextField!
     @IBOutlet var emailField: UITextField!
     var userExercises: [PFObject] = []
+    var curPatient: PFObject = PFObject(className: "Patient")
+    var curPhysician: PFObject = PFObject(className: "Physician")
   
   @IBAction func onTap(sender: UITapGestureRecognizer) {
     view.endEditing(true)
@@ -38,6 +40,7 @@ class PatientLoginViewController: UIViewController, UITextFieldDelegate {
           
           if let curPhysician = PFUser.currentUser()?["physician"] as? PFObject {
             curPhysician.fetchInBackgroundWithBlock({ (physician: PFObject?, error: NSError?) -> Void in
+              self.curPhysician = physician!
               self.performSegueWithIdentifier("physicianLoginSegue", sender: self)
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
 
@@ -45,6 +48,7 @@ class PatientLoginViewController: UIViewController, UITextFieldDelegate {
           } else {
             if let curPatient = PFUser.currentUser()?["patient"] as? PFObject {
               curPatient.fetchInBackgroundWithBlock({ (patient: PFObject?, error: NSError?) -> Void in
+                self.curPatient = curPatient
                 self.performPatientSegue()
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
 
@@ -52,9 +56,30 @@ class PatientLoginViewController: UIViewController, UITextFieldDelegate {
             }
           }
         } else {
-          self.displayError(error!)
+          let patientQuery = PFQuery(className: "Patient")
+          patientQuery.whereKey("email", equalTo: self.emailField.text)
+          patientQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
+            if (error == nil && result?.count > 0) {
+              var results = result as! [PFObject]
+              self.curPatient = results[0]
+              var user = PFUser()
+              user.username = self.emailField.text
+              user.password = self.passwordField.text
+              user.email = self.emailField.text
+              user.setObject(self.curPatient, forKey: "patient")
+              user.signUpInBackgroundWithBlock {
+                (succeeded: Bool, error: NSError?) -> Void in
+                if let err = error {
+                  self.displayError(err)
+                } else {
+                  self.performPatientSegue()
+                }
+              }
+            } else {
+              self.displayError(error!)
+            }
             MBProgressHUD.hideHUDForView(self.view, animated: true)
-
+          })
         }
       }
     }
@@ -62,21 +87,19 @@ class PatientLoginViewController: UIViewController, UITextFieldDelegate {
     //Gets user exercise data from parse, then logs in
     func performPatientSegue() {
         var exerciseQuery = PFQuery(className: "Exercise")
-        if let curPatient = Util.currentPatient() {
-            exerciseQuery.whereKey("patient", equalTo: curPatient)
-            exerciseQuery.includeKey("template")
-            exerciseQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
-                
-                if (error == nil) {
-                    println("Got Exercises Sucessfully")
-                    self.userExercises = result as! [PFObject]
-                    println(self.userExercises)
-                    self.performSegueWithIdentifier("ToStoryboardSegue", sender: self)
-                } else {
-                    println(error?.description)
-                }
-            })
-        }
+        exerciseQuery.whereKey("patient", equalTo: curPatient)
+        exerciseQuery.includeKey("template")
+        exerciseQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
+            
+            if (error == nil) {
+                println("Got Exercises Sucessfully")
+                self.userExercises = result as! [PFObject]
+                println(self.userExercises)
+                self.performSegueWithIdentifier("ToStoryboardSegue", sender: self)
+            } else {
+                println(error?.description)
+            }
+        })
     }
   
   func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -106,10 +129,21 @@ class PatientLoginViewController: UIViewController, UITextFieldDelegate {
             
             if id == "ToStoryboardSegue" {
                 var patientTabBar = segue.destinationViewController as! UITabBarController
-                var patientViewNav = patientTabBar.viewControllers![0] as! UINavigationController
-                var patientViewVC = patientViewNav.topViewController as! PatientHomeViewController
-                patientViewVC.exercises = userExercises
+                var workoutViewNav = patientTabBar.viewControllers![0] as! UINavigationController
+                var workoutViewVC = workoutViewNav.topViewController as! PatientHomeViewController
+                workoutViewVC.exercises = userExercises
+                
+                var listNav = patientTabBar.viewControllers![1] as! UINavigationController
+                var listVC = listNav.topViewController as! PatientExercisesViewController
+                listVC.exercises = userExercises
             }
+          
+          if id == "physicianLoginSegue" {
+            var physicianTabBar = segue.destinationViewController as! UITabBarController
+            var physicianViewNav = physicianTabBar.viewControllers![0] as! UINavigationController
+            var managePatientVC = physicianViewNav.topViewController as! ProviderPatientsViewController
+            managePatientVC.curPhysician = self.curPhysician
+          }
         }
     }
   

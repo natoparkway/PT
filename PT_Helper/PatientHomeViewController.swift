@@ -28,9 +28,18 @@ class PatientHomeViewController: UIViewController, WorkoutFinishedDelegate {
         // Do any additional setup after loading the view.
         var user = PFUser.currentUser()?["patient"] as! PFObject
         var wUntilAppt = user["workoutsUntilAppointment"] as! Int
-        progressLabel.text = "Only \(wUntilAppt) workouts until your next appointment"
+        progressLabel.preferredMaxLayoutWidth = progressLabel.frame.width
+        
+        if wUntilAppt < 0 {
+            wUntilAppt = 0
+        }
+        
+        println("View did load")
+        
+        progressLabel.text = "\(wUntilAppt) workouts until your next appointment"
         
     }
+    
     
     func setUpProgressBar() {
         progressBar.progressTintColor = greenColor
@@ -60,6 +69,11 @@ class PatientHomeViewController: UIViewController, WorkoutFinishedDelegate {
         var wUntilAppt = (user["workoutsUntilAppointment"] as! Int) - 1
         println("wUntilAppt is \(wUntilAppt)")
         progressBar.progress += (1 / (user["totalWorkouts"] as! CGFloat))
+        
+        if wUntilAppt < 0 {
+            wUntilAppt = 0
+        }
+        
         user["workoutsUntilAppointment"] = wUntilAppt
         user.save()
         if( wUntilAppt > 0 ){
