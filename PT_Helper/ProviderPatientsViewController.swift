@@ -23,14 +23,14 @@ class ProviderPatientsViewController: UIViewController, UITableViewDelegate, UIT
       tableView.dataSource = self
       refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
       tableView.insertSubview(refreshControl, atIndex: 0)
-        onRefresh()
         // Do any additional setup after loading the view.
+        onRefresh()
+    }
 
-            }
-
-//    override func viewWillAppear(animated: Bool) {
-//        onRefresh()
-//    }
+    override func viewWillAppear(animated: Bool) {
+        println("view will appear and refresh")
+        onRefresh()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
