@@ -11,6 +11,7 @@ import UIKit
 class PatientExercisesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var exercises: [PFObject] = []
+    let transitionManager = SlideTransitionDelegate()
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -18,18 +19,16 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-      
-
-      
+        tableView.rowHeight = UITableViewAutomaticDimension
 
         // Do any additional setup after loading the view.
     }
 
   @IBAction func onLogout(sender: UIBarButtonItem) {
     PFUser.logOutInBackgroundWithBlock { (error: NSError?) -> Void in
-      if (error == nil) {
-        self.navigationController?.popToRootViewControllerAnimated(true)
-      }
+        if (error == nil) {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
   }
     override func didReceiveMemoryWarning() {
@@ -39,7 +38,7 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
     
 //TABLE VIEW DELEGATE METHODS
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100;
+        return 40;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -53,6 +52,11 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exercises.count
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("ToWorkout", sender: tableView.cellForRowAtIndexPath(indexPath))
+        
+    }
 //TABLE VIEW DELEGATE METHODS
     
 
@@ -63,25 +67,22 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if let id = segue.identifier {
-            if id == "ToDetailedExercise" {
-                toDetailedExerciseSegue(segue, cell: sender as! ExerciseCell)
-            } else if id == "ToWorkoutView" {
-                toWorkoutViewSegue(segue)
+            if id == "ToWorkout" {
+                toWorkoutViewSegue(segue, sender: sender)
             }
         }
     }
     
-    func toWorkoutViewSegue(segue: UIStoryboardSegue) {
+    func toWorkoutViewSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var indexPath = tableView.indexPathForCell(sender as! UITableViewCell)!
         var workoutVC = segue.destinationViewController as! WorkoutContainerViewController
-        workoutVC.exercises = exercises
+        var singleExercise = [PFObject]()
+        singleExercise.append(exercises[indexPath.row])
+        workoutVC.modalPresentationStyle = .Custom
+        workoutVC.transitioningDelegate = transitionManager
+        workoutVC.exercises = singleExercise
     }
     
-    func toDetailedExerciseSegue(segue: UIStoryboardSegue, cell: ExerciseCell) {
-        var nav = segue.destinationViewController as! UINavigationController
-        var detailedExerciseVC = nav.topViewController as! DetailedExerciseViewController
-        var indexPath = tableView.indexPathForCell(cell)!
-        detailedExerciseVC.exercise = exercises[indexPath.row]
-    }
     
 
 }
