@@ -43,8 +43,14 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
         tableView.estimatedRowHeight = 20
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        var url = patient["profileImageUrl"] as! String
-        profileImageView.setImageWithURL(NSURL(string: url)!)
+        if let imageURl = patient["profileImageUrl"] as? String {
+            profileImageView.setImageWithURL(NSURL(string: imageURl )!)
+        }
+        else{
+            profileImageView.image = UIImage(named: "patient")
+        }
+        
+        //profileImageView.setImageWithURL(NSURL(string: url)!)
         profileImageView.layer.borderWidth = 1.0
         profileImageView.layer.masksToBounds = false
         profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
