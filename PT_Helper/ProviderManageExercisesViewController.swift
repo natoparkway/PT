@@ -10,44 +10,45 @@ import UIKit
 
 class ProviderManageExercisesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
-  var refreshControl = UIRefreshControl()
+    var refreshControl = UIRefreshControl()
     var cellClicked: Int = 10
-  var exercises:[PFObject] = []
+    var exercises:[PFObject] = []
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-      var image = UIImage(named: "Dumbell Black")
-      self.tabBarController!.tabBarItem.image = UIImage(named: "Dumbell Black")
+        var image = UIImage(named: "Dumbell Black")
+        self.tabBarController!.tabBarItem.image = UIImage(named: "Dumbell Black")
+        tableView.rowHeight = UITableViewAutomaticDimension
 
-      refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
-      tableView.insertSubview(refreshControl, atIndex: 0)
-      onRefresh()
+        refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
+        onRefresh()
     }
   
-  func onRefresh() {
-    var exerciseQuery = PFQuery(className: "ExerciseTemplate")
-    if let curPhysician = Util.currentPhysician() {
-      exerciseQuery.whereKey("physician", equalTo: curPhysician)
-      exerciseQuery.includeKey("template")
-      exerciseQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
-        if (error == nil) {
-          println(result)
-          self.exercises = result as! [PFObject]
-          self.tableView.reloadData()
-        } else {
-          println(error?.description)
+    func onRefresh() {
+        var exerciseQuery = PFQuery(className: "ExerciseTemplate")
+        if let curPhysician = Util.currentPhysician() {
+            exerciseQuery.whereKey("physician", equalTo: curPhysician)
+            exerciseQuery.includeKey("template")
+            exerciseQuery.findObjectsInBackgroundWithBlock({ (result: [AnyObject]?, error: NSError?) -> Void in
+            if (error == nil) {
+                  println(result)
+                  self.exercises = result as! [PFObject]
+                  self.tableView.reloadData()
+                } else {
+                  println(error?.description)
+                }
+                self.refreshControl.endRefreshing()
+            })
         }
-        self.refreshControl.endRefreshing()
-      })
     }
-  }
   
-  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    return 60
-  }
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60
+    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("ExerciseTemplateCell") as! ExerciseTemplateCell
@@ -63,7 +64,6 @@ class ProviderManageExercisesViewController: UIViewController, UITableViewDelega
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         cellClicked = indexPath.row
-        println("cell clicked is tryna be \(indexPath.row) but really is \(cellClicked)")
       //  performSegueWithIdentifier("ExerciseTemplateDetailViewController", sender: tableView.cellForRowAtIndexPath(indexPath))
         
     }
@@ -81,15 +81,12 @@ class ProviderManageExercisesViewController: UIViewController, UITableViewDelega
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        println("tryna segue")
-        if(segue.identifier == "ExerciseTemplateDetailViewController"){
+        if let id = segue.identifier {
+            if id == "ExerciseTemplateDetailViewController" {
                 var indexPath = tableView.indexPathForCell(sender as! ExerciseTemplateCell)
-            
                 var vc = segue.destinationViewController as! ExerciseTemplateDetailViewController
-            println("cell clicked is \(indexPath!.row)")
-                println("the exercise i am passing in is \(exercises[indexPath!.row])")
                 vc.exerciseTemplate = exercises[indexPath!.row]
-            
+            }
         }
     }
     
