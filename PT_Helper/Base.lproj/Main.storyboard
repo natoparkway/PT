@@ -395,30 +395,48 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GbP-mZ-Sze" id="rzV-gi-kVB">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Okun, Nathaniel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KkE-si-2d3">
-                                                    <rect key="frame" x="8" y="8" width="126" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Okun, Nathaniel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KkE-si-2d3">
+                                                    <rect key="frame" x="69" y="8" width="126" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20yo M" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oN-vr-Ocv">
-                                                    <rect key="frame" x="244" y="8" width="56" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20yo M" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oN-vr-Ocv">
+                                                    <rect key="frame" x="250" y="8" width="56" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Injurius Preventius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROb-7t-8cJ">
-                                                    <rect key="frame" x="8" y="40" width="140" height="21"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mw5-ZV-4Jd">
+                                                    <rect key="frame" x="8" y="8" width="53" height="53"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="53" id="leP-nz-9wP"/>
+                                                        <constraint firstAttribute="height" constant="53" id="uOp-XT-T9C"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Injurius Preventius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROb-7t-8cJ">
+                                                    <rect key="frame" x="69" y="40" width="140" height="21"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="KkE-si-2d3" firstAttribute="leading" secondItem="Mw5-ZV-4Jd" secondAttribute="trailing" constant="8" id="NRX-2z-e7Z"/>
+                                                <constraint firstItem="ROb-7t-8cJ" firstAttribute="top" secondItem="KkE-si-2d3" secondAttribute="bottom" constant="11" id="Xaq-rR-lNT"/>
+                                                <constraint firstItem="Mw5-ZV-4Jd" firstAttribute="top" secondItem="rzV-gi-kVB" secondAttribute="top" constant="8" id="c73-kf-GYA"/>
+                                                <constraint firstItem="9oN-vr-Ocv" firstAttribute="top" secondItem="rzV-gi-kVB" secondAttribute="top" constant="8" id="gCS-zS-HdF"/>
+                                                <constraint firstAttribute="trailing" secondItem="9oN-vr-Ocv" secondAttribute="trailing" constant="14" id="hff-4h-eLV"/>
+                                                <constraint firstItem="KkE-si-2d3" firstAttribute="top" secondItem="rzV-gi-kVB" secondAttribute="top" constant="8" id="qrS-rC-Wem"/>
+                                                <constraint firstItem="Mw5-ZV-4Jd" firstAttribute="leading" secondItem="rzV-gi-kVB" secondAttribute="leading" constant="8" id="row-Mg-WK0"/>
+                                                <constraint firstItem="ROb-7t-8cJ" firstAttribute="leading" secondItem="Mw5-ZV-4Jd" secondAttribute="trailing" constant="8" id="xM4-SW-EDA"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="ageGenderLabel" destination="9oN-vr-Ocv" id="2Ya-CN-xSs"/>
                                             <outlet property="injuryLabel" destination="ROb-7t-8cJ" id="54J-IN-8xl"/>
                                             <outlet property="nameLabel" destination="KkE-si-2d3" id="1YM-Z4-Hw4"/>
+                                            <outlet property="profileImage" destination="Mw5-ZV-4Jd" id="k7Q-bS-lk4"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
