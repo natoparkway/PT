@@ -27,15 +27,17 @@ class ExerciseCell: UITableViewCell {
     func setup(e: PFObject) {
         var template = PFObject(className: "ExerciseTemplate")
         template = e["template"] as! PFObject
-        template.fetchIfNeeded()
-        let name = template["name"] as! String
-        exerciseNameLabel.text = name
+        template.fetchInBackgroundWithBlock { (actualTemplate: PFObject?, error: NSError?) -> Void in
+            let name = actualTemplate!["name"] as! String
+            self.exerciseNameLabel.text = name
+        }
+        
       
         //We need to remove white space as well
 //        daysPerWeekView.updateCounter(daysPerWeek.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
 //        repetitionsView.updateCounter(numReps.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
 //        setsOrTimeView.updateCounter(duration.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
-        exerciseNameLabel.text = name
+//        exerciseNameLabel.text = name
     }
 
 //    override func setSelected(selected: Bool, animated: Bool) {
