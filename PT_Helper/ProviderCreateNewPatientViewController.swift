@@ -15,6 +15,7 @@ class ProviderCreateNewPatientViewController: UIViewController {
   @IBOutlet var lastNameTextField: UITextField!
   @IBOutlet weak var injuryTextField: UITextField!
   @IBOutlet var emailTextField: UITextField!
+  @IBOutlet var phoneField: UITextField!
   @IBOutlet var ageField: UITextField!
   @IBOutlet var maleFemaleButton: UISegmentedControl!
 
@@ -38,6 +39,7 @@ class ProviderCreateNewPatientViewController: UIViewController {
     patient["injury"] = injuryTextField.text
     patient["email"] = emailTextField.text
     patient["age"] = ageField.text.toInt()
+    patient["phone"] = phoneField.text.toInt()
     patient["gender"] = "M"
     patient.setObject(curPhysician, forKey: "physician")
 
