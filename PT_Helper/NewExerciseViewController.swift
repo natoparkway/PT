@@ -15,6 +15,7 @@ class NewExerciseViewController: UIViewController, IQDropDownTextFieldDelegate, 
   
   @IBAction func onTap(sender: UITapGestureRecognizer) {
     view.endEditing(true)
+    templateDropdown.resignFirstResponder()
   }
   
   @IBOutlet var videoImageView: UIImageView!
@@ -59,25 +60,35 @@ class NewExerciseViewController: UIViewController, IQDropDownTextFieldDelegate, 
   
   
   @IBAction func decreaseRepsDuration(sender: UIButton) {
+    view.endEditing(true)
+    templateDropdown.resignFirstResponder()
     var newVal = numRepsOrDurationLabel.text!.toInt()! - 1;
     numRepsOrDurationLabel.text = "\(newVal)"
   }
   @IBAction func increaseRepsDuration(sender: UIButton) {
+    view.endEditing(true)
+    templateDropdown.resignFirstResponder()
     var newVal = numRepsOrDurationLabel.text!.toInt()! + 1;
     numRepsOrDurationLabel.text = "\(newVal)"
   }
   
   @IBAction func increaseSets(sender: UIButton) {
+    view.endEditing(true)
+    templateDropdown.resignFirstResponder()
     var newVal = numSetsLabel.text!.toInt()! + 1;
     numSetsLabel.text = "\(newVal)"
   }
   
   @IBAction func decreaseSets(sender: UIButton) {
+    view.endEditing(true)
+    templateDropdown.resignFirstResponder()
     var newVal = numSetsLabel.text!.toInt()! - 1;
     numSetsLabel.text = "\(newVal)"
   }
   
   @IBAction func switchFlipped(sender: UISwitch) {
+    view.endEditing(true)
+    templateDropdown.resignFirstResponder()
     if (isDurationSwitch.on) {
       repsOrDurationLabel.text = "SECONDS"
     } else {

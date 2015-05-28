@@ -34,7 +34,15 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
         emailTextView.resignFirstResponder()
         patientNameTextView.resignFirstResponder()
     }
+    func textViewDidEndEditing(textView: UITextView) {
+        textView.layer.borderColor = UIColor.blueColor().CGColor
+    }
     
+    func textViewDidChange(textView: UITextView) {
+        textView.layer.borderWidth = 0.5
+        textView.layer.borderColor = UIColor.greenColor().CGColor
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         onRefresh()
@@ -125,10 +133,7 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
     }
     
     @IBAction func backgroundTapped(sender: AnyObject) {
-        println("back ground tapped")
-        var temp = sender.superview
-        println("the super view is \(temp)")
-        dismissKeyboard()
+        view.endEditing(true)
     }
     
 
