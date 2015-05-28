@@ -38,7 +38,7 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
     
 //TABLE VIEW DELEGATE METHODS
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 40;
+        return 40.0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
