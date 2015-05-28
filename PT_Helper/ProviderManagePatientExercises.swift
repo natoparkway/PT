@@ -28,6 +28,15 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
     UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(phoneNum)")!)
 
   }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        textView.layer.borderColor = UIColor.blueColor().CGColor
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        textView.layer.borderWidth = 0.5
+        textView.layer.borderColor = UIColor.greenColor().CGColor
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
