@@ -31,10 +31,10 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         onRefresh()
-      refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
-      tableView.insertSubview(refreshControl, atIndex: 0)
-      tableView.delegate = self
-      tableView.dataSource = self
+        refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
+        tableView.delegate = self
+        tableView.dataSource = self
         patientNameTextView.delegate = self
         emailTextView.delegate = self
         ageTextView.delegate = self
@@ -170,14 +170,14 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
         return 1
     }
   
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    var cell = tableView.dequeueReusableCellWithIdentifier("ExerciseTemplateCell") as! ExerciseTemplateCell
-    var exercise = exercises[indexPath.row]
+    func tableView(tableView: UITableView,    cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("ExerciseTemplateCell") as! ExerciseTemplateCell
+        var exercise = exercises[indexPath.row]
     
-    cell.nameLabel.text = Util.getNameFromExercise(exercise)
-    cell.selectionStyle = UITableViewCellSelectionStyle.None
-    return cell
-  }
+        cell.nameLabel.text = Util.getNameFromExercise(exercise)
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        return cell
+    }
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     performSegueWithIdentifier("editExerciseSegue", sender: indexPath)
