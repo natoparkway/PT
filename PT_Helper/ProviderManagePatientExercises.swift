@@ -16,7 +16,6 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var workoutsUntilApp: UITextView!
     @IBOutlet weak var patientNameTextView: UITextView!
     @IBOutlet weak var emailTextView: UITextView!
-    @IBOutlet weak var ageTextView: UITextView!
     @IBOutlet weak var injuryTextView: UITextView!
     @IBOutlet weak var profileImageView: UIImageView!
   var exercises: [PFObject] = []
@@ -30,7 +29,6 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
   }
     
     func dismissKeyboard (){
-        ageTextView.resignFirstResponder()
         injuryTextView.resignFirstResponder()
         workoutsUntilApp.resignFirstResponder()
         emailTextView.resignFirstResponder()
@@ -46,7 +44,6 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
         tableView.dataSource = self
         patientNameTextView.delegate = self
         emailTextView.delegate = self
-        ageTextView.delegate = self
         injuryTextView.delegate = self
         workoutsUntilApp.delegate = self
         tableView.estimatedRowHeight = 20
@@ -69,8 +66,6 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
         var wUntilApp = patient["workoutsUntilAppointment"] as! Int
         workoutsUntilApp.text = String(wUntilApp)
         injuryTextView.text = patient["injury"] as! String
-        var age = patient["age"] as! Int
-        ageTextView.text = String(age)
         var temp = patient["first_name"] as! String
         temp += " "
         temp += patient["last_name"] as! String
@@ -79,9 +74,6 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
         self.tableView.reloadData()
     }
     
-    @IBAction func backgroundTap(sender: UITapGestureRecognizer) {
-        println("Background taped")
-    }
     @IBAction func emailButtonTapped(sender: UIButton) {
         let mailComposeViewController = configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
@@ -127,15 +119,9 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
         var wUntilApp = workoutsUntilApp.text
         patient["workoutsUntilAppointment"] = wUntilApp.toInt()!
         patient["injury"] = injuryTextView.text
-        var age = ageTextView.text
-        var intAge = age.toInt()
-        patient["age"] = intAge!
         patient["email"] = emailTextView.text
         patient["injury"] = injuryTextView.text
-        
-        println("text view age is \(intAge)")
-        var temp = patient["age"] as! Int
-        println("the patients age is \(temp)")
+
     }
     
     @IBAction func backgroundTapped(sender: AnyObject) {
