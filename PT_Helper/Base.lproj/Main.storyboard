@@ -543,6 +543,9 @@
                                         <state key="normal" title="Email">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="emailButtonTapped:" destination="5Jc-bf-fOI" eventType="touchUpInside" id="giU-yJ-HsU"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="y.o." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVZ-7x-Ydi">
                                         <rect key="frame" x="44" y="83" width="27" height="21"/>

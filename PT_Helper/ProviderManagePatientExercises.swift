@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
+import MessageUI
+
+class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, MFMailComposeViewControllerDelegate  {
 
   @IBOutlet var tableView: UITableView!
     @IBOutlet weak var workoutsUntilApp: UITextView!
@@ -57,6 +59,39 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
         self.tableView.reloadData()
     }
     
+    @IBAction func emailButtonTapped(sender: UIButton) {
+        let mailComposeViewController = configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            self.showSendMailErrorAlert()
+        }
+    }
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+        var email = patient["email"] as! String
+        mailComposerVC.setToRecipients(["\(email)"])
+        mailComposerVC.setSubject("Feedback from your friendly Physical Therapist")
+        
+//        var name = PFUser.currentUser()?["physician"] as? PFObject
+//        var signature = "Sincerely, \n Dr. "
+//        var signature1 = name["last_name"] as! String
+//        signature += signature1
+        mailComposerVC.setMessageBody("", isHTML: false)
+        
+        return mailComposerVC
+    }
+    
+    func showSendMailErrorAlert() {
+        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        sendMailErrorAlert.show()
+    }
+    
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
 
     @IBAction func savePatient(sender: UIButton) {
         var alert = UIAlertController(title: "Alert", message: "Patient Details Saved", preferredStyle: UIAlertControllerStyle.Alert)
