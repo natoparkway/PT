@@ -79,7 +79,7 @@ class NewExerciseViewController: UIViewController, IQDropDownTextFieldDelegate, 
   
   @IBAction func switchFlipped(sender: UISwitch) {
     if (isDurationSwitch.on) {
-      repsOrDurationLabel.text = "DURATION"
+      repsOrDurationLabel.text = "SECONDS"
     } else {
       repsOrDurationLabel.text = "REPS"
     }

@@ -12,9 +12,9 @@ class ProviderHomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      let curPhysician = PFUser.currentUser()!["physician"] as! PFObject
-      var name = curPhysician["first_name"] as! String
-      println("logged in as " + name)
+        let curPhysician = PFUser.currentUser()!["physician"] as! PFObject
+        var name = curPhysician["first_name"] as! String
+        println("logged in as " + name)
 
         // Do any additional setup after loading the view.
     }
