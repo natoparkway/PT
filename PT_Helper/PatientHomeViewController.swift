@@ -62,7 +62,12 @@ class PatientHomeViewController: UIViewController, WorkoutFinishedDelegate {
         progressBar.progress += (1 / (user["totalWorkouts"] as! CGFloat))
         user["workoutsUntilAppointment"] = wUntilAppt
         user.save()
-        progressLabel.text = "Only \(wUntilAppt) workouts until your next appointment"
+        if( wUntilAppt > 0 ){
+            progressLabel.text = "Only \(wUntilAppt) workouts until your next appointment"
+        }
+        else{
+            progressLabel.text = "You are ready to see your physical therapist"
+        }
     }
     
     @IBAction func workoutButtonClicked(sender: AnyObject) {
