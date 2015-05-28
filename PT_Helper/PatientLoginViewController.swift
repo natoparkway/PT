@@ -129,9 +129,13 @@ class PatientLoginViewController: UIViewController, UITextFieldDelegate {
             
             if id == "ToStoryboardSegue" {
                 var patientTabBar = segue.destinationViewController as! UITabBarController
-                var patientViewNav = patientTabBar.viewControllers![0] as! UINavigationController
-                var patientViewVC = patientViewNav.topViewController as! PatientHomeViewController
-                patientViewVC.exercises = userExercises
+                var workoutViewNav = patientTabBar.viewControllers![0] as! UINavigationController
+                var workoutViewVC = workoutViewNav.topViewController as! PatientHomeViewController
+                workoutViewVC.exercises = userExercises
+                
+                var listNav = patientTabBar.viewControllers![1] as! UINavigationController
+                var listVC = listNav.topViewController as! PatientExercisesViewController
+                listVC.exercises = userExercises
             }
           
           if id == "physicianLoginSegue" {

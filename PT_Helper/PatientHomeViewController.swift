@@ -13,24 +13,41 @@ class PatientHomeViewController: UIViewController, WorkoutFinishedDelegate {
     let greenColor = UIColor(red: 115/255, green: 255/255, blue: 171/255, alpha: 1.0)
     let redColor = UIColor(red: 255/255, green: 94/255, blue: 69/255, alpha: 1.0)
 
+    @IBOutlet weak var progressLabel: UILabel!
     
     @IBOutlet weak var progressBar: YLProgressBar!
     
     let transitionManager = SlideTransitionDelegate()
     var patientLoggedIn = false
     var exercises: [PFObject] = []
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpProgressBar()
         // Do any additional setup after loading the view.
+        var user = PFUser.currentUser()?["patient"] as! PFObject
+        var wUntilAppt = user["workoutsUntilAppointment"] as! Int
+        progressLabel.preferredMaxLayoutWidth = progressLabel.frame.width
+        
+        if wUntilAppt < 0 {
+            wUntilAppt = 0
+        }
+        
+        println("View did load")
+        
+        progressLabel.text = "\(wUntilAppt) workouts until your next appointment"
+        
     }
+    
     
     func setUpProgressBar() {
         progressBar.progressTintColor = greenColor
         progressBar.hideStripes = true
         progressBar.type = YLProgressBarType.Flat
-        progressBar.progress = 0.0
+        var user = PFUser.currentUser()?["patient"] as! PFObject
+        var progress = (user["totalWorkouts"] as! Int ) - (user["workoutsUntilAppointment"] as! Int)
+        progressBar.progress = CGFloat(progress) / (user["totalWorkouts"] as! CGFloat)
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +65,18 @@ class PatientHomeViewController: UIViewController, WorkoutFinishedDelegate {
   }
     //Delegate method
     func workOutFinished() {
-        progressBar.progress += 1/3
+        var user = PFUser.currentUser()?["patient"] as! PFObject
+        var wUntilAppt = (user["workoutsUntilAppointment"] as! Int) - 1
+        println("wUntilAppt is \(wUntilAppt)")
+        progressBar.progress += (1 / (user["totalWorkouts"] as! CGFloat))
+        
+        if wUntilAppt < 0 {
+            wUntilAppt = 0
+        }
+        
+        user["workoutsUntilAppointment"] = wUntilAppt
+        user.save()
+        progressLabel.text = "Only \(wUntilAppt) workouts until your next appointment"
     }
     
     @IBAction func workoutButtonClicked(sender: AnyObject) {

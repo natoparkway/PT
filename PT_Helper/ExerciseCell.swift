@@ -11,15 +11,14 @@ import UIKit
 class ExerciseCell: UITableViewCell {
 
     @IBOutlet weak var exerciseNameLabel: UILabel!
-    @IBOutlet weak var numRepsLabel: UILabel!
-    @IBOutlet weak var numSetsLabel: UILabel!
-    @IBOutlet weak var numDegreesLabel: UILabel!
-    @IBOutlet weak var daysPerWeekView: CircleWithTextView!
-    @IBOutlet weak var repetitionsView: CircleWithTextView!
-    @IBOutlet weak var setsOrTimeView: CircleWithTextView!
   
     override func awakeFromNib() {
         super.awakeFromNib()
+        exerciseNameLabel.preferredMaxLayoutWidth = exerciseNameLabel.frame.width
+    }
+    
+    override func layoutSubviews() {
+        exerciseNameLabel.preferredMaxLayoutWidth = exerciseNameLabel.frame.width
     }
     
     /*
@@ -29,15 +28,7 @@ class ExerciseCell: UITableViewCell {
         var template = PFObject(className: "ExerciseTemplate")
         template = e["template"] as! PFObject
         let name = template["name"] as! String
-        let numDegrees = e["degrees"] as! Int
-        numDegreesLabel.text = "\(numDegrees)"
-      
-        let numReps = e["repetitions"] as! Int
-        numRepsLabel.text = "\(numReps)"
-      
-      
-        let numSets = e["sets"] as! Int
-        numSetsLabel.text = "\(numSets)"
+        exerciseNameLabel.text = name
       
         //We need to remove white space as well
 //        daysPerWeekView.updateCounter(daysPerWeek.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))

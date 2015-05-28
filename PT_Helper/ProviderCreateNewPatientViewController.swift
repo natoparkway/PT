@@ -17,7 +17,7 @@ class ProviderCreateNewPatientViewController: UIViewController {
   @IBOutlet var emailTextField: UITextField!
   @IBOutlet var ageField: UITextField!
   @IBOutlet var maleFemaleButton: UISegmentedControl!
-  
+
   var curPhysician: PFObject = PFObject(className: "Physician")
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,8 @@ class ProviderCreateNewPatientViewController: UIViewController {
     patient["first_name"] = firstNameTextField.text.capitalizedString
     patient["last_name"] = lastNameTextField.text.capitalizedString
     patient["workoutsUntilAppointment"] = workoutsUntilApp.text.toInt()
-    
+    patient["totalWorkouts"] = workoutsUntilApp.text.toInt()
+
     // TODO: change this to be dynamic
     var password = "abc"
     patient["password"] = password
@@ -39,7 +40,7 @@ class ProviderCreateNewPatientViewController: UIViewController {
     patient["age"] = ageField.text.toInt()
     patient["gender"] = "M"
     patient.setObject(curPhysician, forKey: "physician")
-    
+
     // Make PFUser so that the patient can login
     var username = self.emailTextField.text
     patient.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
@@ -53,31 +54,31 @@ class ProviderCreateNewPatientViewController: UIViewController {
         self.displayMessage(errorString)
       }
     }
-    
-    
+
+
   }
-  
+
   func displayMessage(message: String) {
     var alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
     self.presentViewController(alert, animated: true, completion: nil)
   }
-    
-    
+
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    
+
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-    
+
     }
 
 
