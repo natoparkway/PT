@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProviderCreateNewPatientViewController: UIViewController {
+class ProviderCreateNewPatientViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var workoutsUntilApp: UITextField!
   @IBOutlet var firstNameTextField: UITextField!
@@ -24,6 +24,28 @@ class ProviderCreateNewPatientViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        workoutsUntilApp.delegate = self
+    }
+
+  @IBAction func onTap(sender: UITapGestureRecognizer) {
+    view.endEditing(true)
+  }
+func textFieldDidBeginEditing(textField: UITextField) {
+            animateViewMoving(true, moveValue: 120)
+    }
+
+    func textFieldDidEndEditing(textField: UITextField) {
+            animateViewMoving(false, moveValue: 120)
+    }
+
+    func animateViewMoving (up:Bool, moveValue :CGFloat){
+        var movementDuration:NSTimeInterval = 0.3
+        var movement:CGFloat = ( up ? -moveValue : moveValue)
+        UIView.beginAnimations( "animateView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration )
+        self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
+        UIView.commitAnimations()
     }
 
   @IBAction func savePatient(sender: UIBarButtonItem) {
