@@ -468,40 +468,21 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wVn-Qt-HhZ">
                                 <rect key="frame" x="0.0" y="64" width="320" height="188"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Injury:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9W-cV-iXR">
-                                        <rect key="frame" x="8" y="87" width="39" height="20"/>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zgr-4Q-Xsy">
-                                        <rect key="frame" x="58" y="84" width="254" height="26"/>
-                                        <color key="backgroundColor" red="1" green="0.39181964718188855" blue="0.39142127691995343" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Patient Name" translatesAutoresizingMaskIntoConstraints="NO" id="xiX-93-qQP">
-                                        <rect key="frame" x="82" y="8" width="230" height="33"/>
-                                        <color key="backgroundColor" red="1" green="0.37365152091011411" blue="0.43012287826320195" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="patient@email.com" translatesAutoresizingMaskIntoConstraints="NO" id="SOM-7Y-BTc">
-                                        <rect key="frame" x="82" y="45" width="230" height="33"/>
-                                        <color key="backgroundColor" red="1" green="0.37365152089999998" blue="0.43012287830000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" red="1" green="0.36736764789999998" blue="0.27057844219999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4yp-GD-IyQ">
                                         <rect key="frame" x="8" y="8" width="68" height="73"/>
                                         <color key="backgroundColor" red="0.85274621210000001" green="0.85274621210000001" blue="0.85274621210000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DxZ-bf-L2D">
+                                        <rect key="frame" x="8" y="150" width="48" height="30"/>
+                                        <state key="normal" image="mail_64">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="emailButtonTapped:" destination="5Jc-bf-fOI" eventType="touchUpInside" id="giU-yJ-HsU"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Workouts Until Next Appt:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DzP-cg-s4c">
-                                        <rect key="frame" x="8" y="118" width="150" height="17"/>
+                                        <rect key="frame" x="8" y="100" width="150" height="17"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -524,22 +505,41 @@
                                             <action selector="savePatient:" destination="5Jc-bf-fOI" eventType="touchUpInside" id="Kmh-gp-99X"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3JR-vO-Jlm">
-                                        <rect key="frame" x="163" y="107" width="44" height="28"/>
-                                        <color key="backgroundColor" red="1" green="0.37815468320975687" blue="0.40253454678304945" alpha="1" colorSpace="calibratedRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Patient Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xx5-Rk-tEp">
+                                        <rect key="frame" x="84" y="8" width="228" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Workouts Completed:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGE-fm-VXn">
+                                        <rect key="frame" x="8" y="125" width="128" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="300" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yY-Vg-gD5">
+                                        <rect key="frame" x="145" y="125" width="24" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DxZ-bf-L2D">
-                                        <rect key="frame" x="8" y="150" width="48" height="30"/>
-                                        <state key="normal" image="mail_64">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="emailButtonTapped:" destination="5Jc-bf-fOI" eventType="touchUpInside" id="giU-yJ-HsU"/>
-                                        </connections>
-                                    </button>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UV1-Iq-2gA">
+                                        <rect key="frame" x="84" y="34" width="228" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Injury" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U6c-Ud-jR7">
+                                        <rect key="frame" x="84" y="63" width="228" height="29"/>
+                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RXT-B3-bjg">
+                                        <rect key="frame" x="166" y="94" width="30" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
@@ -589,12 +589,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="emailTextView" destination="SOM-7Y-BTc" id="InA-qr-eGN"/>
-                        <outlet property="injuryTextView" destination="Zgr-4Q-Xsy" id="okh-ed-IJW"/>
-                        <outlet property="patientNameTextView" destination="xiX-93-qQP" id="qQ9-Co-MRG"/>
+                        <outlet property="emailLabel" destination="UV1-Iq-2gA" id="0LG-cr-UBl"/>
+                        <outlet property="injuryLabel" destination="U6c-Ud-jR7" id="SEe-cV-4Y4"/>
+                        <outlet property="patientNameLabel" destination="xx5-Rk-tEp" id="7ec-QI-uIA"/>
                         <outlet property="profileImageView" destination="4yp-GD-IyQ" id="NcG-2X-hou"/>
                         <outlet property="tableView" destination="aGJ-4i-iME" id="9kZ-5f-OuR"/>
-                        <outlet property="workoutsUntilApp" destination="3JR-vO-Jlm" id="jhY-Sd-Vju"/>
+                        <outlet property="workoutsCompletedLabel" destination="0yY-Vg-gD5" id="dQw-LO-tWb"/>
+                        <outlet property="workoutsUntilApptTextField" destination="RXT-B3-bjg" id="CzP-cj-iw8"/>
                         <segue destination="dp7-02-EsU" kind="push" identifier="editExerciseSegue" id="2UU-fN-6a1"/>
                     </connections>
                 </viewController>

@@ -13,10 +13,13 @@ import MessageUI
 class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, MFMailComposeViewControllerDelegate  {
 
   @IBOutlet var tableView: UITableView!
-    @IBOutlet weak var workoutsUntilApp: UITextView!
-    @IBOutlet weak var patientNameTextView: UITextView!
-    @IBOutlet weak var emailTextView: UITextView!
-    @IBOutlet weak var injuryTextView: UITextView!
+
+    @IBOutlet weak var patientNameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var workoutsUntilApptTextField: UITextField!
+    @IBOutlet weak var workoutsCompletedLabel: UILabel!
+    
+    @IBOutlet weak var injuryLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
   var exercises: [PFObject] = []
   var refreshControl = UIRefreshControl()
@@ -28,20 +31,20 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
 
   }
     
-    func dismissKeyboard (){
-        injuryTextView.resignFirstResponder()
-        workoutsUntilApp.resignFirstResponder()
-        emailTextView.resignFirstResponder()
-        patientNameTextView.resignFirstResponder()
-    }
-    func textViewDidEndEditing(textView: UITextView) {
-        textView.layer.borderColor = UIColor.blueColor().CGColor
-    }
     
-    func textViewDidChange(textView: UITextView) {
-        textView.layer.borderWidth = 0.5
-        textView.layer.borderColor = UIColor.greenColor().CGColor
-    }
+//    func dismissKeyboard (){
+//       // injuryTextView.resignFirstResponder()
+//        workoutsUntilApptTextField.resignFirstResponder()
+//    }
+    
+//    func textViewDidEndEditing(textView: UITextView) {
+//        textView.layer.borderColor = UIColor.blueColor().CGColor
+//    }
+//    
+//    func textViewDidChange(textView: UITextView) {
+//        textView.layer.borderWidth = 1
+//        textView.layer.backgroundColor = UIColor(red: 119/255.0, green: 190/255.0, blue: 119/255.0, alpha: 1).CGColor
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,10 +53,10 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
         tableView.insertSubview(refreshControl, atIndex: 0)
         tableView.delegate = self
         tableView.dataSource = self
-        patientNameTextView.delegate = self
-        emailTextView.delegate = self
-        injuryTextView.delegate = self
-        workoutsUntilApp.delegate = self
+//        patientNameTextView.delegate = self
+//        emailTextView.delegate = self
+//        injuryTextView.delegate = self
+//        workoutsUntilApp.delegate = self
         tableView.estimatedRowHeight = 20
         tableView.rowHeight = UITableViewAutomaticDimension
         
@@ -72,13 +75,17 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
         profileImageView.clipsToBounds = true
 
         var wUntilApp = patient["workoutsUntilAppointment"] as! Int
-        workoutsUntilApp.text = String(wUntilApp)
-        injuryTextView.text = patient["injury"] as! String
+        workoutsUntilApptTextField.text = String(wUntilApp)
+       // injuryTextView.text = patient["injury"] as! String
         var temp = patient["first_name"] as! String
         temp += " "
         temp += patient["last_name"] as! String
-        patientNameTextView.text = temp
-        emailTextView.text = patient["email"] as! String
+        patientNameLabel.text = temp
+        emailLabel.text = patient["email"] as? String
+        var wInt = patient["totalWorkouts"] as! Int
+        workoutsCompletedLabel.text = String(wInt - wUntilApp)
+        injuryLabel.preferredMaxLayoutWidth = injuryLabel.frame.width
+        injuryLabel.text = patient["injury"] as? String
         self.tableView.reloadData()
     }
     
@@ -124,11 +131,11 @@ class ProviderManagePatientExercises: UIViewController, UITableViewDelegate, UIT
             
         self.presentViewController(alert, animated: true, completion: nil)
         println("pressed the save button")
-        var wUntilApp = workoutsUntilApp.text
+        var wUntilApp = workoutsUntilApptTextField.text
         patient["workoutsUntilAppointment"] = wUntilApp.toInt()!
-        patient["injury"] = injuryTextView.text
-        patient["email"] = emailTextView.text
-        patient["injury"] = injuryTextView.text
+       // patient["injury"] = injuryTextView.text
+      //  patient["email"] = emailTextView.text
+      //  patient["injury"] = injuryTextView.text
 
     }
     
