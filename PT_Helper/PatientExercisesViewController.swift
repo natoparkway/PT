@@ -9,12 +9,12 @@
 import UIKit
 
 class PatientExercisesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+
     var exercises: [PFObject] = []
     let transitionManager = SlideTransitionDelegate()
 
     @IBOutlet weak var tableView: UITableView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -35,24 +35,24 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("ExerciseCell") as! ExerciseCell
         cell.selectionStyle = .None    //Prevents highlighting
         cell.setup(exercises[indexPath.row])
         return cell
     }
-    
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exercises.count
     }
-    
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier("ToWorkout", sender: tableView.cellForRowAtIndexPath(indexPath))
-        
+
     }
 //TABLE VIEW DELEGATE METHODS
-    
+
 
     // MARK: - Navigation
 
@@ -66,7 +66,7 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
             }
         }
     }
-    
+
     func toWorkoutViewSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var indexPath = tableView.indexPathForCell(sender as! UITableViewCell)!
         var workoutVC = segue.destinationViewController as! WorkoutContainerViewController
@@ -76,7 +76,7 @@ class PatientExercisesViewController: UIViewController, UITableViewDelegate, UIT
         workoutVC.transitioningDelegate = transitionManager
         workoutVC.exercises = singleExercise
     }
-    
-    
+
+
 
 }
