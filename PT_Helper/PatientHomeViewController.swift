@@ -42,7 +42,7 @@ class PatientHomeViewController: UIViewController, WorkoutFinishedDelegate {
     
     
     func setUpProgressBar() {
-        progressBar.progressTintColor = greenColor
+//        progressBar.progressTintColor = greenColor
         progressBar.hideStripes = true
         progressBar.type = YLProgressBarType.Flat
         var user = PFUser.currentUser()?["patient"] as! PFObject

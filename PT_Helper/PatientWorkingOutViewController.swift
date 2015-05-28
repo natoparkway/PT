@@ -38,7 +38,7 @@ class PatientWorkingOutViewController: UIViewController {
     var videoView: UIView!
 
     //constant representing number of random images to cycle through
-    let workoutImages = ["gym1", "gym2", "gym3", "gym4"]
+    let workoutImages = ["StockExercise1", "StockExercise2", "StockExercise3"]
 
     //Indicates whether this exercise is a standalone (and then goes to a congratulations view)
     //or tells a container view to switch to the next exercise

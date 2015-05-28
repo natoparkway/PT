@@ -70,7 +70,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yvd-Wc-oDf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1824" y="1708"/>
+            <point key="canvasLocation" x="912" y="1896"/>
         </scene>
         <!--Create New Patient-->
         <scene sceneID="yE1-gj-Cad">
@@ -149,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2kq-a1-8Ah" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2348" y="543"/>
+            <point key="canvasLocation" x="1992" y="543"/>
         </scene>
         <!--New Template-->
         <scene sceneID="Sgs-xQ-549">
@@ -212,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wXX-Ip-br5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1824" y="2460"/>
+            <point key="canvasLocation" x="912" y="2648"/>
         </scene>
         <!--Workout Container-->
         <scene sceneID="Toe-36-Dbz">
@@ -336,9 +336,9 @@
                     <connections>
                         <outlet property="emailField" destination="7rZ-6I-Jpb" id="Anx-du-5fN"/>
                         <outlet property="passwordField" destination="4oI-CO-Lhk" id="Yqg-iL-9qo"/>
-                        <segue destination="wuD-Al-hoA" kind="modal" identifier="physicianLoginSegue" id="e1A-Zf-sLH"/>
                         <segue destination="cgh-fa-ywM" kind="modal" identifier="physicianSignupSegue" id="oKm-Qs-PHb"/>
                         <segue destination="WU6-HI-HML" kind="modal" identifier="ToStoryboardSegue" id="RYC-GM-KLc"/>
+                        <segue destination="X9k-nS-KXQ" kind="modal" identifier="physicianLoginSegue" id="uB4-Nx-yio"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -348,7 +348,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-571" y="-534"/>
+            <point key="canvasLocation" x="-105" y="154"/>
         </scene>
         <!--Patients-->
         <scene sceneID="2m5-0o-d0f">
@@ -436,7 +436,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yuY-dq-Oze" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1832" y="1002"/>
+            <point key="canvasLocation" x="1500" y="1002"/>
         </scene>
         <!--Patient Profile-->
         <scene sceneID="6ya-dD-KnF">
@@ -483,9 +483,9 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="188"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Injury:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9W-cV-iXR">
-                                        <rect key="frame" x="8" y="117" width="47" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <rect key="frame" x="8" y="112" width="47" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zgr-4Q-Xsy">
@@ -495,12 +495,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="y.o." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVZ-7x-Ydi">
-                                        <rect key="frame" x="44" y="88" width="32" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xiX-93-qQP">
                                         <rect key="frame" x="84" y="8" width="219" height="29"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -533,14 +527,8 @@
                                             <action selector="savePatient:" destination="5Jc-bf-fOI" eventType="touchUpInside" id="Kmh-gp-99X"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" fixedFrame="YES" text="Workouts Until Next Appt:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DzP-cg-s4c">
-                                        <rect key="frame" x="87" y="88" width="160" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3JR-vO-Jlm">
-                                        <rect key="frame" x="249" y="86" width="44" height="26"/>
+                                        <rect key="frame" x="251" y="84" width="44" height="26"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -556,6 +544,18 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="y.o." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVZ-7x-Ydi">
+                                        <rect key="frame" x="44" y="83" width="27" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Workouts Until Next App:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DzP-cg-s4c">
+                                        <rect key="frame" x="89" y="86" width="154" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -582,7 +582,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qFT-5l-CfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2348" y="1224"/>
+            <point key="canvasLocation" x="1992" y="1192"/>
         </scene>
         <!--Edit Exercise-->
         <scene sceneID="HPr-0S-tik">
@@ -777,7 +777,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2794" y="1265"/>
+            <point key="canvasLocation" x="1982" y="1977"/>
         </scene>
         <!--Exercise Template Detail View Controller-->
         <scene sceneID="K8V-ca-Wcx">
@@ -801,7 +801,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBX-FU-0Rz">
                                 <rect key="frame" x="139" y="72" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -823,7 +823,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RfT-lw-Bch" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2322" y="1721"/>
+            <point key="canvasLocation" x="1410" y="1909"/>
         </scene>
         <!--New Exercise View Controller-->
         <scene sceneID="JW7-uK-YRj">
@@ -1038,7 +1038,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2348" y="1895"/>
+            <point key="canvasLocation" x="1436" y="2083"/>
         </scene>
         <!--Exercises-->
         <scene sceneID="jzg-rr-eOI">
@@ -1068,7 +1068,7 @@
                                                         <constraint firstAttribute="width" constant="291" id="5CW-2I-SrV"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1140,7 +1140,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5b-iM-F8x">
                                 <rect key="frame" x="16" y="88" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1212,7 +1212,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RmS-X8-Ynh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3185" y="635"/>
+            <point key="canvasLocation" x="3717" y="635"/>
         </scene>
         <!--Workout View-->
         <scene sceneID="cic-1V-NDG">
@@ -1475,7 +1475,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lYS-CO-Su3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2794" y="635"/>
+            <point key="canvasLocation" x="3326" y="635"/>
         </scene>
         <!--Provider SignupV Iew Controller-->
         <scene sceneID="17Q-kr-QzH">
@@ -1552,7 +1552,7 @@
                         <outlet property="firstNameField" destination="7z5-7e-9dR" id="G5h-aM-XuG"/>
                         <outlet property="lastNameField" destination="laH-dG-zAI" id="n6g-2J-zfA"/>
                         <outlet property="phoneField" destination="ItB-aE-epK" id="leT-e2-Jpv"/>
-                        <segue destination="wuD-Al-hoA" kind="modal" identifier="toPhysicianHome" id="TI2-Fa-LCo"/>
+                        <segue destination="X9k-nS-KXQ" kind="modal" identifier="toPhysicianHome" id="sYC-bf-4Lf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="puZ-Pm-oWF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1562,42 +1562,24 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="185" y="1002"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="6zI-Pv-KNa">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="wuD-Al-hoA" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="7p2-Es-smG">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="selectedImageTintColor" red="1" green="0.36736764789999998" blue="0.27057844219999999" alpha="1" colorSpace="calibratedRGB"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="lFZ-f9-5V0" kind="relationship" relationship="viewControllers" id="dRz-Xj-F5c"/>
-                        <segue destination="j2i-m4-TvK" kind="relationship" relationship="viewControllers" id="Goy-o5-j24"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jch-p7-UF7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="691" y="1002"/>
+            <point key="canvasLocation" x="-105" y="1002"/>
         </scene>
         <!--Patients-->
         <scene sceneID="Wu2-j6-p7j">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lFZ-f9-5V0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Patients" image="patient" id="JD4-Gl-7Bw">
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="TabBarItemHomeSelected"/>
-                        </userDefinedRuntimeAttributes>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" tag="2" title="Patients" image="patient" id="JD4-Gl-7Bw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pqg-pf-AZL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="1" green="0.36736764789999998" blue="0.27057844219999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <color key="textShadowColor" red="0.76862745099999996" green="0.070588235289999995" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1606,13 +1588,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MNb-Ze-y6f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="1002"/>
+            <point key="canvasLocation" x="944" y="1002"/>
         </scene>
         <!--Exercises-->
         <scene sceneID="dBD-pa-hrc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j2i-m4-TvK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Exercises" image="Dumbell Black" id="j0x-nB-oYH">
+                    <tabBarItem key="tabBarItem" tag="3" title="Exercises" image="Dumbell Black" selectedImage="Dumbell Black" id="j0x-nB-oYH">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="TabBarItemHomeSelected"/>
                         </userDefinedRuntimeAttributes>
@@ -1622,6 +1604,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.36736764789999998" blue="0.27057844219999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1630,7 +1616,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rRq-wW-8Fu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="1687"/>
+            <point key="canvasLocation" x="393" y="1875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="G4e-s4-QZU">
@@ -1648,7 +1634,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JPV-4L-wFF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1103" y="-534"/>
+            <point key="canvasLocation" x="-543" y="154"/>
         </scene>
         <!--Home Nav Bar-->
         <scene sceneID="ffp-TA-fnY">
@@ -1685,7 +1671,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.36736764789999998" blue="0.27057844219999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="GothamNarrow-Thin" family="Gotham Narrow" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="textShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
@@ -1722,6 +1708,25 @@
             </objects>
             <point key="canvasLocation" x="484" y="-724"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="lbC-xh-t8m">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="X9k-nS-KXQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="SiL-rF-euF">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="lFZ-f9-5V0" kind="relationship" relationship="viewControllers" id="2yv-Vc-4u9"/>
+                        <segue destination="j2i-m4-TvK" kind="relationship" relationship="viewControllers" id="2fU-1K-Ya8"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NJz-Pk-sqa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="393" y="1002"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Congratulations_Icon" width="64" height="64"/>
@@ -1740,7 +1745,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="e1A-Zf-sLH"/>
-        <segue reference="v91-Pt-thu"/>
+        <segue reference="sYC-bf-4Lf"/>
+        <segue reference="mfO-d9-SBN"/>
     </inferredMetricsTieBreakers>
 </document>
