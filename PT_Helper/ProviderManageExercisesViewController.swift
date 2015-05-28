@@ -19,7 +19,9 @@ class ProviderManageExercisesViewController: UIViewController, UITableViewDelega
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-      
+      var image = UIImage(named: "Dumbell Black")
+      self.tabBarController!.tabBarItem.image = UIImage(named: "Dumbell Black")
+
       refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
       tableView.insertSubview(refreshControl, atIndex: 0)
       onRefresh()
