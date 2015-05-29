@@ -62,7 +62,12 @@ func textFieldDidBeginEditing(textField: UITextField) {
     patient["email"] = emailTextField.text
     patient["age"] = ageField.text.toInt()
     patient["phone"] = phoneField.text.toInt()
-    patient["gender"] = "M"
+    var gender = "M"
+    if(maleFemaleButton.selectedSegmentIndex == 1){
+        gender = "F"
+    }
+    
+    patient["gender"] = gender
     patient.setObject(curPhysician, forKey: "physician")
 
     // Make PFUser so that the patient can login
