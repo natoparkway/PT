@@ -160,7 +160,7 @@ class PatientWorkingOutViewController: UIViewController {
         var movedEnoughRight = self.videoView.frame.origin.x > minimumDistToSnap
         var movedEnoughLeft = self.videoView.frame.origin.x < view.frame.width - minimumDistToSnap
 
-        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
 
             if(isMovingRight && movedEnoughRight) {
                 self.videoView.center.x = self.view.frame.width - self.videoOffScreenPos + self.videoView.frame.width / 2

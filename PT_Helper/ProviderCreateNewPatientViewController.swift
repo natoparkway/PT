@@ -76,6 +76,7 @@ func textFieldDidBeginEditing(textField: UITextField) {
       if (success) {
         var alert = UIAlertController(title: "Success", message: "New Patient Created", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (alert: UIAlertAction!) -> Void in
+            println("popping to view controller")
           self.navigationController?.popViewControllerAnimated(true)
         }))
       } else {
