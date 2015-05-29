@@ -74,11 +74,7 @@ func textFieldDidBeginEditing(textField: UITextField) {
     var username = self.emailTextField.text
     patient.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
       if (success) {
-        var alert = UIAlertController(title: "Success", message: "New Patient Created", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (alert: UIAlertAction!) -> Void in
-            println("popping to view controller")
-          self.navigationController?.popViewControllerAnimated(true)
-        }))
+        self.navigationController?.popViewControllerAnimated(true)
       } else {
         let errorString = error!.userInfo?["error"] as! String
         self.displayMessage(errorString)

@@ -68,6 +68,8 @@ class PatientWorkingOutViewController: UIViewController {
         isDuration = exercise["isDuration"] as! Bool
         if isDuration {
             repetitionsOrSecondsLabel.text = "Seconds"
+        } else {
+            repetitionsOrSecondsLabel.text = "Repetitions"
         }
         
         addSetCounter() //Either sets up timer or adds rep counter
