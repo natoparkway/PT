@@ -33,3 +33,6 @@ Stretch Goals:
 Messaging (using Layer API?)
 Evaluation metric of some sort some way to give feedback to the user
 Social + Gamifying the experience
+
+
+![My Image](https://github.com/natoparkway/PT/blob/master/PT_Helper_Walthrough%20(1).gif)
